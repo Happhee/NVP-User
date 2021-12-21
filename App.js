@@ -5,15 +5,9 @@
  * @format
  * @flow strict-local
  */
-
 import React, { useEffect } from 'react';
-import {
-  Text,
-  View,
-} from 'react-native';
-
+import { Text, View } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
-
 
 const App = () => {
 
@@ -22,9 +16,7 @@ const App = () => {
   }, []);
 
   return (
-    <View style={{
-      backgroundColor: isDarkMode ? Colors.black : Colors.white,
-    }}>
+    <View style={{ backgroundColor: "white" }}>
       <Text>테스트</Text>
     </View>
   );
