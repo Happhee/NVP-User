@@ -8,7 +8,9 @@ const HomeStack = createNativeStackNavigator();
 const HomeStackScreen = () => {
     return (
         <Stack.Navigator>
-            <HomeStack.Screen name="MyCretificate" component={MyCretificateScreen} />
+            <HomeStack.Screen options={{
+                headerShown: false,
+            }} name="MyCretificate" component={MyCretificateScreen} />
         </Stack.Navigator>
     )
 }
