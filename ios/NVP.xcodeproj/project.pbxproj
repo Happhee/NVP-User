@@ -15,6 +15,8 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		81DCD48AAD98B0EA3DC0D081 /* libPods-NVP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CAC9BBA969BA069AF6B5F490 /* libPods-NVP.a */; };
 		E79217552773010400B30449 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E79217542773010400B30449 /* GoogleService-Info.plist */; };
+		877F1D682ABA439197CA5BB2 /* DoHyeon-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0228F9691F714142958FD0B8 /* DoHyeon-Regular.ttf */; };
+		D0BE0C0C03C149C5870B2DC4 /* DoHyeon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DAF64010F3904703820A6888 /* DoHyeon.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		EFEAD19EF540473D85E8C9BF /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		FAF847FBFB65A2BDB79896D8 /* Pods-NVP-NVPTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NVP-NVPTests.release.xcconfig"; path = "Target Support Files/Pods-NVP-NVPTests/Pods-NVP-NVPTests.release.xcconfig"; sourceTree = "<group>"; };
+		0228F9691F714142958FD0B8 /* DoHyeon-Regular.ttf */ = {isa = PBXFileReference; name = "DoHyeon-Regular.ttf"; path = "../src/assets/fonts/DoHyeon-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DAF64010F3904703820A6888 /* DoHyeon.ttf */ = {isa = PBXFileReference; name = "DoHyeon.ttf"; path = "../src/assets/fonts/DoHyeon.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +148,8 @@
 				EFEAD19EF540473D85E8C9BF /* Octicons.ttf */,
 				18D9AE2904C84B699316237F /* SimpleLineIcons.ttf */,
 				A5C2F18F668948BE9A8BE9D2 /* Zocial.ttf */,
+				0228F9691F714142958FD0B8 /* DoHyeon-Regular.ttf */,
+				DAF64010F3904703820A6888 /* DoHyeon.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -289,6 +295,8 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				E79217552773010400B30449 /* GoogleService-Info.plist in Resources */,
+				877F1D682ABA439197CA5BB2 /* DoHyeon-Regular.ttf in Resources */,
+				D0BE0C0C03C149C5870B2DC4 /* DoHyeon.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

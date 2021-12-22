@@ -11,6 +11,8 @@ function Login(props) {
 
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ fontFamily: 'DoHyeon', fontSize: 13 }} >sasd</Text>
+
             <TextInput placeholder="PW"
                 onChangeText={inputPw => setPassword(inputPw)}
             />
