@@ -6,12 +6,12 @@ const INDIVIDUAL_URL = "/api/user";
 export function loginPassword(dataToSubmit) {
 
     const data = request("GET", INDIVIDUAL_URL
-        + "?uniqueID=" + dataToSubmit.uniqueID
+        + "?uniqueID=" + dataToSubmit.uniqueId
         + "&simplePw=" + dataToSubmit.passWord);
     return {
         type: types.LOGIN_PASSWORD,
         payload: data,
-        uniqueID: dataToSubmit.uniqueID
+        uniqueId: dataToSubmit.uniqueId
     }
 
 };

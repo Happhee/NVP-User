@@ -5,7 +5,7 @@ import { View, Text, Button, TextInput } from 'react-native';
 function Login(props) {
     let [passWord, setPassword] = useState('');
     const uniqueId = deviceInfoModule.getUniqueId();
-
+    console.log(props)
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text>LoginScreen </Text>
@@ -19,7 +19,7 @@ function Login(props) {
                         passWord: passWord
                     }
                     props.onPressLogin(dataToSubmit);
-                    setSimplePW('');
+                    setPassword('');
                 }}
                 title="LOGIN"
             ></Button>
