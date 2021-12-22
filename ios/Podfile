@@ -11,6 +11,7 @@ target 'NVP' do
     # to enable hermes on iOS, change `false` to `true` and then install pods
     :hermes_enabled => false
   )
+  pod 'Firebase/Analytics'
 
   target 'NVPTests' do
     inherit! :complete
