@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
 import deviceInfoModule from 'react-native-device-info';
-import { View, Text, Button, TextInput } from 'react-native';
+import { View, Text, TextInput } from 'react-native';
+import { Button } from 'react-native-paper'
+import UserButton from '../UserButton';
 
 function Login(props) {
     let [passWord, setPassword] = useState('');
     const uniqueId = deviceInfoModule.getUniqueId();
     console.log(props)
+
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text>LoginScreen </Text>
             <TextInput placeholder="PW"
                 onChangeText={inputPw => setPassword(inputPw)}
             />
-            <Button
+            <UserButton
+                buttonName="LOGIN"
                 onPress={function () {
                     const dataToSubmit = {
                         uniqueId: uniqueId,
@@ -20,9 +24,13 @@ function Login(props) {
                     }
                     props.onPressLogin(dataToSubmit);
                     setPassword('');
-                }}
-                title="LOGIN"
-            ></Button>
+                }} />
+
+            <UserButton
+                buttonName="회원가입"
+                onPress={function () {
+
+                }} />
         </View >
     )
 }
