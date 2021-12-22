@@ -11,7 +11,6 @@ function Login(props) {
 
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>LoginScreen </Text>
             <TextInput placeholder="PW"
                 onChangeText={inputPw => setPassword(inputPw)}
             />

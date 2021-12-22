@@ -15,6 +15,7 @@ const AuthStackScreen = () => {
             <Stack.Screen name="Login" component={LoginScreen}
                 options={{
                     title: '',
+                    headerShown: false,
                     headerBackTitleVisible: false,
                 }} />
             <Stack.Screen name="CheckCertificate" component={CheckCertificateScreen}
