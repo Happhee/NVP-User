@@ -23,7 +23,7 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Auth">
           <Stack.Screen name="Auth" component={AuthStackScreen}
-            options={{ headerShwon: false }}
+            options={{ headerShown: false }}
           />
           <Stack.Screen name="Main" component={MainTabScreen} />
         </Stack.Navigator>
