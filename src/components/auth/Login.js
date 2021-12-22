@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import deviceInfoModule from 'react-native-device-info';
-import { View, Text, Button, TextInput } from 'react-native';
-
+import { View, Text, TextInput } from 'react-native';
+import { Button } from 'react-native-paper'
 function Login(props) {
     let [passWord, setPassword] = useState('');
     const uniqueId = deviceInfoModule.getUniqueId();
@@ -13,6 +13,7 @@ function Login(props) {
                 onChangeText={inputPw => setPassword(inputPw)}
             />
             <Button
+                mode="contained"
                 onPress={function () {
                     const dataToSubmit = {
                         uniqueId: uniqueId,
@@ -20,9 +21,7 @@ function Login(props) {
                     }
                     props.onPressLogin(dataToSubmit);
                     setPassword('');
-                }}
-                title="LOGIN"
-            ></Button>
+                }}>LOGIN</Button>
         </View >
     )
 }
