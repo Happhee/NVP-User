@@ -24,12 +24,13 @@ function Login(props) {
                     }
                     props.onPressLogin(dataToSubmit);
                     setPassword('');
+                    props.navigation.navigate('Main')
                 }} />
 
             <UserButton
                 buttonName="회원가입"
                 onPress={function () {
-
+                    props.navigation.navigate('CheckCertificate')
                 }} />
         </View >
     )

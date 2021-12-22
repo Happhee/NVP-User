@@ -21,7 +21,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Main">
+        <Stack.Navigator initialRouteName="Auth">
           <Stack.Screen name="Auth" component={AuthStackScreen}
             options={{ headerShown: false }}
           />
