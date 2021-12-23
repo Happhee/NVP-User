@@ -24,8 +24,14 @@ const App = () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
+
         <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Main">
           <Stack.Screen name="Main" component={MainTabScreen}/>
+
+          <Stack.Screen name="Auth" component={AuthStackScreen}
+            options={{ headerShown: false }}
+          />
+
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
