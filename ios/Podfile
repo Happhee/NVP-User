@@ -13,7 +13,9 @@ target 'NVP' do
   )
   pod 'Firebase/Analytics'
 
-  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
+
+  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
 
   target 'NVPTests' do
     inherit! :complete

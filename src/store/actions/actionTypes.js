@@ -1,4 +1,6 @@
-export const LOGIN_PASSWORD = "LOGIN_PASSWORD";
+export const LOGIN = "LOGIN";
+export const AUTO_LOGIN = "AUTO_LOGIN";
+export const LOGOUT = "LOGOUT";
 export const CONFIRM_TEXT_MESSAGE = "CONFIRM_TEXT_MESSAGE";
 export const REGISTER_ID_CARD = "REGISTER_ID_CARD";
 export const REGISTER_VACCINE_PASS = "REGISTER_VACCINE_PASS";
