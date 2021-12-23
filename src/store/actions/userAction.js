@@ -15,6 +15,7 @@ export function login(dataToSubmit) {
     }
 
 };
+
 export function autoLogin(dataToSubmit) {
     const data = request("POST", INDIVIDUAL_URL, dataToSubmit);
 
