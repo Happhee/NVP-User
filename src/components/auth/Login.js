@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import deviceInfoModule from 'react-native-device-info';
 import { View, Text, TextInput, Keyboard } from 'react-native';
 import { Button } from 'react-native-paper'
@@ -6,10 +6,10 @@ import UserButton from '../UserButton';
 import colors from '../../assets/colors/color';
 import authStyles from '../../assets/styles/authStyles';
 import { TouchableWithoutFeedback } from 'react-native';
+
 function Login(props) {
     let [passWord, setPassword] = useState('');
     const uniqueId = deviceInfoModule.getUniqueId();
-    console.log(props)
 
     return (
         <TouchableWithoutFeedback onPress={() => {
@@ -45,6 +45,7 @@ function Login(props) {
                                 }
                                 props.onPressLogin(dataToSubmit);
                                 setPassword('');
+
                                 // props.navigation.navigate('Main')
                                 Keyboard.dismiss();
                             }
