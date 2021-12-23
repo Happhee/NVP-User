@@ -15,7 +15,6 @@ function Login(props) {
         <View style={authStyles.container}>
             <View style={authStyles.header}>
                 <Text style={authStyles.headerFont}>NVP</Text>
-
             </View>
             <View style={authStyles.title}>
                 <Text style={authStyles.titleFont}>등록한 간편 비밀번호를</Text>
@@ -26,9 +25,6 @@ function Login(props) {
                 <TextInput placeholder="PW"
                     onChangeText={inputPw => setPassword(inputPw)}
                 />
-
-            </View>
-            <View style={authStyles.footer}>
                 <UserButton
                     buttonName="LOGIN"
                     onPress={function () {
@@ -46,6 +42,9 @@ function Login(props) {
                     onPress={function () {
                         props.navigation.navigate('CheckCertificate')
                     }} />
+            </View>
+            <View style={authStyles.footer}>
+
             </View>
         </View >
     )

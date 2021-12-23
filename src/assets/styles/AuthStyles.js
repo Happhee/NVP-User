@@ -16,11 +16,11 @@ const authStyles = StyleSheet.create({
     headerFont: {
         color: colors.nvpRoot,
         fontFamily: 'DoHyeon-Regular',
-        fontSize: 60,
+        fontSize: 80,
         textDecorationLine: 'underline'
     },
     title: {
-        flex: 1,
+        flex: 0.5,
         alignItems: 'center',
         justifyContent: 'center'
     },
@@ -30,7 +30,7 @@ const authStyles = StyleSheet.create({
         fontSize: 30,
     },
     content: {
-        flex: 3,
+        flex: 2.5,
         backgroundColor: 'blue',
         alignItems: 'center',
         justifyContent: 'center'
