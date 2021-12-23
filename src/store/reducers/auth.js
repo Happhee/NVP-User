@@ -7,11 +7,14 @@ const initialState = {
 
 export default function authReducer(state = initialState, action) {
     switch (action.type) {
-        case types.LOGIN_PASSWORD:
+        case types.LOGIN:
             return {
                 ...state,
                 uniqueId: action.uniqueId
             }
+
+        case types.LOGOUT:
+            return initialState;
     }
     return state;
 }
