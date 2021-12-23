@@ -30,17 +30,34 @@ function Login(props) {
                 <View style={authStyles.content} >
 
                     <TextInput
+                        keyboardType="number-pad"
+                        maxLength={6}
+
                         style={authStyles.contentInput}
                         placeholder="PassWord"
                         numberOfLines={1}
                         secureTextEntry
-                        onChangeText={inputPw => setPassword(inputPw)}
+                        onChangeText={(inputPw) => {
+                            if (inputPw.length == 6) {
+                                const dataToSubmit = {
+                                    uniqueId: uniqueId,
+                                    passWord: passWord
+                                }
+                                props.onPressLogin(dataToSubmit);
+                                setPassword('');
+                                // props.navigation.navigate('Main')
+                                Keyboard.dismiss();
+                            }
+                            else {
+                                setPassword(inputPw);
+
+                            }
+                        }}
                     />
 
 
                     <View style={authStyles.contentButton}>
                         <UserButton
-
                             buttonName="로그인"
                             onPress={function () {
                                 const dataToSubmit = {
