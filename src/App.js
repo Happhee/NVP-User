@@ -10,6 +10,9 @@ import AuthStackScreen from './navigations/AuthStackScreen';
 import MainTabScreen from './navigations/MainTab';
 import { FLOWPREDICATE_TYPES } from '@babel/types';
 
+import { Appbar } from 'react-native-paper';
+import { StyleSheet } from 'react-native';
+
 const Stack = createNativeStackNavigator();
 
 const App = () => {
@@ -21,14 +24,18 @@ const App = () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Main">
+
+        <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Main">
+          <Stack.Screen name="Main" component={MainTabScreen}/>
+
           <Stack.Screen name="Auth" component={AuthStackScreen}
             options={{ headerShown: false }}
           />
-          <Stack.Screen name="Main" component={MainTabScreen} />
+
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
   );
 };
+
 export default App;
