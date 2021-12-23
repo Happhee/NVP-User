@@ -37,7 +37,6 @@ const authStyles = StyleSheet.create({
     },
     footer: {
         flex: 1,
-        backgroundColor: 'yellow',
         alignItems: 'center',
         justifyContent: 'center'
     }
