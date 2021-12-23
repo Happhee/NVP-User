@@ -1,12 +1,11 @@
 import * as React from 'react';
-import {StatusBar, View, Button,TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { StatusBar, View, Button, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-function MyCretificateScreen({ navigation }) 
-{
+function MyCretificateScreen({ navigation }) {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-           <TouchableOpacity style={styles.button}>
-           <Text>NVP</Text>
+            <TouchableOpacity style={styles.button}>
+                <Text>NVP</Text>
             </TouchableOpacity>
         </View>
     );
@@ -25,7 +24,7 @@ const styles = StyleSheet.create({
             ios: {
                 shadowColor: 'rgba(0,0,0,0.2)',
                 shadowOpacity: 1,
-                shadowOffset: {height: 2, width: 2},
+                shadowOffset: { height: 2, width: 2 },
                 shadowRadius: 2,
             },
             android: {
@@ -42,5 +41,5 @@ const styles = StyleSheet.create({
     }
 });
 
-  
+
 export default MyCretificateScreen;
