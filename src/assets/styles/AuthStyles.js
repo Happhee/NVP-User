@@ -31,9 +31,25 @@ const authStyles = StyleSheet.create({
     },
     content: {
         flex: 2.5,
-        backgroundColor: 'blue',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+    },
+    contentButton: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        width: '60%',
+    },
+    contentInput: {
+        backgroundColor: colors.nvpUnder,
+        padding: 10,
+        margin: 10,
+        width: '60%',
+        borderRadius: 10
+    },
+    insideContent: {
+        margin: 10,
+
+        backgroundColor: 'yellow'
     },
     footer: {
         flex: 1,

@@ -22,29 +22,45 @@ function Login(props) {
 
             </View>
             <View style={authStyles.content}>
-                <TextInput placeholder="PW"
+                {/* <View style={authStyles.insideContent}> */}
+                <TextInput
+                    style={authStyles.contentInput}
+                    placeholder="PassWord"
+                    numberOfLines={1}
+                    secureTextEntry
                     onChangeText={inputPw => setPassword(inputPw)}
                 />
-                <UserButton
-                    buttonName="LOGIN"
-                    onPress={function () {
-                        const dataToSubmit = {
-                            uniqueId: uniqueId,
-                            passWord: passWord
-                        }
-                        props.onPressLogin(dataToSubmit);
-                        setPassword('');
-                        props.navigation.navigate('Main')
-                    }} />
+                <View style={authStyles.contentButton}>
+                    <UserButton
 
+                        buttonName="로그인"
+                        onPress={function () {
+                            const dataToSubmit = {
+                                uniqueId: uniqueId,
+                                passWord: passWord
+                            }
+                            props.onPressLogin(dataToSubmit);
+                            setPassword('');
+                            props.navigation.navigate('Main')
+                        }} />
+
+                    <UserButton
+                        buttonName="회원가입"
+                        onPress={function () {
+                            props.navigation.navigate('CheckCertificate')
+                        }} />
+                </View>
+
+
+                {/* </View> */}
+
+            </View>
+            <View style={authStyles.footer}>
                 <UserButton
-                    buttonName="회원가입"
+                    buttonName="간편번호를 잊어버리셨나요?"
                     onPress={function () {
                         props.navigation.navigate('CheckCertificate')
                     }} />
-            </View>
-            <View style={authStyles.footer}>
-
             </View>
         </View >
     )
