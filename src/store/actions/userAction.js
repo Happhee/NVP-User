@@ -1,5 +1,4 @@
 import * as types from './actionTypes';
-import AsyncStorage from '@react-native-community/async-storage';
 import { request } from '../../utils/axios';
 
 const INDIVIDUAL_URL = "/api/user";
@@ -16,9 +15,15 @@ export function login(dataToSubmit) {
     }
 
 };
+export function autoLogin(dataToSubmit) {
+    const data = request("POST", INDIVIDUAL_URL, dataToSubmit);
 
+    return {
+        type: types.AUTO_LOGIN,
+        payload: data,
+    }
+}
 export function logout() {
-    AsyncStorage.removeItem('userUniqueId');
     return {
         type: types.LOGOUT
     }

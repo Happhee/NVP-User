@@ -23,6 +23,11 @@ export default function authReducer(state = initialState, action) {
                 ...state,
                 uniqueId: action.uniqueId
             }
+        case types.AUTO_LOGIN:
+            return {
+                ...state,
+                uniqueId: action.payload.userId
+            }
 
         case types.LOGOUT:
             AsyncStorage.removeItem('userUniqueId');
