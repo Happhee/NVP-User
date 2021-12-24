@@ -21,6 +21,7 @@ const authStyles = StyleSheet.create({
     },
     title: {
         flex: 0.5,
+        backgroundColor: 'yellow',
         alignItems: 'center',
         justifyContent: 'center'
     },
@@ -30,7 +31,9 @@ const authStyles = StyleSheet.create({
         fontSize: 30,
     },
     content: {
-        flex: 2.5,
+        backgroundColor: 'pink',
+
+        flex: 2,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -38,29 +41,26 @@ const authStyles = StyleSheet.create({
         color: colors.nvpRoot,
         fontFamily: 'DoHyeon-Regular',
         fontSize: 23,
+        width: '25%',
+        padding: 5,
     },
-    contentButton: {
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
-        width: '60%',
-    },
+
     contentView: {
-        backgroundColor: 'black',
-        width: '90%',
+        marginBottom: 5,
+        width: '95%',
         flexDirection: 'row',
-        justifyContent: 'flex-start',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     contentInput: {
-        backgroundColor: colors.nvpUnder,
-        padding: 10,
-        margin: 10,
-        width: '60%',
-        borderRadius: 10
+        backgroundColor: colors.signUpInput,
+        fontSize: 23,
+        fontFamily: 'DoHyeon-Regular',
+        color: colors.nvpRoot,
+        width: '55%',
+        borderRadius: 10,
+        padding: 5,
     },
-    insideContent: {
-        margin: 10,
-    },
+
     footer: {
         flex: 1,
         alignItems: 'center',
