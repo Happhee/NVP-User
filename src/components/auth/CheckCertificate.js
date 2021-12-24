@@ -37,7 +37,7 @@ function CheckCertificate(props) {
             <View style={signUp.footer}>
                 <NextButton
                     onPress={function () {
-                        // props.navigation.navigate('SetPassword')
+                        props.navigation.navigate('Login')
                     }} />
             </View>
 
