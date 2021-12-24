@@ -30,14 +30,27 @@ const authStyles = StyleSheet.create({
         fontSize: 30,
     },
     content: {
+        backgroundColor: 'yellow',
         flex: 2.5,
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    contentFont: {
+        color: colors.nvpRoot,
+        fontFamily: 'DoHyeon-Regular',
+        fontSize: 23,
     },
     contentButton: {
         flexDirection: 'row',
         justifyContent: 'flex-end',
         width: '60%',
+    },
+    contentView: {
+        backgroundColor: 'black',
+        width: '90%',
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center'
     },
     contentInput: {
         backgroundColor: colors.nvpUnder,
