@@ -28,7 +28,10 @@ function CheckCertificate(props) {
                     onPress={function () {
                         props.navigation.navigate('TakeIdCard')
                     }} />
-                <RegisterButton buttonName="백신 증명서 등록" />
+                <RegisterButton buttonName="백신 증명서 등록"
+                    onPress={function () {
+                        props.navigation.navigate('TakeVaccinePass')
+                    }} />
             </View>
 
             <View style={signUp.footer}>
