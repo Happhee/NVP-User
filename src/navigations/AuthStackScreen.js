@@ -6,6 +6,8 @@ import SetPasswordScreen from '../screens/AuthStack/SetPassword';
 import TakeIdCardScreen from '../screens/AuthStack/TakeIdCard';
 import TakeTextMessageScreen from '../screens/AuthStack/TakeTextMessage';
 import TakeVaccinePassScreen from '../screens/AuthStack/TakeVaccinePass';
+import ResetPasswordScreen from '../screens/AuthStack/ResetPassword';
+import ResetTextMessageScreen from '../screens/AuthStack/ResetTextMessage';
 
 const Stack = createNativeStackNavigator();
 
@@ -41,6 +43,17 @@ const AuthStackScreen = () => {
                 options={{
                     title: '',
 
+                    headerBackTitleVisible: false,
+                }} />
+
+            <Stack.Screen name="ResetTextMessage" component={ResetTextMessageScreen}
+                options={{
+                    title: '',
+                    headerBackTitleVisible: false,
+                }} />
+            <Stack.Screen name="ResetPassword" component={ResetPasswordScreen}
+                options={{
+                    title: '',
                     headerBackTitleVisible: false,
                 }} />
         </Stack.Navigator>
