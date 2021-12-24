@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { View, Text, Button } from 'react-native';
-
+import { View } from 'react-native';
+import TakeIdCard from '../../containers/auth/TakeIdCard';
 function TakeIdCardScreen({ navigation }) {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>TakeIdCardScreen </Text>
+            <TakeIdCard navigation={navigation} />
         </View>
     );
 }
