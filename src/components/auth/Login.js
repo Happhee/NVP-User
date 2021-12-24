@@ -74,7 +74,7 @@ function Login(props) {
                         <UserButton
                             buttonName="회원가입"
                             onPress={function () {
-                                props.navigation.navigate('CheckCertificate')
+                                props.navigation.navigate('TakeTextMessage')
                             }} />
                     </View>
 

@@ -29,7 +29,9 @@ function TakeTextMessage(props) {
 
                 <View style={authStyles.content} >
                     <View style={authStyles.contentView}>
+
                         <Text style={authStyles.contentFont}>이름</Text>
+
                         <TextInput style={authStyles.contentInput}
                             onChangeText={(inputName) => {
                                 setName(inputName);
