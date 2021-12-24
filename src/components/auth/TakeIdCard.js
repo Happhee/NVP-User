@@ -6,6 +6,7 @@ import NextButton from '../NextButton';
 import signUp from '../../assets/styles/signUp';
 import { TouchableWithoutFeedback } from 'react-native';
 
+
 function TakeIdCard(props) {
     let [passWord, setPassword] = useState('');
     let [name, setName] = useState('');
