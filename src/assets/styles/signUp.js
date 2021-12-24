@@ -81,6 +81,19 @@ const authStyles = StyleSheet.create({
         fontFamily: 'DoHyeon-Regular',
         fontSize: 15,
         color: colors.nvpUnder,
+    },
+    registerFont: {
+        fontFamily: 'DoHyeon-Regular',
+        fontSize: 30,
+        color: colors.nvpRoot,
+        textAlign: 'center',
+        marginBottom: 20
+    },
+    registerInfo: {
+        borderBottomColor: 'black',
+        borderBottomWidth: 1,
+
+
     }
 });
 
