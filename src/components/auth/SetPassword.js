@@ -23,45 +23,38 @@ function SetPassword(props) {
                     <Text style={signUp.headerFont}>NVP</Text>
                 </View>
                 <View style={signUp.title}>
-                    <Text style={signUp.titleFont}>회원가입</Text>
+                    <Text style={signUp.titleFont}>간편번호 생성</Text>
                 </View>
 
                 <View style={signUp.content} >
-                    <View style={signUp.contentView}>
+                    <View style={signUp.pwView}>
 
-                        <Text style={signUp.contentFont}>이름</Text>
+                        <Text style={signUp.contentFont}>간편번호설정</Text>
+                        <View style={signUp.pwInfoView}>
 
-                        <TextInput style={signUp.contentInput}
-                            onChangeText={(inputName) => {
-                                setName(inputName);
-                            }}
-                        />
-                    </View>
-
-                    <View style={signUp.contentView}>
-                        <Text style={signUp.contentFont}>전화번호</Text>
-                        <TextInput style={signUp.contentInput}
-                            onChangeText={(inputName) => {
-                                setName(inputName);
-                            }} />
-                        <SignUpButton
-                            buttonName="인증"
-                            onPress={function () {
-                                props.navigation.navigate('CheckCertificate')
-                            }} />
+                            <TextInput style={signUp.contentInput}
+                                placeholder="숫자 6자리 입력"
+                                keyboardType="number-pad"
+                                onChangeText={(inputName) => {
+                                    setName(inputName);
+                                }}
+                            />
+                            <Text></Text>
+                        </View>
 
                     </View>
-                    <View style={signUp.contentView}>
-                        <Text style={signUp.contentFont}>인증번호</Text>
-                        <TextInput style={signUp.contentInput}
-                            onChangeText={(inputName) => {
-                                setName(inputName);
-                            }} />
-                        <SignUpButton
-                            buttonName="확인"
-                            onPress={function () {
-                                props.navigation.navigate('CheckCertificate')
-                            }} />
+
+                    <View style={signUp.pwView}>
+                        <Text style={signUp.contentFont}>간편번호 확인</Text>
+                        <View style={signUp.pwInfoView}>
+                            <TextInput style={signUp.contentInput}
+                                keyboardType="number-pad"
+                                onChangeText={(inputName) => {
+                                    setName(inputName);
+                                }} />
+                            <Text style={signUp.pwInfo}>{props.pwState}</Text>
+
+                        </View>
 
                     </View>
                 </View>

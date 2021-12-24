@@ -64,6 +64,23 @@ const authStyles = StyleSheet.create({
         flex: 2,
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    pwView: {
+        marginBottom: 5,
+        width: '95%',
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    pwInfoView: {
+        flexDirection: 'column',
+        width: ' 100 %'
+
+    },
+    pwInfo: {
+        justifyContent: 'flex-start',
+        fontFamily: 'DoHyeon-Regular',
+        fontSize: 15,
+        color: colors.nvpUnder,
     }
 });
 
