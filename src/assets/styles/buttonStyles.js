@@ -7,11 +7,11 @@ const buttonStyles = StyleSheet.create({
         backgroundColor: colors.nvpRoot,
         fontFamily: 'DoHyeon-Regular',
         fontSize: 21,
-        padding: 5,
         marginBottom: 10,
         marginLeft: 4,
         marginRight: 4,
-    }
+
+    },
 
 });
 
