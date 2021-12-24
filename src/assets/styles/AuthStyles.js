@@ -26,7 +26,8 @@ const authStyles = StyleSheet.create({
     titleFont: {
         color: colors.nvpRoot,
         fontFamily: 'DoHyeon-Regular',
-        fontSize: 30,
+        fontSize: 35,
+
     },
     content: {
         flex: 2.5,
@@ -61,7 +62,7 @@ const authStyles = StyleSheet.create({
         margin: 10,
     },
     footer: {
-        flex: 1,
+        flex: 2,
         alignItems: 'center',
         justifyContent: 'center'
     }

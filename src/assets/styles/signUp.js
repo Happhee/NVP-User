@@ -17,7 +17,7 @@ const authStyles = StyleSheet.create({
         color: colors.nvpRoot,
         fontFamily: 'DoHyeon-Regular',
         fontSize: 80,
-        textDecorationLine: 'underline'
+        textDecorationLine: 'underline',
     },
     title: {
         flex: 0.5,
@@ -26,10 +26,10 @@ const authStyles = StyleSheet.create({
     titleFont: {
         color: colors.nvpRoot,
         fontFamily: 'DoHyeon-Regular',
-        fontSize: 30,
+        fontSize: 40,
     },
     content: {
-        flex: 2,
+        flex: 1.5,
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'space-around',
@@ -37,7 +37,7 @@ const authStyles = StyleSheet.create({
     contentFont: {
         color: colors.nvpRoot,
         fontFamily: 'DoHyeon-Regular',
-        fontSize: 23,
+        fontSize: 25,
         width: '25%',
         padding: 5,
     },
@@ -61,7 +61,7 @@ const authStyles = StyleSheet.create({
     },
 
     footer: {
-        flex: 1.5,
+        flex: 2,
         alignItems: 'center',
         justifyContent: 'center'
     }
