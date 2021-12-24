@@ -10,34 +10,48 @@ const authStyles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'white',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
 
     },
     headerFont: {
         color: colors.nvpRoot,
         fontFamily: 'DoHyeon-Regular',
         fontSize: 80,
-        textDecorationLine: 'underline'
+        textDecorationLine: 'underline',
+        textDecorationColor: colors.nvpUnder,
+        borderBottomWidth: 5
     },
     title: {
         flex: 0.5,
         alignItems: 'center',
-        justifyContent: 'center'
     },
     titleFont: {
         color: colors.nvpRoot,
         fontFamily: 'DoHyeon-Regular',
-        fontSize: 30,
+        fontSize: 35,
+
     },
     content: {
         flex: 2.5,
         alignItems: 'center',
         justifyContent: 'center',
     },
+    contentFont: {
+        color: colors.nvpRoot,
+        fontFamily: 'DoHyeon-Regular',
+        fontSize: 23,
+    },
     contentButton: {
         flexDirection: 'row',
         justifyContent: 'flex-end',
         width: '60%',
+    },
+    contentView: {
+        backgroundColor: 'black',
+        width: '90%',
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center'
     },
     contentInput: {
         backgroundColor: colors.nvpUnder,
@@ -48,11 +62,9 @@ const authStyles = StyleSheet.create({
     },
     insideContent: {
         margin: 10,
-
-        backgroundColor: 'yellow'
     },
     footer: {
-        flex: 1,
+        flex: 2,
         alignItems: 'center',
         justifyContent: 'center'
     }

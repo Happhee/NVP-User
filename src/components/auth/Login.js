@@ -74,7 +74,7 @@ function Login(props) {
                         <UserButton
                             buttonName="회원가입"
                             onPress={function () {
-                                props.navigation.navigate('CheckCertificate')
+                                props.navigation.navigate('TakeTextMessage')
                             }} />
                     </View>
 
@@ -85,10 +85,8 @@ function Login(props) {
                     <UserButton
                         buttonName="간편번호를 잊어버리셨나요?"
                         onPress={function () {
-                            props.navigation.navigate('CheckCertificate')
+                            props.navigation.navigate('ResetTextMessage');
                         }} />
-
-
                 </View>
 
             </View >

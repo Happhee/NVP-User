@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Button, Text } from 'react-native-paper';
 import buttonStyles from '../assets/styles/buttonStyles';
-const UserButton = (props) => (
+const SignUpButton = (props) => (
     <Button
-        style={buttonStyles.button}
+        style={buttonStyles.signUpButton}
         icon={props.icon}
         mode="contained"
         color="#00B990"
@@ -12,4 +12,4 @@ const UserButton = (props) => (
     </Button>
 )
 
-export default UserButton;
+export default SignUpButton;
