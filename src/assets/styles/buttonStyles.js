@@ -12,6 +12,20 @@ const buttonStyles = StyleSheet.create({
         marginRight: 4,
 
     },
+    signUpButton: {
+        borderRadius: 100,
+
+    },
+    buttonText: {
+        fontFamily: 'DoHyeon-Regular',
+        fontSize: 20,
+        justifyContent: 'center',
+        color: 'white'
+
+    },
+    nextButton: {
+        borderRadius: 10,
+    }
 
 });
 
