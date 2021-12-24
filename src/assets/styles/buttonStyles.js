@@ -25,6 +25,17 @@ const buttonStyles = StyleSheet.create({
     },
     nextButton: {
         borderRadius: 10,
+    },
+    registerButton: {
+        borderRadius: 90,
+        backgroundColor: colors.signUpInput,
+        width: '70 %'
+    },
+    registerButtonText: {
+        fontFamily: 'DoHyeon-Regular',
+        fontSize: 30,
+        justifyContent: 'center',
+        color: colors.nvpRoot
     }
 
 });
