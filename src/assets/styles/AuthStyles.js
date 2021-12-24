@@ -22,7 +22,6 @@ const authStyles = StyleSheet.create({
     title: {
         flex: 0.5,
         alignItems: 'center',
-        justifyContent: 'center'
     },
     titleFont: {
         color: colors.nvpRoot,
