@@ -15,7 +15,6 @@ target 'NVP' do
 
 
 
-  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
 
   target 'NVPTests' do
     inherit! :complete
