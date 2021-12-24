@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import deviceInfoModule from 'react-native-device-info';
 import { View, Text, TextInput, Keyboard } from 'react-native';
-import { Button, DataTable } from 'react-native-paper'
-import UserButton from '../UserButton';
-import colors from '../../assets/colors/color';
+import SignUpButton from '../SignUpButton';
+import NextButton from '../NextButton';
 import signUp from '../../assets/styles/signUp';
 import { TouchableWithoutFeedback } from 'react-native';
 
@@ -45,7 +44,7 @@ function TakeTextMessage(props) {
                             onChangeText={(inputName) => {
                                 setName(inputName);
                             }} />
-                        <UserButton
+                        <SignUpButton
                             buttonName="인증"
                             onPress={function () {
                                 props.navigation.navigate('CheckCertificate')
@@ -58,7 +57,7 @@ function TakeTextMessage(props) {
                             onChangeText={(inputName) => {
                                 setName(inputName);
                             }} />
-                        <UserButton
+                        <SignUpButton
                             buttonName="확인"
                             onPress={function () {
                                 props.navigation.navigate('CheckCertificate')
@@ -70,7 +69,7 @@ function TakeTextMessage(props) {
 
                 <View style={signUp.footer}>
 
-                    <UserButton
+                    <NextButton
                         buttonName="->"
                         onPress={function () {
                             props.navigation.navigate('CheckCertificate')
