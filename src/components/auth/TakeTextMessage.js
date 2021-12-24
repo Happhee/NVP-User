@@ -70,7 +70,6 @@ function TakeTextMessage(props) {
                 <View style={signUp.footer}>
 
                     <NextButton
-                        buttonName="->"
                         onPress={function () {
                             props.navigation.navigate('CheckCertificate')
                         }} />
