@@ -18,6 +18,8 @@ const authStyles = StyleSheet.create({
         fontFamily: 'DoHyeon-Regular',
         fontSize: 80,
         textDecorationLine: 'underline',
+        textDecorationColor: colors.nvpUnder,
+        borderBottomWidth: 5
     },
     title: {
         flex: 0.5,

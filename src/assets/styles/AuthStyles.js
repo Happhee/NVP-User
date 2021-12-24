@@ -10,14 +10,16 @@ const authStyles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'white',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
 
     },
     headerFont: {
         color: colors.nvpRoot,
         fontFamily: 'DoHyeon-Regular',
         fontSize: 80,
-        textDecorationLine: 'underline'
+        textDecorationLine: 'underline',
+        textDecorationColor: colors.nvpUnder,
+        borderBottomWidth: 5
     },
     title: {
         flex: 0.5,
