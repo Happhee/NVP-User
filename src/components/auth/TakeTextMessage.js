@@ -47,7 +47,7 @@ function TakeTextMessage(props) {
                         <SignUpButton
                             buttonName="인증"
                             onPress={function () {
-                                props.navigation.navigate('CheckCertificate')
+                                // props.navigation.navigate('')
                             }} />
 
                     </View>
