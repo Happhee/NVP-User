@@ -68,10 +68,9 @@ function TakeTextMessage(props) {
 
 
                 <View style={signUp.footer}>
-
                     <NextButton
                         onPress={function () {
-                            props.navigation.navigate('CheckCertificate')
+                            props.navigation.navigate('SetPassword')
                         }} />
                 </View>
 
