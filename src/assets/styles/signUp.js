@@ -94,8 +94,11 @@ const authStyles = StyleSheet.create({
     registerInfo: {
         borderBottomColor: 'black',
         borderBottomWidth: 1,
+        flex: 0.5,
 
-
+    },
+    cameraView: {
+        flex: 5
     }
 });
 
