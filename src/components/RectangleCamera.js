@@ -20,6 +20,7 @@ import AutoHeightImage from 'react-native-auto-height-image';
 
 import { HighDimensionScreen, LowDimensionScreen, PhoneDimesionScreen } from '../components/camera/CameraControl';
 import rectangleStyles from '../assets/styles/rectangleCamera';
+import { CameraOverlayScreen, LoadingCameraScreen, ScanningScreen } from './camera/CameraOverlay';
 class RectangleCamera extends PureComponent {
 
     static propTypes = {
@@ -268,9 +269,10 @@ class RectangleCamera extends PureComponent {
         const dimensions = Dimensions.get('window');
         const aspectRatio = dimensions.height / dimensions.width;
         const isPhone = aspectRatio > 1.6;
-        const cameraIsDisabled =
-            this.state.takingPicture || this.state.processingImage;
-        const disabledStyle = { opacity: cameraIsDisabled ? 0.8 : 1 };
+        console.log(this.state);
+
+        const cameraIsDisabled = this.state.takingPicture || this.state.processingImage;
+
         if (!isPhone) {
             if (dimensions.height < 500) {
                 return <LowDimensionScreen onPress={this.capture} />
@@ -282,38 +284,22 @@ class RectangleCamera extends PureComponent {
     }
 
     renderCameraOverlay() {
-        let loadingState = null;
-        if (this.state.loadingCamera) {
-            loadingState = (
-                <View style={rectangleStyles.overlay}>
-                    <View style={rectangleStyles.loadingContainer}>
-                        <ActivityIndicator color="white" />
-                        <Text style={rectangleStyles.loadingCameraMessage}>Loading Camera</Text>
-                    </View>
-                </View>
-            );
-        } else if (this.state.processingImage) {
-            loadingState = (
-                <View style={rectangleStyles.overlay}>
-                    <View style={rectangleStyles.loadingContainer}>
-                        <View style={rectangleStyles.processingContainer}>
-                            <ActivityIndicator color="#333333" size="large" />
-                            <Text style={{ color: '#333333', fontSize: 30, marginTop: 10 }}>
-                                스캔 중 입니다
-                            </Text>
-                        </View>
-                    </View>
-                </View>
-            );
-        }
+        // let loadingState = null;
+        // if (this.state.loadingCamera) {
+        //     loadingState = (
+        //         <LoadingCameraScreen />
+        //     );
+        // } else if (this.state.processingImage) {
+        //     loadingState = (
+        //         <ScanningScreen />
+        //     );
+        // }
 
         return (
-            <>
-                {loadingState}
-                <SafeAreaView style={[rectangleStyles.overlay]}>
-                    {this.renderCameraControls()}
-                </SafeAreaView>
-            </>
+            <CameraOverlayScreen loadingCamera={this.state.loadingCamera}
+                processingImage={this.state.processingImage}
+                renderCameraControls={this.renderCameraControls} />
+
         );
     }
     feedback = (option) => {
@@ -450,12 +436,12 @@ class RectangleCamera extends PureComponent {
                         // onTorchChanged={({enabled}) =>
                         //   this.setState({flashEnabled: enabled})
                         // }
-                        style={styles.scanner}
+                        style={rectangleStyles.scanner}
                     />
                     {rectangleOverlay}
                     <Animated.View
                         style={{
-                            ...styles.overlay,
+                            ...rectangleStyles.overlay,
                             backgroundColor: 'white',
                             opacity: this.state.overlayFlashOpacity,
                         }}

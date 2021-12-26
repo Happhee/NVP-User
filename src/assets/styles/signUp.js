@@ -86,7 +86,7 @@ const authStyles = StyleSheet.create({
     },
     registerFont: {
         fontFamily: 'DoHyeon-Regular',
-        fontSize: 30,
+        fontSize: 20,
         color: colors.nvpRoot,
         textAlign: 'center',
         marginBottom: 20
