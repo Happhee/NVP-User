@@ -10,7 +10,6 @@ import {
     Text,
     TouchableOpacity,
     View,
-    StyleSheet
 } from 'react-native';
 import {
     widthPercentageToDP as wp,
@@ -18,6 +17,9 @@ import {
 } from 'react-native-responsive-screen';
 import { ScrollView } from 'react-native-gesture-handler';
 import AutoHeightImage from 'react-native-auto-height-image';
+
+import { HighDimensionScreen, LowDimensionScreen, PhoneDimesionScreen } from '../components/camera/CameraControl';
+import rectangleStyles from '../assets/styles/rectangleCamera';
 class RectangleCamera extends PureComponent {
 
     static propTypes = {
@@ -271,84 +273,33 @@ class RectangleCamera extends PureComponent {
         const disabledStyle = { opacity: cameraIsDisabled ? 0.8 : 1 };
         if (!isPhone) {
             if (dimensions.height < 500) {
-                return (
-                    <View style={styles.buttonContainer}>
-                        <View style={[styles.cameraOutline, disabledStyle]}>
-                            <TouchableOpacity
-                                activeOpacity={0.8}
-                                style={styles.cameraButton}
-                                onPress={this.capture}
-                            />
-                        </View>
-                    </View>
-                );
+                return <LowDimensionScreen onPress={this.capture} />
             }
-            return (
-                <View style={styles.buttonContainer}>
-                    <View style={[styles.cameraOutline, disabledStyle]}>
-                        <TouchableOpacity
-                            activeOpacity={0.8}
-                            style={styles.cameraButton}
-                            onPress={this.capture}
-                        />
-                    </View>
-                </View>
-            );
+            return <HighDimensionScreen onPress={this.capture} />
         }
-        return (
-            <>
-                <View style={styles.buttonBottomContainer}>
-                    <View style={{ flex: 1, backgroundColor: 'green' }} />
-
-                    <View
-                        style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                        <View style={[styles.cameraOutline, disabledStyle]}>
-                            <TouchableOpacity
-                                activeOpacity={0.8}
-                                style={styles.cameraButton}
-                                onPress={this.capture}
-                            />
-                        </View>
-                    </View>
-
-                    <View
-                        style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-end' }}>
-                        {this.state.isScanned && (
-                            <TouchableOpacity
-                                style={styles.completebtn}
-                                onPress={() => {
-                                    {
-                                        this.postImages();
-                                    }
-                                }}>
-                                <Text style={{ color: 'black', fontSize: wp(4.5) }}>완료</Text>
-                            </TouchableOpacity>
-                        )}
-                    </View>
-                </View>
-            </>
-        );
+        return <PhoneDimesionScreen isScanned={this.state.isScanned}
+            onCapture={this.capture} postImages={this.postImages} />
     }
 
     renderCameraOverlay() {
         let loadingState = null;
         if (this.state.loadingCamera) {
             loadingState = (
-                <View style={styles.overlay}>
-                    <View style={styles.loadingContainer}>
+                <View style={rectangleStyles.overlay}>
+                    <View style={rectangleStyles.loadingContainer}>
                         <ActivityIndicator color="white" />
-                        <Text style={styles.loadingCameraMessage}>Loading Camera</Text>
+                        <Text style={rectangleStyles.loadingCameraMessage}>Loading Camera</Text>
                     </View>
                 </View>
             );
         } else if (this.state.processingImage) {
             loadingState = (
-                <View style={styles.overlay}>
-                    <View style={styles.loadingContainer}>
-                        <View style={styles.processingContainer}>
+                <View style={rectangleStyles.overlay}>
+                    <View style={rectangleStyles.loadingContainer}>
+                        <View style={rectangleStyles.processingContainer}>
                             <ActivityIndicator color="#333333" size="large" />
                             <Text style={{ color: '#333333', fontSize: 30, marginTop: 10 }}>
-                                Processing
+                                스캔 중 입니다
                             </Text>
                         </View>
                     </View>
@@ -359,7 +310,7 @@ class RectangleCamera extends PureComponent {
         return (
             <>
                 {loadingState}
-                <SafeAreaView style={[styles.overlay]}>
+                <SafeAreaView style={[rectangleStyles.overlay]}>
                     {this.renderCameraControls()}
                 </SafeAreaView>
             </>
@@ -391,7 +342,7 @@ class RectangleCamera extends PureComponent {
         if (this.state.feedbackState) {
             return (
                 <>
-                    <SafeAreaView style={[styles.overlay, { backgroundColor: 'white' }]}>
+                    <SafeAreaView style={[rectangleStyles.overlay, { backgroundColor: 'white' }]}>
                         <View
                             style={{
                                 height: hp(10),
@@ -399,8 +350,8 @@ class RectangleCamera extends PureComponent {
                                 alignItems: 'center',
                                 paddingBottom: hp(3),
                             }}>
-                            <Text style={{ fontSize: wp(5), fontWeight: 'bold' }}>
-                                📄 스캔 결과
+                            <Text style={{ fontSize: wp(5), fontFamily: 'DoHyeon-Regular' }}>
+                                신분증 촬영 결과
                             </Text>
                         </View>
                         <View
@@ -408,30 +359,25 @@ class RectangleCamera extends PureComponent {
                                 justifyContent: 'center',
                                 alignItems: 'center',
                             }}>
-                            <ScrollView
-                                style={{
-                                    height: hp(65),
-                                    // justifyContent: 'center',
-                                    // alignItems: 'center',
-                                }}>
-                                <AutoHeightImage
-                                    source={{
-                                        uri: this.state.currentImage,
-                                    }}
-                                    style={styles.feedbackImg}
-                                    width={wp(90)}
-                                />
-                            </ScrollView>
+
+                            <AutoHeightImage
+                                source={{
+                                    uri: this.state.currentImage,
+                                }}
+                                style={rectangleStyles.feedbackImg}
+                                width={wp(90)}
+                            />
+
                         </View>
 
-                        {/*버튼*/}
+
                         <View
                             style={{
                                 height: hp(15),
                                 paddingTop: hp(7),
                             }}>
-                            <View style={styles.btnContainer}>
-                                <View style={styles.btnArea_l}>
+                            <View style={rectangleStyles.btnContainer}>
+                                <View style={rectangleStyles.btnArea_l}>
                                     <TouchableOpacity
                                         style={styles.delbtnoutline}
                                         onPress={() => {
@@ -443,9 +389,9 @@ class RectangleCamera extends PureComponent {
                                     </TouchableOpacity>
                                 </View>
 
-                                <View style={styles.btnArea_r}>
+                                <View style={rectangleStyles.btnArea_r}>
                                     <TouchableOpacity
-                                        style={styles.delbtn}
+                                        style={rectangleStyles.delbtn}
                                         onPress={() => {
                                             {
                                                 this.feedback(2);
@@ -523,31 +469,29 @@ class RectangleCamera extends PureComponent {
         let message = null;
         if (this.state.loadingCamera) {
             message = (
-                <View style={styles.overlay}>
-                    <View style={styles.loadingContainer}>
+                <View style={rectangleStyles.overlay}>
+                    <View style={rectangleStyles.loadingContainer}>
                         <ActivityIndicator color="white" />
-                        <Text style={styles.loadingCameraMessage}>Loading Camera</Text>
+                        <Text style={rectangleStyles.loadingCameraMessage}>Loading Camera</Text>
                     </View>
                 </View>
             );
         } else {
             message = (
-                <Text style={styles.cameraNotAvailableText}>
+                <Text style={rectangleStyles.cameraNotAvailableText}>
                     {this.getCameraDisabledMessage()}
                 </Text>
             );
         }
 
-        return <View style={styles.cameraNotAvailableContainer}>{message}</View>;
+        return <View style={rectangleStyles.cameraNotAvailableContainer}>{message}</View>;
     }
 
     render() {
         return (
             <View
-                style={styles.container}
+                style={rectangleStyles.container}
                 onLayout={(event) => {
-                    // This is used to detect multi tasking mode on iOS/iPad
-                    // Camera use is not allowed
                     this.props.onLayout(event);
                     if (this.state.didLoadInitialLayout && Platform.OS === 'ios') {
                         const screenWidth = Dimensions.get('screen').width;
@@ -574,187 +518,7 @@ class RectangleCamera extends PureComponent {
 
 }
 
-const styles = StyleSheet.create({
-    button: {
-        alignItems: 'center',
-        height: 70,
-        justifyContent: 'center',
-        width: 65,
-    },
-    buttonActionGroup: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-    },
-    buttonBottomContainer: {
-        alignItems: 'center',
-        bottom: 40,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        left: 25,
-        position: 'absolute',
-        right: 25,
-        // backgroundColor: 'yellow',
-    },
-    buttonContainer: {
-        alignItems: 'flex-end',
-        bottom: 25,
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        position: 'absolute',
-        right: 25,
-        top: 25,
-    },
-    buttonGroup: {
-        backgroundColor: '#00000080',
-        borderRadius: 17,
-    },
-    buttonIcon: {
-        color: 'white',
-        fontSize: 22,
-        marginBottom: 3,
-        textAlign: 'center',
-    },
-    buttonText: {
-        color: 'white',
-        fontSize: 13,
-    },
-    buttonTopContainer: {
-        alignItems: 'flex-start',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        left: 25,
-        position: 'absolute',
-        right: 25,
-        top: 40,
-    },
-    cameraButton: {
-        backgroundColor: 'white',
-        borderRadius: 50,
-        flex: 1,
-        margin: 3,
-    },
-    cameraNotAvailableContainer: {
-        alignItems: 'center',
-        flex: 1,
-        justifyContent: 'center',
-        marginHorizontal: 15,
-    },
-    cameraNotAvailableText: {
-        color: 'white',
-        fontSize: 25,
-        textAlign: 'center',
-    },
-    cameraOutline: {
-        borderColor: 'white',
-        borderRadius: 50,
-        borderWidth: 3,
-        height: 70,
-        width: 70,
-    },
-    container: {
-        backgroundColor: 'black',
-        flex: 1,
-    },
-    flashControl: {
-        alignItems: 'center',
-        borderRadius: 30,
-        height: 50,
-        justifyContent: 'center',
-        margin: 8,
-        paddingTop: 7,
-        width: 50,
-    },
-    loadingCameraMessage: {
-        color: 'white',
-        fontSize: 18,
-        marginTop: 10,
-        textAlign: 'center',
-    },
-    loadingContainer: {
-        alignItems: 'center',
-        flex: 1,
-        justifyContent: 'center',
-    },
-    overlay: {
-        bottom: 0,
-        flex: 1,
-        left: 0,
-        position: 'absolute',
-        right: 0,
-        top: 0,
-    },
-    processingContainer: {
-        alignItems: 'center',
-        backgroundColor: 'rgba(220, 220, 220, 0.7)',
-        borderRadius: 16,
-        height: 140,
-        justifyContent: 'center',
-        width: 200,
-    },
-    scanner: {
-        flex: 1,
-    },
 
-    btnContainer: {
-        flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingBottom: hp(1.5),
-
-        ...Platform.select({
-            ios: {
-                paddingBottom: hp(4.5),
-            },
-        }),
-    },
-    btnArea_l: {
-        // backgroundColor: 'orange',
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'flex-end',
-    },
-    btnArea_r: {
-        // backgroundColor: 'blue',
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'flex-start',
-        // marginRight: wp(10),
-    },
-
-    delbtnoutline: {
-        margin: wp(6),
-        marginRight: wp(2),
-        width: wp(42),
-        height: hp(5),
-        borderRadius: 30,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'white',
-        borderWidth: 1,
-    },
-    delbtn: {
-        margin: wp(6),
-        marginLeft: wp(2),
-        width: wp(42),
-        height: hp(5),
-        borderRadius: 30,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'black',
-        borderWidth: 1,
-    },
-
-    completebtn: {
-        margin: wp(5),
-        width: wp(15),
-        height: hp(3.5),
-        borderRadius: 30,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'white',
-    },
-});
 
 
 export default RectangleCamera;
