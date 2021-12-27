@@ -58,7 +58,9 @@ const authStyles = StyleSheet.create({
         padding: 10,
         margin: 10,
         width: '60%',
-        borderRadius: 10
+        borderRadius: 10,
+        fontSize: 30,
+        textAlign: 'center'
     },
     insideContent: {
         margin: 10,
