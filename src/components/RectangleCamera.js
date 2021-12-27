@@ -434,7 +434,7 @@ class RectangleCamera extends PureComponent {
                                                 this.feedback(1);
                                             }
                                         }}>
-                                        <Text>다시찍기</Text>
+                                        <Text style={rectangleStyles.btn_l_text}>다시찍기</Text>
                                     </TouchableOpacity>
                                 </View>
 
@@ -446,7 +446,7 @@ class RectangleCamera extends PureComponent {
                                                 this.feedback(2);
                                             }
                                         }}>
-                                        <Text style={{ color: 'white' }}>사용하기</Text>
+                                        <Text style={rectangleStyles.btn_r_text}>사용하기</Text>
                                     </TouchableOpacity>
                                 </View>
                             </View>
