@@ -395,36 +395,33 @@ class RectangleCamera extends PureComponent {
 
             console.log('====this.state.preparedImgages===');
 
-            callGoogleVisionApi("ph://6C68659A-4B88-4111-A401-1763B32ADBBA/L0/001");
+            this.callGoogleVisionApi("https://storage.googleapis.com/user-nvp.appspot.com/appstore.png");
 
 
         }
     };
 
     callGoogleVisionApi = async (uri) => {
-        let googleVisionRes = await fetch(config.googleCloud.api + config.googleCloud.apiKey, {
+        let googleVisionRes = await fetch("https://eu-vision.googleapis.com/v1/images:annotate?key=" + "AIzaSyCdq3H5XBJBGapGzGbNBQz1Cn-ShuKPH-I", {
             method: 'POST',
             body: JSON.stringify({
                 "requests": [
                     {
-                        "image": {
-                            "source": {
-                                "imageUri": { uri }
-                            }
-                        },
                         "features": [
                             {
                                 "type": "DOCUMENT_TEXT_DETECTION"
                             }
                         ],
-                        "imageContext": {
-                            "languageHints": ["ko"]
+                        "image": {
+                            "source": {
+                                "imageUri": "https://storage.googleapis.com/user-nvp.appspot.com/appstore.png"
+                            }
                         }
                     }
                 ]
             })
         });
-        await googleVisionRes.json()
+        await googleVisionRes.text()
             .then(googleVisionRes => {
                 console.log(googleVisionRes)
                 if (googleVisionRes) {
