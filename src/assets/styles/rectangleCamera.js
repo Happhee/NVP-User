@@ -173,7 +173,6 @@ const rectangleStyles = StyleSheet.create({
         backgroundColor: 'black',
         borderWidth: 1,
     },
-    disabledStyle: { opacity: cameraIsDisabled ? 0.8 : 1 },
     completebtn: {
         margin: wp(5),
         width: wp(15),

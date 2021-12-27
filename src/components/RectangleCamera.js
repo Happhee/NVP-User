@@ -17,11 +17,9 @@ import {
 } from 'react-native-responsive-screen';
 import { ScrollView } from 'react-native-gesture-handler';
 import AutoHeightImage from 'react-native-auto-height-image';
-
-import { HighDimensionScreen, LowDimensionScreen, PhoneDimesionScreen } from '../components/camera/CameraControl';
 import rectangleStyles from '../assets/styles/rectangleCamera';
-import { CameraOverlayScreen, LoadingCameraScreen, ScanningScreen } from './camera/CameraOverlay';
 class RectangleCamera extends PureComponent {
+
 
     static propTypes = {
         cameraIsOn: PropTypes.bool,
@@ -39,7 +37,6 @@ class RectangleCamera extends PureComponent {
         onLayout: () => { },
         onSkip: () => { },
         onCancel: () => { },
-
         onPictureTaken: () => { },
         onPictureProcessed: () => { },
         onFilterIdChange: () => { },
@@ -80,8 +77,7 @@ class RectangleCamera extends PureComponent {
     }
 
     componentDidMount() {
-        console.log('Mark param확인!!');
-        console.log(this.state.idCard_sn);
+
         if (this.state.didLoadInitialLayout && !this.state.isMultiTasking) {
             this.turnOnCamera();
         }
@@ -269,37 +265,104 @@ class RectangleCamera extends PureComponent {
         const dimensions = Dimensions.get('window');
         const aspectRatio = dimensions.height / dimensions.width;
         const isPhone = aspectRatio > 1.6;
-        console.log(this.state);
-
         const cameraIsDisabled = this.state.takingPicture || this.state.processingImage;
-
+        const disabledStyle = { opacity: cameraIsDisabled ? 0.8 : 1 };
         if (!isPhone) {
             if (dimensions.height < 500) {
-                return <LowDimensionScreen onPress={this.capture} />
+                return (
+                    <View style={rectangleStyles.buttonContainer}>
+                        <View style={[rectangleStyles.cameraOutline, disabledStyle]}>
+                            <TouchableOpacity
+                                activeOpacity={0.8}
+                                style={rectangleStyles.cameraButton}
+                                onPress={this.capture}
+                            />
+                        </View>
+                    </View>
+                );
             }
-            return <HighDimensionScreen onPress={this.capture} />
+            return (
+                <View style={rectangleStyles.buttonContainer}>
+                    <View style={[rectangleStyles.cameraOutline, disabledStyle]}>
+                        <TouchableOpacity
+                            activeOpacity={0.8}
+                            style={rectangleStyles.cameraButton}
+                            onPress={this.capture}
+                        />
+                    </View>
+                </View>
+            );
         }
-        return <PhoneDimesionScreen isScanned={this.state.isScanned}
-            onCapture={this.capture} postImages={this.postImages} />
-    }
-
-    renderCameraOverlay() {
-        // let loadingState = null;
-        // if (this.state.loadingCamera) {
-        //     loadingState = (
-        //         <LoadingCameraScreen />
-        //     );
-        // } else if (this.state.processingImage) {
-        //     loadingState = (
-        //         <ScanningScreen />
-        //     );
-        // }
 
         return (
-            <CameraOverlayScreen loadingCamera={this.state.loadingCamera}
-                processingImage={this.state.processingImage}
-                renderCameraControls={this.renderCameraControls} />
+            <>
+                <View style={rectangleStyles.buttonBottomContainer}>
+                    <View style={{ flex: 1, backgroundColor: 'green' }} />
 
+                    <View
+                        style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                        <View style={[rectangleStyles.cameraOutline, disabledStyle]}>
+                            <TouchableOpacity
+                                activeOpacity={0.8}
+                                style={rectangleStyles.cameraButton}
+                                onPress={this.capture}
+                            />
+                        </View>
+                    </View>
+
+                    <View
+                        style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-end' }}>
+                        {this.state.isScanned && (
+                            <TouchableOpacity
+                                style={rectangleStyles.completebtn}
+                                onPress={() => {
+                                    {
+                                        this.postImages();
+                                    }
+                                }}>
+                                <Text style={{ color: 'black', fontSize: wp(4.5) }}>완료</Text>
+                            </TouchableOpacity>
+                        )}
+                    </View>
+                </View>
+            </>
+        );
+    }
+
+    // Renders the camera controls or a loading/processing state
+    renderCameraOverlay() {
+        let loadingState = null;
+        if (this.state.loadingCamera) {
+            loadingState = (
+                <View style={rectangleStyles.overlay}>
+                    <View style={rectangleStyles.loadingContainer}>
+                        <ActivityIndicator color="white" />
+                        <Text style={rectangleStyles.loadingCameraMessage}>Loading Camera</Text>
+                    </View>
+                </View>
+            );
+        } else if (this.state.processingImage) {
+            loadingState = (
+                <View style={rectangleStyles.overlay}>
+                    <View style={rectangleStyles.loadingContainer}>
+                        <View style={rectangleStyles.processingContainer}>
+                            <ActivityIndicator color="#333333" size="large" />
+                            <Text style={{ color: '#333333', fontSize: 30, marginTop: 10 }}>
+                                Processing
+                            </Text>
+                        </View>
+                    </View>
+                </View>
+            );
+        }
+
+        return (
+            <>
+                {loadingState}
+                <SafeAreaView style={[rectangleStyles.overlay]}>
+                    {this.renderCameraControls()}
+                </SafeAreaView>
+            </>
         );
     }
     feedback = (option) => {
@@ -365,7 +428,7 @@ class RectangleCamera extends PureComponent {
                             <View style={rectangleStyles.btnContainer}>
                                 <View style={rectangleStyles.btnArea_l}>
                                     <TouchableOpacity
-                                        style={styles.delbtnoutline}
+                                        style={rectangleStyles.delbtnoutline}
                                         onPress={() => {
                                             {
                                                 this.feedback(1);
