@@ -397,12 +397,15 @@ class RectangleCamera extends PureComponent {
 
             console.log('====this.state.preparedImgages===');
 
-            let reference = storage().ref(this.state.currentImage));
+            let imageNames = this.state.currentImage.split('/');
+            let refImageName = imageNames[imageNames.length - 1];
+            let reference = storage().ref(refImageName);
             let task = reference.putFile(this.state.currentImage);
 
             task.then(() => {
                 console.log("Upload");
             }).catch((e) => console.log(e));
+
             // this.callGoogleVisionApi("https://storage.googleapis.com/user-nvp.appspot.com/appstore.png");
 
 
