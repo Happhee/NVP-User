@@ -16,6 +16,8 @@ target 'NVP' do
 
 
 
+  pod 'react-native-cameraroll', :path => '../node_modules/@react-native-community/cameraroll'
+
   target 'NVPTests' do
     inherit! :complete
     # Pods for testing

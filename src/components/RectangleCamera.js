@@ -16,6 +16,11 @@ import {
     heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import { ScrollView } from 'react-native-gesture-handler';
+
+import config from '../../config.json';
+import TextScan from './TextScan';
+import CameraRoll from '@react-native-community/cameraroll';
+
 import AutoHeightImage from 'react-native-auto-height-image';
 import rectangleStyles from '../assets/styles/rectangleCamera';
 class RectangleCamera extends PureComponent {
@@ -31,6 +36,7 @@ class RectangleCamera extends PureComponent {
         hideSkip: PropTypes.bool,
         initialFilterId: PropTypes.number,
         onFilterIdChange: PropTypes.func,
+        googleVisionDetetion: PropTypes.bool
     }
     static defaultProps = {
         cameraIsOn: undefined,
@@ -42,6 +48,7 @@ class RectangleCamera extends PureComponent {
         onFilterIdChange: () => { },
         hideSkip: false,
         initialFilterId: Filters.PLATFORM_DEFAULT_FILTER_ID,
+        googleVisionDetetion: undefined
     }
 
     constructor(props) {
@@ -68,7 +75,7 @@ class RectangleCamera extends PureComponent {
             },
             idCard_sn: "test",
             currentImage: '',
-            preparedImgages: [],
+            preparedImgages: '',
             isScanned: false,
             s3Links: [],
         };
@@ -81,6 +88,7 @@ class RectangleCamera extends PureComponent {
         if (this.state.didLoadInitialLayout && !this.state.isMultiTasking) {
             this.turnOnCamera();
         }
+
     }
 
 
@@ -116,6 +124,7 @@ class RectangleCamera extends PureComponent {
     componentWillUnmount() {
         clearTimeout(this.imageProcessorTimeout);
     }
+
     //디바이스 설정 
     onDeviceSetup = (deviceDetatils) => {
         const { hasCamera, permissionToUseCamera, flashIsAvailable, previewHeightPercent, previewWidthPercent } = deviceDetatils;
@@ -203,6 +212,8 @@ class RectangleCamera extends PureComponent {
 
     //촬영된 이미지 실질적으로 가져오기
     onPictureProcessed = ({ croppedImage, initialImage }) => {
+        console.log(croppedImage);
+
         this.setState({
             takingPicture: false,
             processingImage: false,
@@ -370,22 +381,58 @@ class RectangleCamera extends PureComponent {
             //다시 찍기
             this.setState({
                 feedbackState: false,
+                googleVisionDetetion: false,
             });
+
         } else {
-            //사용하ㄱㅣ
+            const file = 'file://' + this.state.currentImage;
+            //사용하기
             this.setState({
                 feedbackState: false,
-                preparedImgages: [
-                    ...this.state.preparedImgages,
-                    'file://' + this.state.currentImage,
-                ],
+                preparedImgages: 'file://' + this.state.currentImage,
                 isScanned: true,
             });
 
             console.log('====this.state.preparedImgages===');
-            console.log(this.state.preparedImgages);
+
+            console.log(file);
+
+
         }
     };
+
+    callGoogleVisionApi = async (uri) => {
+        let googleVisionRes = await fetch(config.googleCloud.api + config.googleCloud.apiKey, {
+            method: 'POST',
+            body: JSON.stringify({
+                "requests": [
+                    {
+                        "image": {
+                            "source": {
+                                "imageUri": { uri }
+                            }
+                        },
+                        "features": [
+                            {
+                                "type": "DOCUMENT_TEXT_DETECTION"
+                            }
+                        ],
+                        "imageContext": {
+                            "languageHints": ["ko"]
+                        }
+                    }
+                ]
+            })
+        });
+        await googleVisionRes.json()
+            .then(googleVisionRes => {
+                console.log(googleVisionRes)
+                if (googleVisionRes) {
+
+                }
+            }).catch((err) => { console.log(err) })
+    }
+
 
     feedbackOverlay() {
         if (this.state.feedbackState) {
@@ -457,8 +504,7 @@ class RectangleCamera extends PureComponent {
         }
     }
 
-    // Renders either the camera view, a loading state, or an error message
-    // letting the user know why camera use is not allowed
+
     renderCameraView() {
         if (this.state.showScannerView) {
             const previewSize = this.getPreviewSize();
@@ -535,8 +581,23 @@ class RectangleCamera extends PureComponent {
 
         return <View style={rectangleStyles.cameraNotAvailableContainer}>{message}</View>;
     }
-
     render() {
+        const getPhotos = async () => {
+
+            try {
+                const { edges } = await CameraRoll.getPhotos({
+                    first: 10,
+                    assetType: 'Photos'
+                });
+                console.log('📸', edges);
+
+            } catch (error) {
+                console.log('getPhoto', error);
+            }
+        };
+
+        getPhotos();
+
         return (
             <View
                 style={rectangleStyles.container}
