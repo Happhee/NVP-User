@@ -36,7 +36,9 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>포토갤러리 접근</string>
 	<key>NSCameraUsageDescription</key>
 	<string>카메라 접근이 필요합니다!</string>
 	<key>UILaunchStoryboardName</key>

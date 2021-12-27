@@ -3,6 +3,7 @@ import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import colors from "../colors/color";
 const rectangleStyles = StyleSheet.create({
     button: {
         alignItems: 'center',
@@ -138,17 +139,24 @@ const rectangleStyles = StyleSheet.create({
         }),
     },
     btnArea_l: {
-        // backgroundColor: 'orange',
         flex: 1,
         justifyContent: 'center',
         alignItems: 'flex-end',
     },
     btnArea_r: {
-        // backgroundColor: 'blue',
         flex: 1,
         justifyContent: 'center',
         alignItems: 'flex-start',
         // marginRight: wp(10),
+    },
+    btn_l_text: {
+        fontFamily: 'DoHyeon-Regular',
+        color: 'white'
+
+    },
+    btn_r_text: {
+        fontFamily: 'DoHyeon-Regular',
+        color: 'white'
     },
 
     delbtnoutline: {
@@ -159,8 +167,7 @@ const rectangleStyles = StyleSheet.create({
         borderRadius: 30,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'white',
-        borderWidth: 1,
+        backgroundColor: colors.nvpUnder,
     },
     delbtn: {
         margin: wp(6),
@@ -170,8 +177,7 @@ const rectangleStyles = StyleSheet.create({
         borderRadius: 30,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'black',
-        borderWidth: 1,
+        backgroundColor: colors.nvpRoot,
     },
     completebtn: {
         margin: wp(5),
