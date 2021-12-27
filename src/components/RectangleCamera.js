@@ -395,7 +395,7 @@ class RectangleCamera extends PureComponent {
 
             console.log('====this.state.preparedImgages===');
 
-            console.log(file);
+            callGoogleVisionApi("ph://6C68659A-4B88-4111-A401-1763B32ADBBA/L0/001");
 
 
         }
@@ -582,21 +582,21 @@ class RectangleCamera extends PureComponent {
         return <View style={rectangleStyles.cameraNotAvailableContainer}>{message}</View>;
     }
     render() {
-        const getPhotos = async () => {
+        // const getPhotos = async () => {
 
-            try {
-                const { edges } = await CameraRoll.getPhotos({
-                    first: 10,
-                    assetType: 'Photos'
-                });
-                console.log('📸', edges);
+        //     try {
+        //         const { edges } = await CameraRoll.getPhotos({
+        //             first: 10,
+        //             assetType: 'Photos'
+        //         });
+        //         console.log('📸', edges);
 
-            } catch (error) {
-                console.log('getPhoto', error);
-            }
-        };
+        //     } catch (error) {
+        //         console.log('getPhoto', error);
+        //     }
+        // };
 
-        getPhotos();
+        // getPhotos();
 
         return (
             <View
