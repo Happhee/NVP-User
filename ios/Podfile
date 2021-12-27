@@ -12,10 +12,6 @@ target 'NVP' do
     :hermes_enabled => false
   )
   pod 'Firebase/Analytics'
-
-
-
-
   pod 'react-native-cameraroll', :path => '../node_modules/@react-native-community/cameraroll'
 
   target 'NVPTests' do

@@ -1403,6 +1403,11 @@
   resolved "https://registry.yarnpkg.com/@react-native-firebase/firestore/-/firestore-14.1.0.tgz#012b50b9dd3b9686ae44d850b1dde4bcc316750a"
   integrity sha512-IMtdKCuAxnuEhIoRT+hLuhc4TZa3/y4ytrn66/glOZY3OyswTUHtGqktn4gTTm3hrAP1KEG9FvBOqIdmNxQHSQ==
 
+"@react-native-firebase/storage@^14.1.0":
+  version "14.1.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/storage/-/storage-14.1.0.tgz#a956f702ad0cc77e191d2d2d8294839776cef8ee"
+  integrity sha512-+zSQ9+7KFprslkfpufCo7X1ZDEdyihG0ge0WHxOpHvvpv5q0ByprjmSZ5JSMPVvEzDDpOvy/YvERrCPxarKHig==
+
 "@react-native/assets@1.0.0":
   version "1.0.0"
   resolved "https://registry.npmjs.org/@react-native/assets/-/assets-1.0.0.tgz"
@@ -6526,6 +6531,11 @@ rimraf@~2.2.6:
   version "2.2.8"
   resolved "https://registry.npmjs.org/rimraf/-/rimraf-2.2.8.tgz"
   integrity sha1-5Dm+Kq7jJzIZUnMPmaiSnk/FBYI=
+
+rn-text-detector@0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/rn-text-detector/-/rn-text-detector-0.0.8.tgz#8e858f437d3e212645740feb885a6b701468b58e"
+  integrity sha512-lMBPUKIszPJDxFUwfIGAaOnBOQRSUQCk+qlS/PsACIObuJmnbKuAyBXWieO6ev5oRaGQgwAfvZBNXTQMUPjN0A==
 
 rsvp@^4.8.4:
   version "4.8.5"

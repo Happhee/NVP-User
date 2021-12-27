@@ -21,6 +21,8 @@ import config from '../../config.json';
 import TextScan from './TextScan';
 import CameraRoll from '@react-native-community/cameraroll';
 
+import storage from '@react-native-firebase/storage';
+
 import AutoHeightImage from 'react-native-auto-height-image';
 import rectangleStyles from '../assets/styles/rectangleCamera';
 class RectangleCamera extends PureComponent {
@@ -395,14 +397,20 @@ class RectangleCamera extends PureComponent {
 
             console.log('====this.state.preparedImgages===');
 
-            this.callGoogleVisionApi("https://storage.googleapis.com/user-nvp.appspot.com/appstore.png");
+            let reference = storage().ref(this.state.currentImage));
+            let task = reference.putFile(this.state.currentImage);
+
+            task.then(() => {
+                console.log("Upload");
+            }).catch((e) => console.log(e));
+            // this.callGoogleVisionApi("https://storage.googleapis.com/user-nvp.appspot.com/appstore.png");
 
 
         }
     };
 
     callGoogleVisionApi = async (uri) => {
-        let googleVisionRes = await fetch("https://eu-vision.googleapis.com/v1/images:annotate?key=" + "AIzaSyCdq3H5XBJBGapGzGbNBQz1Cn-ShuKPH-I", {
+        let googleVisionRes = await fetch(config.googleCloud.api + config.googleCloud.apiKey, {
             method: 'POST',
             body: JSON.stringify({
                 "requests": [
@@ -414,7 +422,7 @@ class RectangleCamera extends PureComponent {
                         ],
                         "image": {
                             "source": {
-                                "imageUri": "https://storage.googleapis.com/user-nvp.appspot.com/appstore.png"
+                                "imageUri": uri
                             }
                         }
                     }
@@ -423,7 +431,7 @@ class RectangleCamera extends PureComponent {
         });
         await googleVisionRes.text()
             .then(googleVisionRes => {
-                console.log(googleVisionRes)
+                console.log(googleVisionRes.description);
                 if (googleVisionRes) {
 
                 }
