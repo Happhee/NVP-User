@@ -42,7 +42,18 @@ export default function authReducer(state = initialState, action) {
 
 
         case types.CHECK_PHONE_NUMBER:
-            return action.payload;
+            console.log(action.isCheck);
+            if (action.isCheck) {
+                return {
+                    ...state,
+                    phoneNumber: action.phoneNumber
+                }
+            }
+            return {
+                ...state,
+                phoneNumber: '',
+            };
+
     }
     return state;
 }

@@ -33,11 +33,9 @@ export function logout() {
 
 export function isPhoneNumber(phoneNumber) {
     const regex = new RegExp('^01([0|1|6|7|8|9])([0-9]{3,4})([0-9]{4})$');
-    const data = regex.test(phoneNumber);
-    console.log(phoneNumber);
-    console.log(regex.test(phoneNumber))
     return {
         type: types.CHECK_PHONE_NUMBER,
-        payload: data,
+        isCheck: regex.test(phoneNumber),
+        phoneNumber: phoneNumber
     }
 }
