@@ -56,10 +56,11 @@ const authStyles = StyleSheet.create({
         fontSize: 23,
         fontFamily: 'DoHyeon-Regular',
         color: colors.nvpRoot,
-        width: '55%',
+        width: '50%',
         borderRadius: 10,
         padding: 5,
-        marginRight: 3
+        marginRight: 10,
+        textAlign: 'center'
     },
 
     footer: {
