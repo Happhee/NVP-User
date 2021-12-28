@@ -54,6 +54,13 @@ export default function authReducer(state = initialState, action) {
                 message: action.payload
             }
 
+        case types.EXPIRE_MESSAGE:
+            console.log("시간 만료");
+            return {
+                ...state,
+                message: ""
+            }
+
 
     }
     return state;
