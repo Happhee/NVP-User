@@ -1,7 +1,7 @@
 import TakeTextMessage from "../../components/auth/TakeTextMessage";
 import { connect } from "react-redux";
 
-import { postMessage } from "../../store/actions/authAction";
+import { postMessage, getMessage } from "../../store/actions/authAction";
 import { login } from "../../store/actions/userAction";
 
 function mapReduxStateToReactProps(state) {
@@ -14,7 +14,7 @@ function mapReduxDispatchToReactProps(dispatch) {
             dispatch(postMessage(phoneNumber));
         },
         getMessageNumber: function (phoneNumber) {
-            dispatch()
+            dispatch(getMessage(phoneNumber))
         }
     }
 }
