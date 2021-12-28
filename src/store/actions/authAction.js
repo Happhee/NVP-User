@@ -2,6 +2,7 @@ import * as types from './actionTypes';
 import { request } from '../../utils/axios';
 
 const USER_URL = "/api/user";
+const CHECK_URL = "/check"
 
 export function login(dataToSubmit) {
 
@@ -31,13 +32,24 @@ export function logout() {
     }
 }
 
-export function isPhoneNumber(phoneNumber) {
-    const regex = new RegExp('^01([0|1|6|7|8|9])([0-9]{3,4})([0-9]{4})$');
-    const data = regex.test(phoneNumber);
-    console.log(phoneNumber);
-    console.log(regex.test(phoneNumber))
+export function postMessage(phoneNumber) {
+    const data = request("POST", CHECK_URL + '/smsSend', phoneNumber);
+
     return {
-        type: types.CHECK_PHONE_NUMBER,
+        type: types.POST_MESSAGE,
         payload: data,
+        phoneNumber: phoneNumber
     }
 }
+
+export function getMessage(phoneNumber) {
+    const data = request("GET", CHECK_URL
+        + "?phoneNumber=" + phoneNumber);
+
+    return {
+        type: types.GET_MESSAGE,
+        payload: data
+    }
+}
+
+
