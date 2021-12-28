@@ -5,6 +5,7 @@ import SignUpButton from '../SignUpButton';
 import NextButton from '../NextButton';
 import signUp from '../../assets/styles/signUp';
 import { TouchableWithoutFeedback } from 'react-native';
+import colors from '../../assets/colors/color';
 
 function SetPassword(props) {
     let [passWord, setPassword] = useState('');
@@ -34,7 +35,10 @@ function SetPassword(props) {
 
                             <TextInput style={signUp.contentInput}
                                 placeholder="숫자 6자리 입력"
+                                placeholderTextColor={colors.nvpUnder}
                                 keyboardType="number-pad"
+                                maxLength={6}
+
                                 onChangeText={(inputName) => {
                                     setName(inputName);
                                 }}
@@ -49,6 +53,7 @@ function SetPassword(props) {
                         <View style={signUp.pwInfoView}>
                             <TextInput style={signUp.contentInput}
                                 keyboardType="number-pad"
+                                maxLength={6}
                                 onChangeText={(inputName) => {
                                     setName(inputName);
                                 }} />

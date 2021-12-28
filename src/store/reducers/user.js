@@ -4,17 +4,10 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 const initialState = {
     uniqueId: '',
-    passWord: '',
-    name: '',
-    phoneNumber: '',
-    textMessage: '',
-    idCardName: '',
-    vaccinePassName: '',
-    fileName: '',
-    date: ''
+    passWord: ''
 }
 
-export default function authReducer(state = initialState, action) {
+export default function userReducer(state = initialState, action) {
 
     switch (action.type) {
         case types.LOGIN:

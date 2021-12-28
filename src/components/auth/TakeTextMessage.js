@@ -41,6 +41,7 @@ function TakeTextMessage(props) {
                     <View style={signUp.contentView}>
                         <Text style={signUp.contentFont}>전화번호</Text>
                         <TextInput style={signUp.contentInput}
+                            keyboardType="number-pad"
                             onChangeText={(inputName) => {
                                 setName(inputName);
                             }} />
@@ -54,6 +55,8 @@ function TakeTextMessage(props) {
                     <View style={signUp.contentView}>
                         <Text style={signUp.contentFont}>인증번호</Text>
                         <TextInput style={signUp.contentInput}
+                            keyboardType="number-pad"
+                            maxLength={6}
                             onChangeText={(inputName) => {
                                 setName(inputName);
                             }} />

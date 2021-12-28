@@ -35,6 +35,7 @@ function Login(props) {
 
                         style={authStyles.contentInput}
                         placeholder="PassWord"
+                        placeholderTextColor={colors.nvpRoot}
                         numberOfLines={1}
                         secureTextEntry
                         onChangeText={(inputPw) => {

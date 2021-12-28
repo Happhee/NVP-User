@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
-import { View, Text } from 'react-native';
+import { View, Text, Image, ImageBackground, StyleSheet } from 'react-native';
 
 import { connect } from 'react-redux';
 import { autoLogin } from '../../store/actions/userAction';
-
+import colors from '../../assets/colors/color'
 function Splash(props) {
 
     useEffect(() => {
@@ -28,13 +28,21 @@ function Splash(props) {
 
         }, 3000);
     }, []);
-
     return (
-        <View >
-            <Text>스플래쉬 화면</Text>
-        </View>
+        <ImageBackground source={require('../../assets/images/appstore.png')} resizeMode="contain" style={styles.image} />
     )
 }
 
+
+
+const styles = StyleSheet.create({
+    image: {
+        justifyContent: 'center',
+        alignContent: 'center',
+        width: "100%", height: "100%",
+        backgroundColor: colors.nvpRoot,
+
+    },
+});
 
 export default Splash;
