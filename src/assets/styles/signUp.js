@@ -62,7 +62,32 @@ const authStyles = StyleSheet.create({
         marginRight: 10,
         textAlign: 'center',
     },
+    meesageContent: {
+        marginBottom: 5,
+        width: '95%',
+        flexDirection: 'row',
+        alignItems: 'flex-start',
 
+    },
+    messageInput: {
+        backgroundColor: colors.signUpInput,
+        fontSize: 23,
+        fontFamily: 'DoHyeon-Regular',
+        color: colors.nvpRoot,
+        width: '100%',
+        borderRadius: 10,
+        padding: 5,
+        marginRight: 10,
+        textAlign: 'center',
+    },
+    meesageInnerContent: {
+        flexDirection: 'column',
+        width: '50%',
+        marginRight: 10,
+        alignItems: 'flex-start',
+
+
+    },
     footer: {
         flex: 2,
         alignItems: 'center',

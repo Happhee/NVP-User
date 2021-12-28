@@ -43,7 +43,6 @@ function TakeTextMessage(props) {
 
 
     }
-
     const stopTimer = () => {
         setMin(padNumber(3, 2));
         setSec(padNumber(0, 2));
@@ -105,15 +104,18 @@ function TakeTextMessage(props) {
                             }} />
 
                     </View>
-                    <View style={signUp.contentView}>
+                    <View style={signUp.meesageContent}>
                         <Text style={signUp.contentFont}>인증번호</Text>
-                        <TextInput style={signUp.contentInput}
-                            keyboardType="number-pad"
-                            maxLength={6}
-                            onChangeText={(inputNumber) => {
-                                setMessage(inputNumber);
-                            }} />
-                        <Text>{min}:{sec}</Text>
+                        <View style={signUp.meesageInnerContent}>
+                            <TextInput style={signUp.messageInput}
+                                keyboardType="number-pad"
+                                maxLength={6}
+                                onChangeText={(inputNumber) => {
+                                    setMessage(inputNumber);
+                                }} />
+                            <Text>{min}:{sec}</Text>
+
+                        </View>
                         <SignUpButton
                             buttonName="확인"
                             onPress={function () {
@@ -129,6 +131,7 @@ function TakeTextMessage(props) {
                             }} />
 
                     </View>
+
                 </View>
 
 
