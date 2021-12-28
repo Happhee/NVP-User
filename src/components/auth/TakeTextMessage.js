@@ -14,7 +14,6 @@ function TakeTextMessage(props) {
     let [name, setName] = useState('');
     let [phoneNumber, setPhoneNumber] = useState('');
     const uniqueId = deviceInfoModule.getUniqueId();
-    console.log(props.auth.phoneNumber);
 
     return (
         <TouchableWithoutFeedback onPress={() => {
@@ -59,6 +58,7 @@ function TakeTextMessage(props) {
                                     Alert.alert('잘못된 형식의 전화번호입니다');
                                 } else {
                                     Alert.alert('인증 유효시간은 3분입니다');
+                                    props.postMessage(phoneNumber);
                                 }
 
                             }} />

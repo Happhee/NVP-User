@@ -41,19 +41,12 @@ export default function authReducer(state = initialState, action) {
             return initialState;
 
 
-        case types.CHECK_PHONE_NUMBER:
-            console.log(action.isCheck);
-            if (action.isCheck) {
-                return {
-                    ...state,
-                    phoneNumber: action.phoneNumber
-                }
-            }
+        case types.POST_MESSAGE:
+            console.log(action.phoneNumber);
             return {
                 ...state,
-                phoneNumber: '',
-            };
-
+                phoneNumber: action.phoneNumber
+            }
     }
     return state;
 }

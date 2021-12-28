@@ -1,6 +1,7 @@
 import TakeTextMessage from "../../components/auth/TakeTextMessage";
 import { connect } from "react-redux";
-import { isPhoneNumber } from '../../store/actions/authAction';
+
+import { postMessage } from "../../store/actions/authAction";
 import { login } from "../../store/actions/userAction";
 
 function mapReduxStateToReactProps(state) {
