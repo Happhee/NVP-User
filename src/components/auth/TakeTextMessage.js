@@ -8,11 +8,15 @@ import { TouchableWithoutFeedback } from 'react-native';
 import { Modal, Portal, Button, Provider } from 'react-native-paper';
 
 import { isPhoneNumber } from '../../utils/regexs';
+import * as alert from '../../utils/alertConsts'
 
 function TakeTextMessage(props) {
     let [passWord, setPassword] = useState('');
     let [name, setName] = useState('');
     let [phoneNumber, setPhoneNumber] = useState('');
+    let [message, setMessage] = useState(alert.NO_EXIST_MESSAGE);
+
+
     const uniqueId = deviceInfoModule.getUniqueId();
 
     return (
@@ -36,7 +40,6 @@ function TakeTextMessage(props) {
 
                         <TextInput style={signUp.contentInput}
                             onChangeText={(inputName) => {
-
                                 setName(inputName);
                             }}
                         />
@@ -47,7 +50,6 @@ function TakeTextMessage(props) {
                         <TextInput style={signUp.contentInput}
                             keyboardType="number-pad"
                             onChangeText={(inputPhoneNumber) => {
-
                                 setPhoneNumber(inputPhoneNumber);
                             }} />
                         <SignUpButton
@@ -59,8 +61,8 @@ function TakeTextMessage(props) {
                                 } else {
                                     Alert.alert('인증 유효시간은 3분입니다');
                                     props.postMessage(phoneNumber);
+                                    props.getMessage(phoneNumber);
                                 }
-
                             }} />
 
                     </View>
@@ -69,13 +71,23 @@ function TakeTextMessage(props) {
                         <TextInput style={signUp.contentInput}
                             keyboardType="number-pad"
                             maxLength={6}
-                            onChangeText={(inputName) => {
-                                setName(inputName);
+                            onChangeText={(inputNumber) => {
+                                setMessage(inputNumber);
                             }} />
                         <SignUpButton
                             buttonName="확인"
                             onPress={function () {
-                                props.navigation.navigate('CheckCertificate')
+                                if (props.auth.message === message) {
+                                    props.navigation.navigate('CheckCertificate')
+                                }
+                                else if (props.auth.message === '') {
+                                    Alert.alert('인증시간이 지났습니다! 재인증을 해주세요');
+                                }
+                                else {
+                                    Alert.alert('잘못된 인증번호입니다! 다시 입력해주세요')
+                                }
+
+
                             }} />
 
                     </View>
