@@ -1,13 +1,13 @@
 import * as types from '../actions/actionTypes';
 import AsyncStorage from '@react-native-community/async-storage';
-
+import * as alert from '../../utils/alertConsts'
 
 const initialState = {
     uniqueId: '',
     passWord: '',
     name: '',
     phoneNumber: '',
-    textMessage: '',
+    message: '',
     idCardName: '',
     vaccinePassName: '',
     fileName: '',
@@ -47,6 +47,14 @@ export default function authReducer(state = initialState, action) {
                 ...state,
                 phoneNumber: action.phoneNumber
             }
+
+        case types.GET_MESSAGE:
+            return {
+                ...state,
+                message: action.payload
+            }
+
+
     }
     return state;
 }
