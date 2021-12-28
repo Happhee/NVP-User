@@ -1,3 +1,4 @@
+// auth
 export const LOGIN = "LOGIN";
 export const AUTO_LOGIN = "AUTO_LOGIN";
 export const LOGOUT = "LOGOUT";
@@ -11,3 +12,9 @@ export const REGISTER_VACCINE_PASS = "REGISTER_VACCINE_PASS";
 export const REGISTER_PASSWORD = "REGISTER_PASSWORD";
 export const CONFIRM_PASSWORD = "CONFIRM_PASSWORD";
 export const MODIFY_PASSWORD = "MODIFY_PASSWORD";
+
+
+
+//timer
+export const START_TIMER = "START_TIMER";
+export const STOP_TIMER = "STOP_TIMER";
