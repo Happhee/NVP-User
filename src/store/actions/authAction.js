@@ -52,4 +52,10 @@ export function getMessage(phoneNumber) {
     }
 }
 
+export function initMessage() {
+    return {
+        type: types.EXPIRE_MESSAGE;
+    }
+}
+
 
