@@ -5616,6 +5616,13 @@ npm-run-path@^4.0.1:
   dependencies:
     path-key "^3.0.0"
 
+nth-check@>=2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/nth-check/-/nth-check-2.0.1.tgz#2efe162f5c3da06a28959fbd3db75dbeea9f0fc2"
+  integrity sha512-it1vE95zF6dTT9lBsYbxvqh0Soy4SPowchj0UBGj/V6cTPnXXtQOPUbhZ6CmGzAD/rW22LQK6E96pcdJXk4A4w==
+  dependencies:
+    boolbase "^1.0.0"
+
 nth-check@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/nth-check/-/nth-check-1.0.2.tgz#b2bd295c37e3dd58a3bf0700376663ba4d9cf05c"
@@ -6531,11 +6538,6 @@ rimraf@~2.2.6:
   version "2.2.8"
   resolved "https://registry.npmjs.org/rimraf/-/rimraf-2.2.8.tgz"
   integrity sha1-5Dm+Kq7jJzIZUnMPmaiSnk/FBYI=
-
-rn-text-detector@0.0.8:
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/rn-text-detector/-/rn-text-detector-0.0.8.tgz#8e858f437d3e212645740feb885a6b701468b58e"
-  integrity sha512-lMBPUKIszPJDxFUwfIGAaOnBOQRSUQCk+qlS/PsACIObuJmnbKuAyBXWieO6ev5oRaGQgwAfvZBNXTQMUPjN0A==
 
 rsvp@^4.8.4:
   version "4.8.5"
