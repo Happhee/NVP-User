@@ -55,6 +55,8 @@ const authStyles = StyleSheet.create({
     },
     contentInput: {
         backgroundColor: colors.nvpUnder,
+        fontFamily: 'DoHyeon-Regular',
+
         padding: 10,
         margin: 10,
         width: '60%',
