@@ -1,6 +1,7 @@
 import Login from "../../components/auth/Login";
 import { connect } from "react-redux";
-import { login } from "../../store/actions/userAction";
+import { login } from '../../store/actions/authAction';
+
 
 function mapReduxStateToReactProps(state) {
     return state;
