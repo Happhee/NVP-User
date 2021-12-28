@@ -60,7 +60,7 @@ const authStyles = StyleSheet.create({
         borderRadius: 10,
         padding: 5,
         marginRight: 10,
-        textAlign: 'center'
+        textAlign: 'center',
     },
 
     footer: {
