@@ -32,7 +32,6 @@ function SetPassword(props) {
 
                         <Text style={signUp.contentFont}>간편번호설정</Text>
                         <View style={signUp.pwInfoView}>
-
                             <TextInput style={signUp.contentInput}
                                 placeholder="숫자 6자리 입력"
                                 placeholderTextColor={colors.nvpUnder}
