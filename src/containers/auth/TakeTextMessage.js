@@ -13,7 +13,7 @@ function mapReduxDispatchToReactProps(dispatch) {
         postMessage: function (phoneNumber) {
             dispatch(postMessage(phoneNumber));
         },
-        getMessageNumber: function (phoneNumber) {
+        getMessage: function (phoneNumber) {
             dispatch(getMessage(phoneNumber))
         }
     }

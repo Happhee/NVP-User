@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import deviceInfoModule from 'react-native-device-info';
 import { View, Text, TextInput, Keyboard, Alert } from 'react-native';
 import SignUpButton from '../SignUpButton';
@@ -9,15 +9,42 @@ import { Modal, Portal, Button, Provider } from 'react-native-paper';
 
 import { isPhoneNumber } from '../../utils/regexs';
 import * as alert from '../../utils/alertConsts'
-
+import Timer from '../Timer';
+const padNumber = (num, length) => {
+    return String(num).padStart(length, '0');
+};
 function TakeTextMessage(props) {
     let [passWord, setPassword] = useState('');
     let [name, setName] = useState('');
     let [phoneNumber, setPhoneNumber] = useState('');
     let [message, setMessage] = useState(alert.NO_EXIST_MESSAGE);
 
-
     const uniqueId = deviceInfoModule.getUniqueId();
+
+    const tempMin = 3;
+    const tempSec = 0;
+    // 타이머를 초단위로 변환한 initialTime과 setInterval을 저장할 interval ref
+    const initialTime = useRef(tempMin * 60 + tempSec);
+    const interval = useRef(null);
+
+    const [min, setMin] = useState(padNumber(tempMin, 2));
+    const [sec, setSec] = useState(padNumber(tempSec, 2));
+
+    const startTimer = () => {
+        interval.current = setInterval(() => {
+            initialTime.current -= 1;
+            setSec(padNumber(initialTime.current % 60, 2));
+            setMin(padNumber(parseInt(initialTime.current / 60), 2));
+        }, 1000);
+        return () => clearInterval(interval.current);
+    }
+
+    useEffect(() => {
+        if (initialTime.current <= 0) {
+            clearInterval(interval.current);
+        }
+    }, [sec]);
+
 
     return (
         <TouchableWithoutFeedback onPress={() => {
@@ -62,6 +89,7 @@ function TakeTextMessage(props) {
                                     Alert.alert('인증 유효시간은 3분입니다');
                                     props.postMessage(phoneNumber);
                                     props.getMessage(phoneNumber);
+                                    startTimer();
                                 }
                             }} />
 
@@ -74,6 +102,7 @@ function TakeTextMessage(props) {
                             onChangeText={(inputNumber) => {
                                 setMessage(inputNumber);
                             }} />
+                        <Text>{min}:{sec}</Text>
                         <SignUpButton
                             buttonName="확인"
                             onPress={function () {
@@ -86,8 +115,6 @@ function TakeTextMessage(props) {
                                 else {
                                     Alert.alert('잘못된 인증번호입니다! 다시 입력해주세요')
                                 }
-
-
                             }} />
 
                     </View>
