@@ -39,6 +39,10 @@ export default function authReducer(state = initialState, action) {
         case types.LOGOUT:
             AsyncStorage.removeItem('userUniqueId');
             return initialState;
+
+
+        case types.CHECK_PHONE_NUMBER:
+            return action.payload;
     }
     return state;
 }
