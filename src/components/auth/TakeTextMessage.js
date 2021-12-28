@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import deviceInfoModule from 'react-native-device-info';
-import { View, Text, TextInput, Keyboard } from 'react-native';
+import { View, Text, TextInput, Keyboard, Alert } from 'react-native';
 import SignUpButton from '../SignUpButton';
 import NextButton from '../NextButton';
 import signUp from '../../assets/styles/signUp';
 import { TouchableWithoutFeedback } from 'react-native';
+import { Modal, Portal, Button, Provider } from 'react-native-paper';
 
 function TakeTextMessage(props) {
     let [passWord, setPassword] = useState('');
@@ -52,6 +53,13 @@ function TakeTextMessage(props) {
                             onPress={function () {
                                 props.checkPhoneNumber(phoneNumber);
                                 // props.navigation.navigate('')
+                                Keyboard.dismiss();
+                                if (props.auth.phoneNumber.length === 0) {
+                                    Alert.alert('잘못된 형식의 전화번호입니다');
+                                } else {
+                                    Alert.alert('인증 유효시간은 3분입니다');
+                                }
+
                             }} />
 
                     </View>
