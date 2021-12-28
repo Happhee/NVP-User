@@ -21,8 +21,8 @@ function TakeTextMessage(props) {
 
     const uniqueId = deviceInfoModule.getUniqueId();
 
-    const tempMin = 3;
-    const tempSec = 0;
+    const tempMin = 0;
+    const tempSec = 5;
     // 타이머를 초단위로 변환한 initialTime과 setInterval을 저장할 interval ref
     const initialTime = useRef(tempMin * 60 + tempSec);
     const interval = useRef(null);
@@ -83,12 +83,15 @@ function TakeTextMessage(props) {
                             buttonName="인증"
                             onPress={function () {
                                 Keyboard.dismiss();
+                                setMin(padNumber(tempMin, 2));
+                                setSec(padNumber(tempSec, 2));
                                 if (!isPhoneNumber(phoneNumber)) {
                                     Alert.alert('잘못된 형식의 전화번호입니다');
                                 } else {
                                     Alert.alert('인증 유효시간은 3분입니다');
                                     props.postMessage(phoneNumber);
                                     props.getMessage(phoneNumber);
+
                                     startTimer();
                                 }
                             }} />
