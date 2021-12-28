@@ -9,8 +9,11 @@ function mapReduxStateToReactProps(state) {
 
 function mapReduxDispatchToReactProps(dispatch) {
     return {
-        checkPhoneNumber: function (phoneNumber) {
-            dispatch(isPhoneNumber(phoneNumber));
+        postMessage: function (phoneNumber) {
+            dispatch(postMessage(phoneNumber));
+        },
+        getMessageNumber: function (phoneNumber) {
+            dispatch()
         }
     }
 }

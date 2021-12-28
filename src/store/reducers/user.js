@@ -1,7 +1,6 @@
 import * as types from '../actions/actionTypes';
 import AsyncStorage from '@react-native-community/async-storage';
 
-
 const initialState = {
     uniqueId: '',
     passWord: ''
