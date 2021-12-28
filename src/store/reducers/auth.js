@@ -54,6 +54,12 @@ export default function authReducer(state = initialState, action) {
                 message: action.payload
             }
 
+        case types.EXPIRE_MESSAGE:
+            return {
+                ...state,
+                message: ""
+            }
+
 
     }
     return state;
