@@ -4,7 +4,14 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 const initialState = {
     uniqueId: '',
-    passWord: ''
+    passWord: '',
+    name: '',
+    phoneNumber: '',
+    textMessage: '',
+    idCardName: '',
+    vaccinePassName: '',
+    fileName: '',
+    date: ''
 }
 
 export default function authReducer(state = initialState, action) {
