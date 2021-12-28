@@ -37,9 +37,11 @@ export function postMessage(phoneNumber) {
 
     return {
         type: types.POST_MESSAGE,
-        payload: data
+        payload: data,
+        phoneNumber: phoneNumber
     }
 }
+
 export function getMessage(phoneNumber) {
     const data = request("GET", CHECK_URL
         + "?phoneNumber=" + phoneNumber);
