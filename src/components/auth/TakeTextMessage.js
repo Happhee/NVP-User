@@ -51,6 +51,7 @@ function TakeTextMessage(props) {
     useEffect(() => {
         if (time.current <= 0) {
             clearInterval(timerId.current);
+            props.initMessage();
         }
     }, [sec]);
 
