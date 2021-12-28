@@ -33,6 +33,7 @@ function TakeTextMessage(props) {
 
                         <TextInput style={signUp.contentInput}
                             onChangeText={(inputName) => {
+
                                 setName(inputName);
                             }}
                         />
@@ -42,12 +43,14 @@ function TakeTextMessage(props) {
                         <Text style={signUp.contentFont}>전화번호</Text>
                         <TextInput style={signUp.contentInput}
                             keyboardType="number-pad"
-                            onChangeText={(inputName) => {
-                                setName(inputName);
+                            onChangeText={(inputPhoneNumber) => {
+
+                                setPhoneNumber(inputPhoneNumber);
                             }} />
                         <SignUpButton
                             buttonName="인증"
                             onPress={function () {
+                                props.checkPhoneNumber(phoneNumber);
                                 // props.navigation.navigate('')
                             }} />
 
