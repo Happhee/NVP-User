@@ -7,11 +7,14 @@ import signUp from '../../assets/styles/signUp';
 import { TouchableWithoutFeedback } from 'react-native';
 import { Modal, Portal, Button, Provider } from 'react-native-paper';
 
+import { isPhoneNumber } from '../../utils/regexs';
+
 function TakeTextMessage(props) {
     let [passWord, setPassword] = useState('');
     let [name, setName] = useState('');
     let [phoneNumber, setPhoneNumber] = useState('');
     const uniqueId = deviceInfoModule.getUniqueId();
+    console.log(props.auth.phoneNumber);
 
     return (
         <TouchableWithoutFeedback onPress={() => {
@@ -51,10 +54,8 @@ function TakeTextMessage(props) {
                         <SignUpButton
                             buttonName="인증"
                             onPress={function () {
-                                props.checkPhoneNumber(phoneNumber);
-                                // props.navigation.navigate('')
                                 Keyboard.dismiss();
-                                if (props.auth.phoneNumber.length === 0) {
+                                if (!isPhoneNumber(phoneNumber)) {
                                     Alert.alert('잘못된 형식의 전화번호입니다');
                                 } else {
                                     Alert.alert('인증 유효시간은 3분입니다');
