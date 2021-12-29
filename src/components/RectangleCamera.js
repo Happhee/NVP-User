@@ -21,7 +21,8 @@ import config from '../../config.json';
 import TextScan from './TextScan';
 import CameraRoll from '@react-native-community/cameraroll';
 
-import storage from '@react-native-firebase/storage';
+import { registerImage, getRefImageName } from '../utils/firebaseStorage';
+
 
 import AutoHeightImage from 'react-native-auto-height-image';
 import rectangleStyles from '../assets/styles/rectangleCamera';
@@ -361,7 +362,7 @@ class RectangleCamera extends PureComponent {
                         <View style={rectangleStyles.processingContainer}>
                             <ActivityIndicator color="#333333" size="large" />
                             <Text style={{ color: '#333333', fontSize: 30, marginTop: 10 }}>
-                                Processing
+                                로딩중입니다
                             </Text>
                         </View>
                     </View>
@@ -396,16 +397,9 @@ class RectangleCamera extends PureComponent {
             });
 
             console.log('====this.state.preparedImgages===');
-
-            let imageNames = this.state.currentImage.split('/');
-            let refImageName = imageNames[imageNames.length - 1];
-            let reference = storage().ref(refImageName);
-            let task = reference.putFile(this.state.currentImage);
-
-            task.then(() => {
-                console.log("Upload");
-            }).catch((e) => console.log(e));
-
+            registerImage(this.state.currentImage);
+            const refImageName = getRefImageName(this.state.currentImage);
+            console.log(refImageName);
             // this.callGoogleVisionApi("https://storage.googleapis.com/user-nvp.appspot.com/appstore.png");
 
 

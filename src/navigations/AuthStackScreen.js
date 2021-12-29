@@ -14,6 +14,11 @@ const Stack = createNativeStackNavigator();
 const AuthStackScreen = () => {
     return (
         <Stack.Navigator>
+            <Stack.Screen name="TakeVaccinePass" component={TakeVaccinePassScreen}
+                options={{
+                    title: '',
+                    headerBackTitleVisible: false,
+                }} />
             <Stack.Screen name="Login" component={LoginScreen}
                 options={{
                     title: '',
@@ -35,11 +40,7 @@ const AuthStackScreen = () => {
                     title: '',
                     headerBackTitleVisible: false,
                 }} />
-            <Stack.Screen name="TakeVaccinePass" component={TakeVaccinePassScreen}
-                options={{
-                    title: '',
-                    headerBackTitleVisible: false,
-                }} />
+
             <Stack.Screen name="TakeTextMessage" component={TakeTextMessageScreen}
                 options={{
                     title: '',
