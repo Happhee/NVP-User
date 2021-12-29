@@ -68,4 +68,11 @@ export function successMessage(uniqueId, name, phoneNumber) {
     }
 }
 
+export function setPassword(passWord) {
+
+    return {
+        type: types.SET_PASSWORD,
+        passWord: passWord
+    }
+}
 
