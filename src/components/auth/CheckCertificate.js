@@ -10,7 +10,7 @@ function CheckCertificate(props) {
     let [name, setName] = useState('');
     let [phoneNumber, setPhoneNumber] = useState('');
     const uniqueId = deviceInfoModule.getUniqueId();
-
+    console.log(props.passWord);
     return (
 
         <View style={signUp.container}>
