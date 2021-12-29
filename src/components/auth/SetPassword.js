@@ -75,6 +75,7 @@ function SetPassword(props) {
                                 if (passWord === confirmPassword) {
                                     Alert.alert('비밀번호 설정이 완료되었습니다')
                                     setSuccessPassword(true);
+                                    props.setPassword(passWord);
                                     // props.navigation.navigate('CheckCertificate')
                                 }
                                 else {
