@@ -8,10 +8,6 @@ import { TouchableWithoutFeedback } from 'react-native';
 import RectangleCamera from '../RectangleCamera';
 
 function TakeIdCard(props) {
-    let [passWord, setPassword] = useState('');
-    let [name, setName] = useState('');
-    let [phoneNumber, setPhoneNumber] = useState('');
-    const uniqueId = deviceInfoModule.getUniqueId();
 
     return (
 
@@ -27,14 +23,6 @@ function TakeIdCard(props) {
             <View style={signUp.cameraView} >
                 <RectangleCamera />
             </View>
-            {/* </View>
-
-            <View style={signUp.footer}>
-                <NextButton
-                    onPress={function () {
-                        props.navigation.navigate('CheckCertificate')
-                    }} />
-            </View> */}
 
         </View >
 
