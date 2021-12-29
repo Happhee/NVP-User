@@ -6,7 +6,7 @@ import NextButton from '../NextButton';
 import signUp from '../../assets/styles/signUp';
 import { TouchableWithoutFeedback } from 'react-native';
 import { launchImageLibrary } from 'react-native-image-picker';
-
+import { registerImage } from '../../utils/firebaseStorage';
 function TakeVaccinePass(props) {
 
     let [imageUri, setImageUri] = useState('');
@@ -15,7 +15,12 @@ function TakeVaccinePass(props) {
 
             console.log(response.assets[0].uri);
             setImageUri(response.assets[0].uri);
+
+            console.log("가져오기 " + response.assets[0].uri);
+            registerImage(response.assets[0].uri);
         })
+
+
     }
     return (
 
