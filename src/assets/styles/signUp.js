@@ -125,7 +125,15 @@ const authStyles = StyleSheet.create({
     },
     cameraView: {
         flex: 5
-    }
+    },
+    cameraRoll: {
+        flex: 2,
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderBottomColor: 'black',
+        borderBottomWidth: 1,
+    },
 });
 
 export default authStyles;

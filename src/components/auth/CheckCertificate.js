@@ -6,11 +6,8 @@ import NextButton from '../NextButton';
 import signUp from '../../assets/styles/signUp';
 
 function CheckCertificate(props) {
-    let [passWord, setPassword] = useState('');
-    let [name, setName] = useState('');
-    let [phoneNumber, setPhoneNumber] = useState('');
-    const uniqueId = deviceInfoModule.getUniqueId();
-    console.log(props.passWord);
+
+    console.log(props.auth);
     return (
 
         <View style={signUp.container}>
