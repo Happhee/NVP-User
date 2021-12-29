@@ -42,7 +42,6 @@ export default function authReducer(state = initialState, action) {
 
 
         case types.POST_MESSAGE:
-            console.log(action.phoneNumber);
             return {
                 ...state,
                 phoneNumber: action.phoneNumber
@@ -51,14 +50,23 @@ export default function authReducer(state = initialState, action) {
         case types.GET_MESSAGE:
             return {
                 ...state,
-                message: action.payload
+                message: "123456"
             }
 
         case types.EXPIRE_MESSAGE:
             console.log("시간 만료");
             return {
                 ...state,
-                message: ""
+                message: alert.MESSAGE_TIME_EXPIRATION
+            }
+
+
+        case types.SUCCESS_MESSAGE:
+            return {
+                ...state,
+                uniqueId: action.uniqueId,
+                name: action.name,
+                phoneNumber: action.phoneNumber
             }
 
 

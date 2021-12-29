@@ -7,7 +7,7 @@ import signUp from '../../assets/styles/signUp';
 import { TouchableWithoutFeedback } from 'react-native';
 import { Modal, Portal, Button, Provider } from 'react-native-paper';
 
-import { isPhoneNumber } from '../../utils/regexs';
+import { isPhoneNumber, isName } from '../../utils/regexs';
 import * as alert from '../../utils/alertConsts'
 import Timer from '../Timer';
 const padNumber = (num, length) => {
@@ -29,6 +29,7 @@ function TakeTextMessage(props) {
     const timerId = useRef(null);
 
 
+    console.log(props.auth);
 
     const startTimer = () => {
         clearInterval(timerId.current);
@@ -111,6 +112,7 @@ function TakeTextMessage(props) {
                             <TextInput style={signUp.messageInput}
                                 keyboardType="number-pad"
                                 maxLength={6}
+
                                 onChangeText={(inputNumber) => {
                                     setMessage(inputNumber);
                                 }} />
@@ -121,9 +123,17 @@ function TakeTextMessage(props) {
                             buttonName="확인"
                             onPress={function () {
                                 if (props.auth.message === message) {
-                                    props.navigation.navigate('CheckCertificate')
+                                    if (isName(name)) {
+                                        props.successMessage(uniqueId, name, phoneNumber);
+                                        props.navigation.navigate('CheckCertificate')
+                                        stopTimer();
+                                    }
+                                    else {
+                                        Alert.alert('이름을 올바르게 입력해주세요!!')
+                                    }
+
                                 }
-                                else if (props.auth.message === '') {
+                                else if (props.auth.message === alert.MESSAGE_TIME_EXPIRATION) {
                                     Alert.alert('인증시간이 지났습니다! 재인증을 해주세요');
                                 }
                                 else {
