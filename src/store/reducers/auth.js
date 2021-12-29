@@ -69,6 +69,12 @@ export default function authReducer(state = initialState, action) {
                 phoneNumber: action.phoneNumber
             }
 
+        case types.SET_PASSWORD:
+            return {
+                ...state,
+                passWord: action.passWord
+            }
+
 
     }
     return state;

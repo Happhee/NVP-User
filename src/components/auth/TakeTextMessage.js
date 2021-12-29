@@ -114,7 +114,7 @@ function TakeTextMessage(props) {
                             <TextInput style={signUp.messageInput}
                                 keyboardType="number-pad"
                                 maxLength={6}
-
+                                secureTextEntry
                                 onChangeText={(inputNumber) => {
                                     setMessage(inputNumber);
                                 }} />
@@ -130,8 +130,7 @@ function TakeTextMessage(props) {
                                     Alert.alert('인증에 성공하였습니다! 다음단계로 이동해주세요')
                                     // props.navigation.navigate('SetPassword')
                                     stopTimer();
-
-
+                                    Keyboard.dismiss();
                                 }
                                 else if (props.auth.message === alert.MESSAGE_TIME_EXPIRATION) {
                                     Alert.alert('인증시간이 지났습니다! 재인증을 해주세요');
