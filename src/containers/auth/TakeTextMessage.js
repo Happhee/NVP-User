@@ -1,7 +1,7 @@
 import TakeTextMessage from "../../components/auth/TakeTextMessage";
 import { connect } from "react-redux";
 
-import { postMessage, getMessage, initMessage } from "../../store/actions/authAction";
+import { postMessage, getMessage, initMessage, successMessage } from "../../store/actions/authAction";
 import { login } from "../../store/actions/userAction";
 
 function mapReduxStateToReactProps(state) {
@@ -18,6 +18,9 @@ function mapReduxDispatchToReactProps(dispatch) {
         },
         initMessage: function () {
             dispatch(initMessage());
+        },
+        successMessage: function (uniqueId, name, phoneNumber) {
+            dispatch(successMessage(uniqueId, name, phoneNumber));
         }
     }
 }
