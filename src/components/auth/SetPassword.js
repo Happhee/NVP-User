@@ -27,7 +27,7 @@ function SetPassword(props) {
                 </View>
 
                 <View style={signUp.content} >
-                    <View style={signUp.meesageContent}>
+                    <View style={signUp.contentView}>
                         <Text style={signUp.contentFont}>간편번호 설정</Text>
                         <View style={signUp.meesageInnerContent}>
                             <TextInput style={signUp.messageInput}
@@ -39,11 +39,9 @@ function SetPassword(props) {
                                 onChangeText={(inputPassword) => {
                                     setPassword(inputPassword);
                                 }} />
-                            <Text></Text>
-
                         </View>
                         <SignUpButton
-                            buttonName="확인"
+                            buttonName="설정"
                             onPress={function () {
                                 Keyboard.dismiss();
                                 if (passWord.length === 6) {
@@ -56,10 +54,12 @@ function SetPassword(props) {
 
                     </View>
 
-                    <View style={signUp.meesageContent}>
+                    <View style={signUp.contentView}>
                         <Text style={signUp.contentFont}>간편번호 확인</Text>
                         <View style={signUp.meesageInnerContent}>
                             <TextInput style={signUp.messageInput}
+                                placeholderTextColor={colors.nvpUnder}
+
                                 placeholder="간편번호 재확인"
                                 keyboardType="number-pad"
                                 maxLength={6}
@@ -67,7 +67,6 @@ function SetPassword(props) {
                                 onChangeText={(inputPassword) => {
                                     setConfirmPassword(inputPassword);
                                 }} />
-                            <Text style={signUp.pwInfo}>{props.pwState}</Text>
                         </View>
                         <SignUpButton
                             buttonName="확인"
@@ -92,7 +91,6 @@ function SetPassword(props) {
                         onPress={function () {
                             if (successPassword) {
                                 props.navigation.navigate('CheckCertificate')
-
                             } else {
                                 Alert.alert('간편번호 설정 및 확인을 진행해주세요')
                             }
