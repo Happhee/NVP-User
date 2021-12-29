@@ -6,11 +6,12 @@ import NextButton from '../NextButton';
 import signUp from '../../assets/styles/signUp';
 import { TouchableWithoutFeedback } from 'react-native';
 import colors from '../../assets/colors/color';
+import { Alert } from 'react-native';
 
 function SetPassword(props) {
     let [passWord, setPassword] = useState('');
     let [confirmPassword, setConfirmPassword] = useState('');
-
+    let [successPassword, setSuccessPassword] = useState(false);
     return (
         <TouchableWithoutFeedback onPress={() => {
             Keyboard.dismiss();
@@ -44,29 +45,22 @@ function SetPassword(props) {
                         <SignUpButton
                             buttonName="확인"
                             onPress={function () {
-                                // if (props.auth.message === message) {
-
-                                //     setSuccessMessage(true);
-                                //     Alert.alert('인증에 성공하였습니다! 다음단계로 이동해주세요')
-                                //     // props.navigation.navigate('SetPassword')
-                                //     stopTimer();
-                                //     Keyboard.dismiss();
-                                // }
-                                // else if (props.auth.message === alert.MESSAGE_TIME_EXPIRATION) {
-                                //     Alert.alert('인증시간이 지났습니다! 재인증을 해주세요');
-                                // }
-                                // else {
-                                //     Alert.alert('잘못된 인증번호입니다! 다시 입력해주세요')
-                                // }
+                                Keyboard.dismiss();
+                                if (passWord.length === 6) {
+                                    Alert.alert('간편번호 확인을 진행해주세요')
+                                }
+                                else {
+                                    Alert.alert('간편번호는 6자리로 입력해주세요')
+                                }
                             }} />
 
                     </View>
 
                     <View style={signUp.meesageContent}>
-                        <Text style={signUp.contentFont}>간편번호 설정</Text>
+                        <Text style={signUp.contentFont}>간편번호 확인</Text>
                         <View style={signUp.meesageInnerContent}>
                             <TextInput style={signUp.messageInput}
-
+                                placeholder="간편번호 재확인"
                                 keyboardType="number-pad"
                                 maxLength={6}
                                 secureTextEntry
@@ -78,20 +72,15 @@ function SetPassword(props) {
                         <SignUpButton
                             buttonName="확인"
                             onPress={function () {
-                                // if (props.auth.message === message) {
-
-                                //     setSuccessMessage(true);
-                                //     Alert.alert('인증에 성공하였습니다! 다음단계로 이동해주세요')
-                                //     // props.navigation.navigate('SetPassword')
-                                //     stopTimer();
-                                //     Keyboard.dismiss();
-                                // }
-                                // else if (props.auth.message === alert.MESSAGE_TIME_EXPIRATION) {
-                                //     Alert.alert('인증시간이 지났습니다! 재인증을 해주세요');
-                                // }
-                                // else {
-                                //     Alert.alert('잘못된 인증번호입니다! 다시 입력해주세요')
-                                // }
+                                Keyboard.dismiss();
+                                if (passWord === confirmPassword) {
+                                    Alert.alert('비밀번호 설정이 완료되었습니다')
+                                    setSuccessPassword(true);
+                                    // props.navigation.navigate('CheckCertificate')
+                                }
+                                else {
+                                    Alert.alert('간편번호가 다릅니다!!')
+                                }
                             }} />
 
                     </View>
@@ -101,7 +90,12 @@ function SetPassword(props) {
                 <View style={signUp.footer}>
                     <NextButton
                         onPress={function () {
-                            props.navigation.navigate('CheckCertificate')
+                            if (successPassword) {
+                                props.navigation.navigate('CheckCertificate')
+
+                            } else {
+                                Alert.alert('간편번호 설정 및 확인을 진행해주세요')
+                            }
                         }} />
                 </View>
 
