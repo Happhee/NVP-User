@@ -27,6 +27,7 @@ const AuthStackScreen = () => {
             <Stack.Screen name="SetPassword" component={SetPasswordScreen}
                 options={{
                     title: '',
+                    // headerBackVisible: false,
                     headerBackTitleVisible: false,
                 }} />
             <Stack.Screen name="TakeIdCard" component={TakeIdCardScreen}
@@ -42,7 +43,6 @@ const AuthStackScreen = () => {
             <Stack.Screen name="TakeTextMessage" component={TakeTextMessageScreen}
                 options={{
                     title: '',
-
                     headerBackTitleVisible: false,
                 }} />
 
