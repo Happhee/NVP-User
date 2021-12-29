@@ -7,6 +7,7 @@ import signUp from '../../assets/styles/signUp';
 import { TouchableWithoutFeedback } from 'react-native';
 import { launchImageLibrary } from 'react-native-image-picker';
 import { registerImage, getRefImageName } from '../../utils/firebaseStorage';
+import { callGoogleVisionApi } from '../../utils/googleVision';
 function TakeVaccinePass(props) {
 
     let [imageUri, setImageUri] = useState('');
@@ -17,9 +18,10 @@ function TakeVaccinePass(props) {
             setImageUri(response.assets[0].uri);
 
             console.log("가져오기 " + response.assets[0].uri);
-            registerImage(response.assets[0].uri);
-            const name = getRefImageName(response.assets[0].uri);
-            console.log(name);
+            // registerImage(response.assets[0].uri);
+            // const name = getRefImageName(response.assets[0].uri);
+            // console.log("이름" + name);
+            callGoogleVisionApi("gs://user-nvp.appspot.com/" + "EFA18E5C-6F75-4A8B-906E-010DD0EC8B6D.png");
         })
     }
     return (
