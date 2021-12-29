@@ -14,6 +14,7 @@ const padNumber = (num, length) => {
     return String(num).padStart(length, '0');
 };
 
+
 function TakeTextMessage(props) {
     let [passWord, setPassword] = useState('');
     let [name, setName] = useState('');
@@ -21,6 +22,7 @@ function TakeTextMessage(props) {
     let [message, setMessage] = useState(alert.NO_EXIST_MESSAGE);
 
     const uniqueId = deviceInfoModule.getUniqueId();
+    let [successMessage, setSuccessMessage] = useState(false);
 
     // 타이머를 초단위로 변환한 initialTime과 setInterval을 저장할 interval ref
     const [min, setMin] = useState(padNumber(3, 2));
@@ -123,14 +125,12 @@ function TakeTextMessage(props) {
                             buttonName="확인"
                             onPress={function () {
                                 if (props.auth.message === message) {
-                                    if (isName(name)) {
-                                        props.successMessage(uniqueId, name, phoneNumber);
-                                        props.navigation.navigate('CheckCertificate')
-                                        stopTimer();
-                                    }
-                                    else {
-                                        Alert.alert('이름을 올바르게 입력해주세요!!')
-                                    }
+
+                                    setSuccessMessage(true);
+                                    Alert.alert('인증에 성공하였습니다! 다음단계로 이동해주세요')
+                                    // props.navigation.navigate('SetPassword')
+                                    stopTimer();
+
 
                                 }
                                 else if (props.auth.message === alert.MESSAGE_TIME_EXPIRATION) {
@@ -149,7 +149,16 @@ function TakeTextMessage(props) {
                 <View style={signUp.footer}>
                     <NextButton
                         onPress={function () {
-                            props.navigation.navigate('SetPassword')
+                            if (isName(name) && successMessage) {
+                                props.successMessage(uniqueId, name, phoneNumber);
+                                props.navigation.navigate('SetPassword')
+                            }
+                            else if (!isName(name)) {
+                                Alert.alert('이름을 올바르게 입력해주세요!')
+
+                            } else {
+                                Alert.alert('인증을 진행해주세요!');
+                            }
                         }} />
                 </View>
 
