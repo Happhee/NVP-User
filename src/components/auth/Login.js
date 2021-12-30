@@ -64,8 +64,8 @@ function Login(props) {
                             buttonName="로그인"
                             onPress={function () {
                                 const dataToSubmit = {
-                                    uniqueId: uniqueId,
-                                    passWord: passWord
+                                    id: uniqueId,
+                                    password: passWord
                                 }
                                 props.onPressLogin(dataToSubmit);
                                 setPassword('');

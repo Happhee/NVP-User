@@ -14,7 +14,7 @@ export function login(dataToSubmit) {
     return {
         type: types.LOGIN,
         payload: data,
-        uniqueId: dataToSubmit.uniqueId
+        uniqueId: dataToSubmit.id
     }
 
 };
