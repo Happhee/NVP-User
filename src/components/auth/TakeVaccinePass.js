@@ -10,13 +10,15 @@ import { launchImageLibrary } from 'react-native-image-picker';
 
 import storage from '@react-native-firebase/storage';
 import config from '../../../config.json';
-import { getRefImageName } from '../../utils/googleVision';
+import { getRefImageName, getOcrName } from '../../utils/googleVision';
 import OcrResult from '../OcrResult';
+import { Alert } from 'react-native';
 
 function TakeVaccinePass(props) {
 
     let [imageUri, setImageUri] = useState('');
     let [description, setDescription] = useState('');
+
     const openPicker = () => {
         launchImageLibrary({}, (response) => {
 
@@ -67,6 +69,7 @@ function TakeVaccinePass(props) {
             }).catch((err) => { console.log(err) })
     }
     console.log(description)
+    console.log(props.auth)
 
     return (
 
@@ -89,6 +92,9 @@ function TakeVaccinePass(props) {
                 <NvpButton
                     icon="save"
                     onPress={function () {
+                        Alert.alert("백신 증명서가 등록되었습니다")
+                        props.setVaccinePass(getOcrName(description), imageUri);
+
                         props.navigation.navigate('CheckCertificate')
                     }} />
             </View>
