@@ -14,11 +14,6 @@ const Stack = createNativeStackNavigator();
 const AuthStackScreen = () => {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="TakeVaccinePass" component={TakeVaccinePassScreen}
-                options={{
-                    title: '',
-                    headerBackTitleVisible: false,
-                }} />
             <Stack.Screen name="Login" component={LoginScreen}
                 options={{
                     title: '',
