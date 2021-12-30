@@ -1,36 +1,15 @@
-import config from '../../config.json';
+export function getOcrName(description) {
+    return description[description.indexOf("성명 Name") + 1];
+}
 
-export const callGoogleVisionApi = async (uri) => {
-    let googleVisionRes = await fetch(config.googleCloud.api + config.googleCloud.apiKey, {
-        method: 'POST',
-        body: JSON.stringify({
-            "requests": [
-                {
-                    "features": [
-                        {
-                            "type": "DOCUMENT_TEXT_DETECTION"
-                        }
-                    ],
-                    "image": {
-                        "source": {
-                            "imageUri": uri
-                        }
-                    }
-                }
-            ]
-        })
-    });
-    await googleVisionRes.text()
-        .then(googleVisionRes => {
-            console.log(googleVisionRes.responses);
-            const json1 = JSON.parse(googleVisionRes).responses
+export function getOcrDate(description) {
+    return description[description.indexOf("접종일자 Date") + 1];
+}
 
-            // json1 = JSON.parse(json1).textAnnotations
-            // json1 = JSON.parse(json1).description
+export function getOcrDose(description) {
+    return description[description.indexOf("접종차수 Dose") + 1];
+}
 
-            console.log(json1.fullTextAnnotation);
-            if (googleVisionRes) {
-
-            }
-        }).catch((err) => { console.log(err) })
+export function getManufactuer(description) {
+    return description[description.indexOf("백신제조사 Manufactuer") + 1];
 }
