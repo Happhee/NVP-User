@@ -1,11 +1,11 @@
 import * as types from './actionTypes';
 import { request } from '../../utils/axios';
 
-const INDIVIDUAL_URL = "/api/user";
+const USERS_URL = "/api/users";
 
 export function login(dataToSubmit) {
 
-    const data = request("GET", INDIVIDUAL_URL
+    const data = request("GET", USERS_URL
         + "?uniqueID=" + dataToSubmit.uniqueId
         + "&simplePw=" + dataToSubmit.passWord);
     return {
@@ -17,7 +17,7 @@ export function login(dataToSubmit) {
 };
 
 export function autoLogin(dataToSubmit) {
-    const data = request("POST", INDIVIDUAL_URL, dataToSubmit);
+    const data = request("POST", USERS_URL, dataToSubmit);
 
     return {
         type: types.AUTO_LOGIN,
@@ -28,4 +28,8 @@ export function logout() {
     return {
         type: types.LOGOUT
     }
+}
+
+export function resetPassword(dataToSubmit) {
+    const data = request()
 }
