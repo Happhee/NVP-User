@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button } from 'react-native-paper';
-import buttonStyles from '../assets/styles/buttonStyles';
+import buttonStyles from '../assets/styles/button';
 import Icon from 'react-native-vector-icons/FontAwesome'
 const NvpButton = (props) => (
     <Button
