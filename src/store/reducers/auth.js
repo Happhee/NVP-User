@@ -9,7 +9,9 @@ const initialState = {
     phoneNumber: '',
     message: '',
     idCardName: '',
+    idCardFilePath: '',
     vaccinePassName: '',
+    vaccinePassFilePath: '',
     fileName: '',
     date: ''
 }
