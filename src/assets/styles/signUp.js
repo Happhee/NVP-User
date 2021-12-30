@@ -127,7 +127,7 @@ const authStyles = StyleSheet.create({
         flex: 5
     },
     cameraRoll: {
-        flex: 2,
+        flex: 1.5,
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',

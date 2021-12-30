@@ -11,5 +11,11 @@ export function getOcrDose(description) {
 }
 
 export function getManufactuer(description) {
-    return description[description.indexOf("백신제조사 Manufactuer") + 1];
+    return description[description.indexOf("백신제조사 Manufacturer") + 1];
+}
+
+export function getRefImageName(imageName) {
+    const currentImageName = imageName.split('/');
+
+    return currentImageName[currentImageName.length - 1];
 }
