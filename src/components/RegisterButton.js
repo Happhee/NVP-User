@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button, Text } from 'react-native-paper';
-import buttonStyles from '../assets/styles/buttonStyles';
+import buttonStyles from '../assets/styles/button';
 const RegisterButton = (props) => (
     <Button
         style={buttonStyles.registerButton}
