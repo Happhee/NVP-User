@@ -146,7 +146,8 @@ function TakeTextMessage(props) {
 
 
                 <View style={signUp.footer}>
-                    <NextButton
+                    <NvpButton
+                        icon="arrow-right"
                         onPress={function () {
                             if (isName(name) && successMessage) {
                                 props.successMessage(uniqueId, name, phoneNumber);
