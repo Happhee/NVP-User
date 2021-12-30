@@ -19,3 +19,9 @@ export function getRefImageName(imageName) {
 
     return currentImageName[currentImageName.length - 1];
 }
+
+export function getIdOcrName(description) {
+    const fullName = description[description.indexOf("주민등록증") + 1];
+
+    return fullName.substring(0, fullName.indexOf('('));
+}

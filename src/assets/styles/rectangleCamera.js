@@ -125,6 +125,18 @@ const rectangleStyles = StyleSheet.create({
     scanner: {
         flex: 1,
     },
+    idCardResult: {
+        fontSize: wp(5), fontFamily: 'DoHyeon-Regular'
+    },
+    ocrResultContainer: {
+        height: hp(15),
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
+        padding: hp(5),
+        borderRightWidth: 4,
+        borderRightColor: colors.signUpInput,
+        flexDirection: 'row',
+    },
 
     btnContainer: {
         flex: 1,

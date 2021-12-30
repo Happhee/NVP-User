@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import deviceInfoModule from 'react-native-device-info';
-import { View, Text, TextInput, Keyboard } from 'react-native';
+import { View, Text, TextInput, Keyboard, Alert } from 'react-native';
 import RegisterButton from '../RegisterButton';
 import NvpButton from '../NvpButton';
 import signUp from '../../assets/styles/signUp';
@@ -8,6 +8,16 @@ import signUp from '../../assets/styles/signUp';
 function CheckCertificate(props) {
 
     console.log(props.auth);
+    let [icon, setIcon] = useState("remove")
+
+    useEffect(() => {
+        if (props.auth.name === props.auth.idCardName
+            && props.auth.name === props.auth.vaccinePassName
+            && props.auth.idCardName === props.auth.vaccinePassName) {
+            setIcon("check")
+        }
+    }, [props.auth.vaccinePassName, props.auth.idCardName])
+
     return (
 
         <View style={signUp.container}>
@@ -33,9 +43,15 @@ function CheckCertificate(props) {
 
             <View style={signUp.footer}>
                 <NvpButton
-                    icon="arrow-right"
+                    icon={icon}
                     onPress={function () {
-                        props.navigation.navigate('Login')
+                        if (icon === "remove") {
+                            Alert.alert("본인의 신분증과 백신 증명서를 등록해주세요!")
+                        } else {
+                            Alert.alert("회원가입이 완료되었습니다 ㅎㅅㅎ ")
+                            props.navigation.navigate('Login')
+
+                        }
                     }} />
             </View>
 

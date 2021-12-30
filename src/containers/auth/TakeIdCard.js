@@ -1,7 +1,7 @@
 
 import TakeIdCard from "../../components/auth/TakeIdCard";
 import { connect } from "react-redux";
-import { login } from "../../store/actions/userAction";
+import { setIdCard } from "../../store/actions/authAction";
 
 function mapReduxStateToReactProps(state) {
     return state;
@@ -9,8 +9,8 @@ function mapReduxStateToReactProps(state) {
 
 function mapReduxDispatchToReactProps(dispatch) {
     return {
-        onConfirm: function () {
-            dispatch();
+        setIdCard: function (idCardName, idCardFilePath) {
+            dispatch(setIdCard(idCardName, idCardFilePath));
         }
     }
 }

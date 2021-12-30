@@ -19,10 +19,10 @@ const ocrStyles = StyleSheet.create({
         fontSize: 28,
         color: colors.nvpRoot,
         textAlign: 'center',
-        marginBottom: 10
 
     },
     ocrResultTitleView: {
+
         justifyContent: 'center',
         paddingRight: 20,
         borderRightWidth: 4,
