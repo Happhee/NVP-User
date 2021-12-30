@@ -9,8 +9,8 @@ function Splash(props) {
 
     useEffect(() => {
         setTimeout(() => {
-            AsyncStorage.clear();
-            AsyncStorage.getItem('userUniqueId')
+            // AsyncStorage.clear()
+            AsyncStorage.getItem('user')
                 .then((value) => {
                     console.log(value)
                     if (value != null) {
