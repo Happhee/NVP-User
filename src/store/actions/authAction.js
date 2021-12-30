@@ -84,3 +84,10 @@ export function setVaccinePass(vaccinePassName, vaccinePassFilePath) {
     }
 }
 
+export function setIdCard(idCardName, idCardFilePath) {
+    return {
+        type: types.REGISTER_ID_CARD,
+        idCardName: idCardName,
+        idCardFilePath: idCardFilePath
+    }
+}
