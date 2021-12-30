@@ -6,6 +6,7 @@ import UserButton from '../UserButton';
 import colors from '../../assets/colors/color';
 import authStyles from '../../assets/styles/AuthStyles';
 import { TouchableWithoutFeedback } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 function Login(props) {
     let [passWord, setPassword] = useState('');
