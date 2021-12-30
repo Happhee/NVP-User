@@ -1,14 +1,16 @@
 import * as types from './actionTypes';
 import { request } from '../../utils/axios';
 
-const USER_URL = "/api/user";
+const USERS_URL = "/api/users";
 const CHECK_URL = "/check"
 
 export function login(dataToSubmit) {
 
-    const data = request("GET", USER_URL
-        + "?uniqueID=" + dataToSubmit.uniqueId
-        + "&simplePw=" + dataToSubmit.passWord);
+    const data = request("POST", USERS_URL + "/login", dataToSubmit);
+    // data: {
+    //     accessToken,
+    //     refreshToken,
+    //   }
     return {
         type: types.LOGIN,
         payload: data,
@@ -18,7 +20,7 @@ export function login(dataToSubmit) {
 };
 
 export function autoLogin(dataToSubmit) {
-    const data = request("POST", USER_URL, dataToSubmit);
+    const data = request("POST", USERS_URL, dataToSubmit);
 
     return {
         type: types.AUTO_LOGIN,
