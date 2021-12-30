@@ -77,6 +77,13 @@ export default function authReducer(state = initialState, action) {
                 passWord: action.passWord
             }
 
+        case types.REGISTER_VACCINE_PASS:
+            return {
+                ...state,
+                vaccinePassName: action.vaccinePassName,
+                vaccinePassFilePath: action.vaccinePassFilePath
+            }
+
 
     }
     return state;
