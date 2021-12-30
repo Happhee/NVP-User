@@ -4,11 +4,12 @@ import { View, Text, TextInput, Keyboard } from 'react-native';
 import RegisterButton from '../RegisterButton';
 import NvpButton from '../NvpButton';
 import signUp from '../../assets/styles/signUp';
+import ocrStyles from '../../assets/styles/ocrStyles';
 import { TouchableWithoutFeedback } from 'react-native';
 import RectangleCamera from '../RectangleCamera';
 
 function TakeIdCard(props) {
-
+    console.log(props.auth)
     return (
 
         <View style={signUp.container}>
@@ -21,7 +22,13 @@ function TakeIdCard(props) {
             </View>
 
             <View style={signUp.cameraView} >
-                <RectangleCamera />
+                <RectangleCamera setIdCard={(idCardName, idCardFilePath) => {
+
+                    props.setIdCard(idCardName, idCardFilePath)
+                    props.navigation.navigate('CheckCertificate')
+
+                }
+                } />
             </View>
 
         </View >
