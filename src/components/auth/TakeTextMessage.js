@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import deviceInfoModule from 'react-native-device-info';
 import { View, Text, TextInput, Keyboard, Alert } from 'react-native';
 import SignUpButton from '../SignUpButton';
-import NextButton from '../NextButton';
+import NvpButton from '../NvpButton';
 import signUp from '../../assets/styles/signUp';
 import { TouchableWithoutFeedback } from 'react-native';
 import { Modal, Portal, Button, Provider } from 'react-native-paper';

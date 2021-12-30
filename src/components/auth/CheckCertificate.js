@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import deviceInfoModule from 'react-native-device-info';
 import { View, Text, TextInput, Keyboard } from 'react-native';
 import RegisterButton from '../RegisterButton';
-import NextButton from '../NextButton';
+import NvpButton from '../NvpButton';
 import signUp from '../../assets/styles/signUp';
 
 function CheckCertificate(props) {
@@ -32,7 +32,7 @@ function CheckCertificate(props) {
             </View>
 
             <View style={signUp.footer}>
-                <NextButton
+                <NvpButton
                     onPress={function () {
                         props.navigation.navigate('Login')
                     }} />

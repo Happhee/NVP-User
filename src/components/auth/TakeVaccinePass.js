@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import deviceInfoModule from 'react-native-device-info';
 import { View, Text, TextInput, Keyboard, Image } from 'react-native';
 import RegisterButton from '../RegisterButton';
-import NextButton from '../NextButton';
+import NvpButton from '../NvpButton';
 import signUp from '../../assets/styles/signUp';
 import ocrStyles from '../../assets/styles/ocrStyles';
 import { TouchableWithoutFeedback } from 'react-native';
@@ -86,7 +86,8 @@ function TakeVaccinePass(props) {
             </View>
             <OcrResult description={description} />
             <View style={signUp.footer}>
-                <NextButton
+                <NvpButton
+                    icon="save"
                     onPress={function () {
                         props.navigation.navigate('CheckCertificate')
                     }} />
