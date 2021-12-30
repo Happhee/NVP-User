@@ -10,7 +10,7 @@ import { launchImageLibrary } from 'react-native-image-picker';
 
 import storage from '@react-native-firebase/storage';
 import config from '../../../config.json';
-import { getOcrName, getOcrDate, getOcrDose, getManufactuer, getRefImageName } from '../../utils/googleVision';
+import { getRefImageName } from '../../utils/googleVision';
 import OcrResult from '../OcrResult';
 
 function TakeVaccinePass(props) {
