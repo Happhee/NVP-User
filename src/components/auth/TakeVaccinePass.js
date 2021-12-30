@@ -4,11 +4,14 @@ import { View, Text, TextInput, Keyboard, Image } from 'react-native';
 import RegisterButton from '../RegisterButton';
 import NextButton from '../NextButton';
 import signUp from '../../assets/styles/signUp';
+import ocrStyles from '../../assets/styles/ocrStyles';
 import { TouchableWithoutFeedback } from 'react-native';
 import { launchImageLibrary } from 'react-native-image-picker';
 
 import storage from '@react-native-firebase/storage';
 import config from '../../../config.json';
+import { getOcrName, getOcrDate, getOcrDose, getManufactuer, getRefImageName } from '../../utils/googleVision';
+import OcrResult from '../OcrResult';
 
 function TakeVaccinePass(props) {
 
@@ -81,8 +84,8 @@ function TakeVaccinePass(props) {
                 <Image
                     source={{ uri: imageUri }} style={{ width: '100%', height: '100%' }} />
             </View>
+            <OcrResult description={description} />
             <View style={signUp.footer}>
-                <Text>{description}</Text>
                 <NextButton
                     onPress={function () {
                         props.navigation.navigate('CheckCertificate')
