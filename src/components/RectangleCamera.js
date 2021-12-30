@@ -22,12 +22,13 @@ import TextScan from './TextScan';
 import CameraRoll from '@react-native-community/cameraroll';
 
 import { registerImage, getRefImageName } from '../utils/firebaseStorage';
-import { callGoogleVisionApi } from '../utils/googleVision';
-
+import { callGoogleVisionApi, getIdOcrName } from '../utils/googleVision';
+import ocrStyles from '../assets/styles/ocrStyles';
 import AutoHeightImage from 'react-native-auto-height-image';
 import rectangleStyles from '../assets/styles/rectangleCamera';
-class RectangleCamera extends PureComponent {
+import storage from '@react-native-firebase/storage';
 
+class RectangleCamera extends PureComponent {
 
     static propTypes = {
         cameraIsOn: PropTypes.bool,
@@ -76,11 +77,12 @@ class RectangleCamera extends PureComponent {
                 previewHeightPercent: 1,
                 previewWidthPercent: 1,
             },
-            idCard_sn: "test",
+            idCard_sn: "",
             currentImage: '',
             preparedImgages: '',
             isScanned: false,
             s3Links: [],
+            idCardName: ""
         };
         this.camera = React.createRef();
         this.imageProcessorTimeout = null;
@@ -224,6 +226,20 @@ class RectangleCamera extends PureComponent {
             feedbackState: true,
             currentImage: croppedImage,
         });
+        let refImageName = getRefImageName(croppedImage);
+        let reference = storage().ref(refImageName);
+        let task = reference.putFile(croppedImage);
+        console.log("success")
+
+        task.then(() => {
+            console.log("Upload");
+            this.callGoogleVisionApi("gs://user-nvp.appspot.com/" + refImageName);
+
+        }).catch((e) => {
+            console.log(e)
+            console.log("에러")
+        });
+
 
         console.log('===croppedImage===');
     };
@@ -361,7 +377,10 @@ class RectangleCamera extends PureComponent {
                     <View style={rectangleStyles.loadingContainer}>
                         <View style={rectangleStyles.processingContainer}>
                             <ActivityIndicator color="#333333" size="large" />
-                            <Text style={{ color: '#333333', fontSize: 30, marginTop: 10 }}>
+                            <Text style={{
+                                fontFamily: 'DoHyeon-Regular',
+                                color: '#333333', fontSize: 30, marginTop: 10
+                            }}>
                                 로딩중입니다
                             </Text>
                         </View>
@@ -395,18 +414,11 @@ class RectangleCamera extends PureComponent {
                 preparedImgages: 'file://' + this.state.currentImage,
                 isScanned: true,
             });
-
-            console.log('====this.state.preparedImgages===');
-            registerImage(this.state.currentImage);
-            const refImageName = getRefImageName(this.state.currentImage);
-            console.log(refImageName);
-
-            // this.callGoogleVisionApi("https://storage.googleapis.com/user-nvp.appspot.com/C1640768028.jpeg");
-            callGoogleVisionApi("gs://user-nvp.appspot.com/" + refImageName);
+            this.props.setIdCard(this.state.idCardName, 'file://' + this.state.currentImage)
 
         }
     };
-    // https://storage.googleapis.com/user-nvp.appspot.com/C1640768028.jpeg
+
     callGoogleVisionApi = async (uri) => {
         console.log(uri);
         let googleVisionRes = await fetch(config.googleCloud.api + config.googleCloud.apiKey, {
@@ -431,9 +443,12 @@ class RectangleCamera extends PureComponent {
 
         await googleVisionRes.text()
             .then(googleVisionRes => {
-                console.log(googleVisionRes.description);
+
                 if (googleVisionRes) {
 
+                    this.setState({
+                        idCardName: getIdOcrName(JSON.parse(googleVisionRes).responses[0].fullTextAnnotation.text.split('\n'))
+                    })
                 }
             }).catch((err) => { console.log(err) })
     }
@@ -451,7 +466,7 @@ class RectangleCamera extends PureComponent {
                                 alignItems: 'center',
                                 paddingBottom: hp(3),
                             }}>
-                            <Text style={{ fontSize: wp(5), fontFamily: 'DoHyeon-Regular' }}>
+                            <Text style={rectangleStyles.idCardResult}>
                                 신분증 촬영 결과
                             </Text>
                         </View>
@@ -471,13 +486,26 @@ class RectangleCamera extends PureComponent {
 
                         </View>
 
+                        <View style={rectangleStyles.ocrResultContainer}>
+                            <View style={ocrStyles.ocrResultTitleView}>
+                                <Text style={ocrStyles.ocrResultTitle}>OCR</Text>
+                                <Text style={ocrStyles.ocrResultTitle}>분석결과</Text>
+                            </View>
+                            <View style={ocrStyles.ocrContentView}>
+                                <Text style={ocrStyles.ocrTitle}>성명</Text>
+                                <Text style={ocrStyles.ocrText}>{this.state.idCardName}</Text>
+                            </View>
 
-                        <View
-                            style={{
-                                height: hp(15),
-                                paddingTop: hp(7),
-                            }}>
+                        </View>
+
+                        <View style={{
+                            height: hp(20),
+                            paddingBottom: hp(3),
+                        }}>
                             <View style={rectangleStyles.btnContainer}>
+
+
+
                                 <View style={rectangleStyles.btnArea_l}>
                                     <TouchableOpacity
                                         style={rectangleStyles.delbtnoutline}
@@ -501,7 +529,9 @@ class RectangleCamera extends PureComponent {
                                         <Text style={rectangleStyles.btn_r_text}>사용하기</Text>
                                     </TouchableOpacity>
                                 </View>
+
                             </View>
+
                         </View>
                     </SafeAreaView>
                 </>
@@ -587,21 +617,7 @@ class RectangleCamera extends PureComponent {
         return <View style={rectangleStyles.cameraNotAvailableContainer}>{message}</View>;
     }
     render() {
-        // const getPhotos = async () => {
-
-        //     try {
-        //         const { edges } = await CameraRoll.getPhotos({
-        //             first: 10,
-        //             assetType: 'Photos'
-        //         });
-        //         console.log('📸', edges);
-
-        //     } catch (error) {
-        //         console.log('getPhoto', error);
-        //     }
-        // };
-
-        // getPhotos();
+        console.log()
 
         return (
             <View
