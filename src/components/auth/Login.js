@@ -4,7 +4,7 @@ import { View, Text, TextInput, Keyboard } from 'react-native';
 import { Button } from 'react-native-paper'
 import UserButton from '../UserButton';
 import colors from '../../assets/colors/color';
-import authStyles from '../../assets/styles/authStyles';
+import authStyles from '../../assets/styles/AuthStyles';
 import { TouchableWithoutFeedback } from 'react-native';
 
 function Login(props) {
