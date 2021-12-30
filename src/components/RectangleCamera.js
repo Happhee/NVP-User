@@ -22,7 +22,7 @@ import TextScan from './TextScan';
 import CameraRoll from '@react-native-community/cameraroll';
 
 import { registerImage, getRefImageName } from '../utils/firebaseStorage';
-
+import { callGoogleVisionApi } from '../utils/googleVision';
 
 import AutoHeightImage from 'react-native-auto-height-image';
 import rectangleStyles from '../assets/styles/rectangleCamera';
@@ -400,13 +400,15 @@ class RectangleCamera extends PureComponent {
             registerImage(this.state.currentImage);
             const refImageName = getRefImageName(this.state.currentImage);
             console.log(refImageName);
-            // this.callGoogleVisionApi("https://storage.googleapis.com/user-nvp.appspot.com/appstore.png");
 
+            // this.callGoogleVisionApi("https://storage.googleapis.com/user-nvp.appspot.com/C1640768028.jpeg");
+            callGoogleVisionApi("gs://user-nvp.appspot.com/" + refImageName);
 
         }
     };
-
+    // https://storage.googleapis.com/user-nvp.appspot.com/C1640768028.jpeg
     callGoogleVisionApi = async (uri) => {
+        console.log(uri);
         let googleVisionRes = await fetch(config.googleCloud.api + config.googleCloud.apiKey, {
             method: 'POST',
             body: JSON.stringify({
@@ -426,6 +428,7 @@ class RectangleCamera extends PureComponent {
                 ]
             })
         });
+
         await googleVisionRes.text()
             .then(googleVisionRes => {
                 console.log(googleVisionRes.description);

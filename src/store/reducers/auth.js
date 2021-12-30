@@ -9,7 +9,9 @@ const initialState = {
     phoneNumber: '',
     message: '',
     idCardName: '',
+    idCardFilePath: '',
     vaccinePassName: '',
+    vaccinePassFilePath: '',
     fileName: '',
     date: ''
 }
@@ -73,6 +75,13 @@ export default function authReducer(state = initialState, action) {
             return {
                 ...state,
                 passWord: action.passWord
+            }
+
+        case types.REGISTER_VACCINE_PASS:
+            return {
+                ...state,
+                vaccinePassName: action.vaccinePassName,
+                vaccinePassFilePath: action.vaccinePassFilePath
             }
 
 

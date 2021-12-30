@@ -35,11 +35,7 @@ const AuthStackScreen = () => {
                     title: '',
                     headerBackTitleVisible: false,
                 }} />
-            <Stack.Screen name="TakeVaccinePass" component={TakeVaccinePassScreen}
-                options={{
-                    title: '',
-                    headerBackTitleVisible: false,
-                }} />
+
             <Stack.Screen name="TakeTextMessage" component={TakeTextMessageScreen}
                 options={{
                     title: '',

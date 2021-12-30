@@ -2,26 +2,75 @@ import React, { useEffect, useState, useCallback } from 'react';
 import deviceInfoModule from 'react-native-device-info';
 import { View, Text, TextInput, Keyboard, Image } from 'react-native';
 import RegisterButton from '../RegisterButton';
-import NextButton from '../NextButton';
+import NvpButton from '../NvpButton';
 import signUp from '../../assets/styles/signUp';
+import ocrStyles from '../../assets/styles/ocrStyles';
 import { TouchableWithoutFeedback } from 'react-native';
 import { launchImageLibrary } from 'react-native-image-picker';
-import { registerImage, getRefImageName } from '../../utils/firebaseStorage';
+
+import storage from '@react-native-firebase/storage';
+import config from '../../../config.json';
+import { getRefImageName, getOcrName } from '../../utils/googleVision';
+import OcrResult from '../OcrResult';
+import { Alert } from 'react-native';
+
 function TakeVaccinePass(props) {
 
     let [imageUri, setImageUri] = useState('');
+    let [description, setDescription] = useState('');
+
     const openPicker = () => {
         launchImageLibrary({}, (response) => {
 
-            console.log(response.assets[0].uri);
             setImageUri(response.assets[0].uri);
 
-            console.log("가져오기 " + response.assets[0].uri);
-            registerImage(response.assets[0].uri);
-            const name = getRefImageName(response.assets[0].uri);
-            console.log(name);
+            let refImageName = getRefImageName(response.assets[0].uri);
+            let reference = storage().ref(refImageName);
+            let task = reference.putFile(response.assets[0].uri);
+            console.log("success")
+
+            task.then(() => {
+                callGoogleVisionApi("gs://user-nvp.appspot.com/" + refImageName);
+
+            }).catch((e) => {
+                console.log(e);
+            });
+
         })
     }
+
+    const callGoogleVisionApi = async (uri) => {
+        let googleVisionRes = await fetch(config.googleCloud.api + config.googleCloud.apiKey, {
+            method: 'POST',
+            body: JSON.stringify({
+                "requests": [
+                    {
+                        "features": [
+                            {
+                                "type": "DOCUMENT_TEXT_DETECTION"
+                            }
+                        ],
+                        "image": {
+                            "source": {
+                                "imageUri": uri
+                            }
+                        }
+                    }
+                ]
+            })
+        });
+
+        await googleVisionRes.text()
+            .then(googleVisionRes => {
+                console.log(googleVisionRes);
+                if (googleVisionRes) {
+                    setDescription(JSON.parse(googleVisionRes).responses[0].fullTextAnnotation.text.split('\n'));
+                }
+            }).catch((err) => { console.log(err) })
+    }
+    console.log(description)
+    console.log(props.auth)
+
     return (
 
         <View style={signUp.container}>
@@ -38,9 +87,14 @@ function TakeVaccinePass(props) {
                 <Image
                     source={{ uri: imageUri }} style={{ width: '100%', height: '100%' }} />
             </View>
+            <OcrResult description={description} />
             <View style={signUp.footer}>
-                <NextButton
+                <NvpButton
+                    icon="save"
                     onPress={function () {
+                        Alert.alert("백신 증명서가 등록되었습니다")
+                        props.setVaccinePass(getOcrName(description), imageUri);
+
                         props.navigation.navigate('CheckCertificate')
                     }} />
             </View>

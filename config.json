@@ -1,6 +1,7 @@
 {
     "googleCloud": {
         "api": "https://vision.googleapis.com/v1/images:annotate?key=",
-        "apiKey": "AIzaSyCdq3H5XBJBGapGzGbNBQz1Cn-ShuKPH-I"
+        "apiKey": "AIzaSyCdq3H5XBJBGapGzGbNBQz1Cn-ShuKPH-I",
+        "userNvp": "https://storage.googleapis.com/user-nvp.appspot.com/"
     }
 }

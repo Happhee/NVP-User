@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import deviceInfoModule from 'react-native-device-info';
 import { View, Text, TextInput, Keyboard } from 'react-native';
 import SignUpButton from '../SignUpButton';
-import NextButton from '../NextButton';
+import NvpButton from '../NvpButton';
 import signUp from '../../assets/styles/signUp';
 import { TouchableWithoutFeedback } from 'react-native';
 import colors from '../../assets/colors/color';
@@ -88,7 +88,9 @@ function SetPassword(props) {
                 </View>
 
                 <View style={signUp.footer}>
-                    <NextButton
+                    <NvpButton
+                        icon="arrow-right"
+
                         onPress={function () {
                             if (successPassword) {
                                 props.navigation.navigate('CheckCertificate')

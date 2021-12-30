@@ -1,15 +1,14 @@
 import TakeVaccinePass from '../../components/auth/TakeVaccinePass';
 import { connect } from "react-redux";
-import { login } from "../../store/actions/userAction";
-
+import { setVaccinePass } from '../../store/actions/authAction';
 function mapReduxStateToReactProps(state) {
     return state;
 }
 
 function mapReduxDispatchToReactProps(dispatch) {
     return {
-        onConfirm: function () {
-            dispatch();
+        setVaccinePass: function (vaccinePassName, vaccinePassFilePath) {
+            dispatch(setVaccinePass(vaccinePassName, vaccinePassFilePath));
         }
     }
 }
