@@ -61,6 +61,7 @@ function ResetPassword(props) {
 
                 <View style={signUp.footer}>
                     <NvpButton
+                        icon="arrow-right"
                         onPress={function () {
                             props.navigation.navigate('Login')
                         }} />

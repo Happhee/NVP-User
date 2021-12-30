@@ -89,6 +89,8 @@ function SetPassword(props) {
 
                 <View style={signUp.footer}>
                     <NvpButton
+                        icon="arrow-right"
+
                         onPress={function () {
                             if (successPassword) {
                                 props.navigation.navigate('CheckCertificate')
