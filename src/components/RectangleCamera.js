@@ -229,6 +229,7 @@ class RectangleCamera extends PureComponent {
         let refImageName = getRefImageName(croppedImage);
         let reference = storage().ref(refImageName);
         let task = reference.putFile(croppedImage);
+
         console.log("success")
 
         task.then(() => {
@@ -449,6 +450,8 @@ class RectangleCamera extends PureComponent {
                     this.setState({
                         idCardName: getIdOcrName(JSON.parse(googleVisionRes).responses[0].fullTextAnnotation.text.split('\n'))
                     })
+                    const imageRef = storage().refFromURL(uri);
+                    imageRef.delete();
                 }
             }).catch((err) => { console.log(err) })
     }
