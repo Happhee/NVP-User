@@ -4,13 +4,14 @@ import { View, Text, TextInput, Keyboard } from 'react-native';
 import { Button } from 'react-native-paper'
 import UserButton from '../UserButton';
 import colors from '../../assets/colors/color';
-import authStyles from '../../assets/styles/AuthStyles';
+import authStyles from '../../assets/styles/authStyles';
 import { TouchableWithoutFeedback } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
 function Login(props) {
     let [passWord, setPassword] = useState('');
     const uniqueId = deviceInfoModule.getUniqueId();
+    console.log(props.auth);
 
     return (
         <TouchableWithoutFeedback onPress={() => {
