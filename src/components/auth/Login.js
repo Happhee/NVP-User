@@ -40,21 +40,12 @@ function Login(props) {
                         numberOfLines={1}
                         secureTextEntry
                         onChangeText={(inputPw) => {
-                            if (inputPw.length == 6) {
-                                const dataToSubmit = {
-                                    uniqueId: uniqueId,
-                                    passWord: passWord
-                                }
-                                props.onPressLogin(dataToSubmit);
-                                setPassword('');
+                            setPassword(inputPw);
 
-                                // props.navigation.navigate('Main')
+                            if (inputPw.length == 6) {
                                 Keyboard.dismiss();
                             }
-                            else {
-                                setPassword(inputPw);
 
-                            }
                         }}
                     />
 
@@ -67,6 +58,7 @@ function Login(props) {
                                     id: uniqueId,
                                     password: passWord
                                 }
+                                console.log(dataToSubmit);
                                 props.onPressLogin(dataToSubmit);
                                 setPassword('');
                                 // props.navigation.navigate('Main')
