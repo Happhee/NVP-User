@@ -7,8 +7,8 @@ function mapReduxStateToReactProps(state) {
 
 function mapReduxDispatchToReactProps(dispatch) {
     return {
-        setVaccinePass: function (vaccinePassName, vaccinePassFilePath) {
-            dispatch(setVaccinePass(vaccinePassName, vaccinePassFilePath));
+        setVaccinePass: function (vaccinePassName, vaccinePassFilePath, fileName) {
+            dispatch(setVaccinePass(vaccinePassName, vaccinePassFilePath, fileName));
         }
     }
 }

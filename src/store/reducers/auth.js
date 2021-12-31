@@ -79,7 +79,8 @@ export default function authReducer(state = initialState, action) {
             return {
                 ...state,
                 vaccinePassName: action.vaccinePassName,
-                vaccinePassFilePath: action.vaccinePassFilePath
+                vaccinePassFilePath: action.vaccinePassFilePath,
+                fileName: action.fileName
             }
 
         case types.REGISTER_ID_CARD:

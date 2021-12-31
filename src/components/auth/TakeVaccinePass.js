@@ -18,6 +18,7 @@ function TakeVaccinePass(props) {
 
     let [imageUri, setImageUri] = useState('');
     let [description, setDescription] = useState('');
+    let [fileName, setFileName] = useState('');
 
     const openPicker = () => {
         launchImageLibrary({}, (response) => {
@@ -31,6 +32,7 @@ function TakeVaccinePass(props) {
 
             task.then(() => {
                 callGoogleVisionApi("gs://user-nvp.appspot.com/" + refImageName);
+                setFileName(refImageName);
 
             }).catch((e) => {
                 console.log(e);
@@ -93,7 +95,8 @@ function TakeVaccinePass(props) {
                     icon="save"
                     onPress={function () {
                         Alert.alert("백신 증명서가 등록되었습니다")
-                        props.setVaccinePass(getOcrName(description), imageUri);
+                        console.log(fileName)
+                        props.setVaccinePass(getOcrName(description), imageUri, fileName);
 
                         props.navigation.navigate('CheckCertificate')
                     }} />

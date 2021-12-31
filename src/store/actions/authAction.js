@@ -81,11 +81,12 @@ export function setPassword(passWord) {
     }
 }
 
-export function setVaccinePass(vaccinePassName, vaccinePassFilePath) {
+export function setVaccinePass(vaccinePassName, vaccinePassFilePath, fileName) {
     return {
         type: types.REGISTER_VACCINE_PASS,
         vaccinePassName: vaccinePassName,
-        vaccinePassFilePath: vaccinePassFilePath
+        vaccinePassFilePath: vaccinePassFilePath,
+        fileName: fileName
     }
 }
 
