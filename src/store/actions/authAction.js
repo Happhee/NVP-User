@@ -1,10 +1,13 @@
 import * as types from './actionTypes';
 import { request } from '../../utils/axios';
 
-const USERS_URL = "/api/users";
+const USERS_URL = "/users";
 const CHECK_URL = "/check"
 
 export function login(dataToSubmit) {
+
+    console.log("로그인 전송 " + dataToSubmit);
+    console.log(dataToSubmit);
 
     const data = request("POST", USERS_URL + "/login", dataToSubmit);
     // data: {
@@ -91,5 +94,16 @@ export function setIdCard(idCardName, idCardFilePath) {
         type: types.REGISTER_ID_CARD,
         idCardName: idCardName,
         idCardFilePath: idCardFilePath
+    }
+}
+
+
+export function signup(dataToSubmit) {
+    const data = request("POST", USERS_URL + '/signup', dataToSubmit);
+
+    return {
+        type: types.SIGN_UP,
+        payload: data,
+        data: dataToSubmit
     }
 }

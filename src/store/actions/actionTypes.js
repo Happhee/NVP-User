@@ -2,6 +2,7 @@
 export const LOGIN = "LOGIN";
 export const AUTO_LOGIN = "AUTO_LOGIN";
 export const LOGOUT = "LOGOUT";
+export const SIGN_UP = "SIGN_UP";
 
 export const POST_MESSAGE = "POST_MESSAGE";
 export const GET_MESSAGE = "GET_MESSAGE";

@@ -5,6 +5,14 @@ import RegisterButton from '../RegisterButton';
 import NvpButton from '../NvpButton';
 import signUp from '../../assets/styles/signUp';
 
+function getFormatDate(date) {
+    let year = date.getFullYear();
+    let month = (1 + date.getMonth());
+    month = month >= 10 ? month : '0' + month;
+    let day = date.getDate();
+    day = day > 10 ? day : '0' + day;
+    return year + '/' + month + '/' + day;
+}
 function CheckCertificate(props) {
 
     console.log(props.auth);
@@ -48,6 +56,17 @@ function CheckCertificate(props) {
                         if (icon === "remove") {
                             Alert.alert("본인의 신분증과 백신 증명서를 등록해주세요!")
                         } else {
+                            const nowDate = new Date();
+
+                            const dataToSubmit = {
+                                id: props.auth.uniqueId,
+                                password: props.auth.passWord,
+                                name: props.auth.name,
+                                phone: props.auth.phoneNumber,
+                                filename: props.auth.vaccinePassName,
+                                filedate: getFormatDate(new Date())
+                            }
+                            props.signup(dataToSubmit);
                             Alert.alert("회원가입이 완료되었습니다 ㅎㅅㅎ ")
                             props.navigation.navigate('Login')
 

@@ -1,6 +1,7 @@
 
 import CheckCertificate from "../../components/auth/CheckCertificate";
 import { connect } from "react-redux";
+import { signup } from "../../store/actions/authAction";
 
 
 function mapReduxStateToReactProps(state) {
@@ -9,8 +10,8 @@ function mapReduxStateToReactProps(state) {
 
 function mapReduxDispatchToReactProps(dispatch) {
     return {
-        onConfirm: function () {
-            dispatch();
+        signup: function (dataToSubmit) {
+            dispatch(signup(dataToSubmit));
         }
     }
 }
