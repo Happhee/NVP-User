@@ -20,7 +20,6 @@ export default function authReducer(state = initialState, action) {
 
     switch (action.type) {
         case types.LOGIN:
-            console.log(action.uniqueId)
             AsyncStorage.multiSet([
                 ['accessToken', "action.data.accessToken"],
                 ['refreshToken', "action.data.refreshToken"],
@@ -89,6 +88,22 @@ export default function authReducer(state = initialState, action) {
                 idCardName: action.idCardName,
                 idCardFilePath: action.idCardFilePath
             }
+
+        case types.SIGN_UP:
+            AsyncStorage.multiSet([
+                ['accessToken', action.payload.token],
+                ['uniqueId', action.data.id]
+            ])
+            return {
+                ...state,
+                uniqueId: action.data.id,
+                passWord: action.data.password,
+                name: action.data.name,
+                phoneNumber: action.data.phone,
+                vaccinePassFilePath: action.data.fileName,
+                date: action.data.filedate
+            }
+
 
 
     }
