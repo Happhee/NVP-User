@@ -1,10 +1,10 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import axios from 'axios';
 
-const USER_URL = "http://localhost:3000/api"
+const USER_URL = "http://52.152.236.81:8080/api"
 const axiosInstance = axios.create({
     baseURL: USER_URL,
-    timeout: 1000,
+
 });
 let refreshToken = '';
 
@@ -37,42 +37,42 @@ axiosInstance.interceptors.response.use(
     function (res) {
         return res
     },
-    //200 이외 응답
-    async function (err) {
-        const {
-            config,
-            res: { status },
-        } = err;
+    // //200 이외 응답
+    // async function (err) {
+    //     const {
+    //         config,
+    //         res: { status },
+    //     } = err;
 
-        if (status === 401) {
-            //토큰 만료시
-            if (!err.res.ok) {
-                const originalReq = config;
-                const refreshToken = await AsyncStorage.getItem('refreshToken');
-                if (refreshToken) {
-                    const { data } = await axios.post(
-                        USER_URL + '/users/refresh',
-                        { refreshToken },
-                    );
+    //     if (status === 401) {
+    //         //토큰 만료시
+    //         if (!err.res.ok) {
+    //             const originalReq = config;
+    //             const refreshToken = await AsyncStorage.getItem('refreshToken');
+    //             if (refreshToken) {
+    //                 const { data } = await axios.post(
+    //                     USER_URL + '/users/refresh',
+    //                     { refreshToken },
+    //                 );
 
-                    const {
-                        accessToken: newAccessToken,
-                        refreshToken: newRefreshToken
-                    } = data;
+    //                 const {
+    //                     accessToken: newAccessToken,
+    //                     refreshToken: newRefreshToken
+    //                 } = data;
 
-                    await AsyncStorage.multiSet([
-                        ['accessToken', newAccessToken],
-                        ['refreshToken', newRefreshToken]
-                    ]);
+    //                 await AsyncStorage.multiSet([
+    //                     ['accessToken', newAccessToken],
+    //                     ['refreshToken', newRefreshToken]
+    //                 ]);
 
-                    axios.defaults.headers.common.Authorization = `Bearer ${newAccessToken}`;
-                    originalReq.headers.Authorization = `Bearer ${newAccessToken}`;
-                    return axios(originalReq);
-                }
-            }
-        }
-        return Promise.reject(err);
-    }
+    //                 axios.defaults.headers.common.Authorization = `Bearer ${newAccessToken}`;
+    //                 originalReq.headers.Authorization = `Bearer ${newAccessToken}`;
+    //                 return axios(originalReq);
+    //             }
+    //         }
+    //     }
+    //     return Promise.reject(err);
+    // }
 )
 
 export default axiosInstance;
