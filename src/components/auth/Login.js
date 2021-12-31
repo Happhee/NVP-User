@@ -26,7 +26,6 @@ function Login(props) {
                 <View style={authStyles.title}>
                     <Text style={authStyles.titleFont}>등록한 간편 비밀번호를</Text>
                     <Text style={authStyles.titleFont}>입력해주세요</Text>
-
                 </View>
 
                 <View style={authStyles.content} >
