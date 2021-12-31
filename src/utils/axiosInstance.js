@@ -6,7 +6,18 @@ const axiosInstance = axios.create({
     baseURL: USER_URL,
     timeout: 1000,
 });
-const refreshToken = await AsyncStorage.getItem('refreshToken');
+let refreshToken = '';
+
+AsyncStorage.getItem('refreshToken')
+    .then((value) => {
+        console.log(value)
+        if (value != null) {
+            refreshToken = value
+
+        }
+    });
+
+console.log("음" + refreshToken)
 //요청 가로채기
 axiosInstance.interceptors.request.use(
     //요청 보내기전 수행
