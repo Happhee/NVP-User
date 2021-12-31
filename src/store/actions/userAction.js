@@ -3,18 +3,10 @@ import { request } from '../../utils/axios';
 
 const USERS_URL = "/api/users";
 
-export function login(dataToSubmit) {
+export function getUserProfile(dataToSubmit) {
+    const data = request("GET",)
+}
 
-    const data = request("GET", USERS_URL
-        + "?uniqueID=" + dataToSubmit.uniqueId
-        + "&simplePw=" + dataToSubmit.passWord);
-    return {
-        type: types.LOGIN,
-        payload: data,
-        uniqueId: dataToSubmit.uniqueId
-    }
-
-};
 
 export function autoLogin(dataToSubmit) {
     const data = request("POST", USERS_URL, dataToSubmit);
