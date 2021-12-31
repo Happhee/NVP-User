@@ -1,7 +1,7 @@
 import * as types from './actionTypes';
 import { request } from '../../utils/axios';
 
-const USERS_URL = "/api/users";
+const USERS_URL = "/users";
 
 export function getUserProfile(dataToSubmit) {
     const data = request("GET",)
