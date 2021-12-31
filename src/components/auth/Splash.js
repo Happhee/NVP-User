@@ -9,8 +9,8 @@ function Splash(props) {
 
     useEffect(() => {
         setTimeout(() => {
-            // AsyncStorage.clear()
-            AsyncStorage.getItem('user')
+            AsyncStorage.clear()
+            AsyncStorage.getItem('refreshToken')
                 .then((value) => {
                     console.log(value)
                     if (value != null) {
