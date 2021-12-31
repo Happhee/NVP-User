@@ -1,14 +1,14 @@
 import AsyncStorage from '@react-native-community/async-storage';
-import axios from 'axios'l
+import axios from 'axios';
 
 const USER_URL = "http://localhost:3000/api"
-const instance = axios.create({
+const axiosInstance = axios.create({
     baseURL: USER_URL,
     timeout: 1000,
 });
 
 //요청 가로채기
-instance.interceptors.request.use(
+axiosInstance.interceptors.request.use(
     //요청 보내기전 수행
     function (config) {
 
@@ -22,7 +22,7 @@ instance.interceptors.request.use(
 )
 
 //응답 가로채기
-instance.interceptors.response.use(
+axiosInstance.interceptors.response.use(
     //200대 응답 
     function (res) {
         return res
@@ -62,3 +62,5 @@ instance.interceptors.response.use(
         return Promise.reject(err);
     }
 )
+
+export default axiosInstance;

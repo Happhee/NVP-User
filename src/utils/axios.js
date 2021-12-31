@@ -1,16 +1,21 @@
-import axios from "axios";
+import axiosInstance from './axiosInstance';
 
-const DOMAIN = "";
-axios.defaults.withCredentials = true; // 쿠키 데이터를 전송받기 위해å
 export const request = (method, url, data) => {
 
-    return axios({
+    return axiosInstance({
         method,
-        url: DOMAIN + url,
+        url: url,
         data,
     })
         .then((res) => res.data)
         .catch((err) => console.log(err));
+    // return axios({
+    //     method,
+    //     url: DOMAIN + url,
+    //     data,
+    // })
+    //     .then((res) => res.data)
+    //     .catch((err) => console.log(err));
 };
 
 
