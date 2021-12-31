@@ -23,3 +23,8 @@ export const MODIFY_PASSWORD = "MODIFY_PASSWORD";
 //timer
 export const START_TIMER = "START_TIMER";
 export const STOP_TIMER = "STOP_TIMER";
+
+
+//user
+export const GET_USER_PROFILE = "GET_USER_PROFILE";
+
