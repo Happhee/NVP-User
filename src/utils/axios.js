@@ -1,5 +1,7 @@
 import axiosInstance from './axiosInstance';
 
+axiosInstance.defaults.withCredentials = true
+
 export const request = (method, url, data) => {
 
     return axiosInstance({
@@ -7,7 +9,7 @@ export const request = (method, url, data) => {
         url: url,
         data,
     })
-        .then((res) => res.data)
+        .then((res) => res)
         .catch((err) => console.log(err));
     // return axios({
     //     method,
@@ -17,6 +19,3 @@ export const request = (method, url, data) => {
     //     .then((res) => res.data)
     //     .catch((err) => console.log(err));
 };
-
-
-
