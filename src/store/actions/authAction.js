@@ -6,10 +6,8 @@ const CHECK_URL = "/check"
 
 export function login(dataToSubmit) {
 
-    console.log("로그인 전송 " + dataToSubmit);
-    console.log(dataToSubmit);
-
     const data = request("POST", USERS_URL + "/login", dataToSubmit);
+
     // data: {
     //     accessToken,
     //     refreshToken,

@@ -20,9 +20,10 @@ export default function authReducer(state = initialState, action) {
 
     switch (action.type) {
         case types.LOGIN:
+            console.log(action);
             AsyncStorage.multiSet([
-                ['accessToken', "action.data.accessToken"],
-                ['refreshToken', "action.data.refreshToken"],
+                ['accessToken', 'action.data.accessToken'],
+                ['refreshToken', 'action.data.refreshToken'],
                 ['uniqueId', action.uniqueId]
             ])
 
