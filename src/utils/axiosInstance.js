@@ -40,7 +40,7 @@ axiosInstance.interceptors.response.use(
     // //200 이외 응답
     async function (err) {
         console.log(err.config);
-        console.log(err);
+        console.log(err.req);
         //     const {
         //         config,
         //         res: { status },
