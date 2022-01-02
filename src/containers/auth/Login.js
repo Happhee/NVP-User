@@ -10,7 +10,14 @@ function mapReduxStateToReactProps(state) {
 function mapReduxDispatchToReactProps(dispatch) {
     return {
         onPressLogin: function (uniqueId, passWord) {
-            dispatch(login(uniqueId, passWord));
+            dispatch(login(uniqueId, passWord))
+                .then(res => {
+                    if (res.payload.ok) {
+                        console.log(res);
+                    }
+                }).catch((err) => {
+                    console.log(err);
+                });
         }
     }
 }
