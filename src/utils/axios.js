@@ -9,7 +9,7 @@ export const request = (method, url, data) => {
         url: url,
         data,
     })
-        .then((res) => res)
+        .then((res) => res.data)
         .catch((err) => console.log(err));
     // return axios({
     //     method,
