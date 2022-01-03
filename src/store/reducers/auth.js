@@ -28,11 +28,7 @@ function authReducer(state = initialState, action) {
 
             break;
 
-        case types.AUTO_LOGIN:
-            return {
-                ...state,
-                uniqueId: action.payload.userId
-            }
+
 
         case types.LOGOUT:
             AsyncStorage.removeItem('userUniqueId');
@@ -108,25 +104,5 @@ function authReducer(state = initialState, action) {
     }
     return state;
 }
-
-
-// const applyLogin = async (state: any, dataToSubmit) => {
-
-
-//     const res = await request("POST", USERS_URL + "/login", dataToSubmit)
-
-//     AsyncStorage.multiSet([
-//         ['accessToken', res.data.accessToken],
-//         ['uniqueId', dataToSubmit.id]
-//     ])
-
-//     console.log(res)
-//     console.log('적용')
-//     return {
-//         ...state,
-//         uniqueId: dataToSubmit.id
-//     }
-
-// }
 
 export default authReducer;
