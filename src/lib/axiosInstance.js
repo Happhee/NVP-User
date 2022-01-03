@@ -2,9 +2,9 @@ import AsyncStorage from '@react-native-community/async-storage';
 import axios from 'axios';
 
 const USER_URL = "http://52.152.236.81:8080/api"
-
 const axiosInstance = axios.create({
     baseURL: USER_URL,
+
 });
 let refreshToken = '';
 
@@ -17,7 +17,7 @@ AsyncStorage.getItem('refreshToken')
         }
     });
 
-console.log('리프레쉬토큰' + refreshToken)
+console.log("음" + refreshToken)
 //요청 가로채기
 axiosInstance.interceptors.request.use(
     //요청 보내기전 수행
@@ -35,7 +35,9 @@ axiosInstance.interceptors.request.use(
 axiosInstance.interceptors.response.use(
     //200대 응답 
     function (res) {
-        return res
+        console.log('응답')
+        console.log(res.data)
+        return res.data
     },
     // //200 이외 응답
     async function (err) {
@@ -77,4 +79,5 @@ axiosInstance.interceptors.response.use(
     }
 )
 
+console.log(axiosInstance);
 export default axiosInstance;
