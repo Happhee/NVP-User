@@ -1,6 +1,4 @@
 // auth
-export const LOGIN = "LOGIN";
-export const AUTO_LOGIN = "AUTO_LOGIN";
 export const LOGOUT = "LOGOUT";
 export const SIGN_UP = "SIGN_UP";
 
@@ -31,7 +29,12 @@ export const GET_USER_PROFILE = "GET_USER_PROFILE";
 
 
 //login
-// export const LOGIN = "LOGIN";
+export const LOGIN = "LOGIN";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
+
+//autoLogin
+export const AUTO_LOGIN = "AUTO_LOGIN";
+export const AUTO_LOGIN_SUCCESS = "AUTO_LOGIN_SUCCESS";
+export const AUTO_LOGIN_FAILURE = "AUTO_LOGIN_FAILURE";
 
