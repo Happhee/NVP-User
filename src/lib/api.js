@@ -10,10 +10,5 @@ export const request = (method, url, data) => {
         data
     })
 }
-const USERS_URL = "/users";
-
-export const getLogin = (dataToSubmit) => {
-    axiosInstance.post(USERS_URL + '/login', dataToSubmit);
-}
 
 
