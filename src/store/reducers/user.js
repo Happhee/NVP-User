@@ -1,36 +1,35 @@
-import * as types from '../actions/actionTypes';
+
 import AsyncStorage from '@react-native-community/async-storage';
+import { AUTO_LOGIN_SUCCESS } from '../actions/actionTypes';
 
 const initialState = {
-    uniqueId: '',
-    passWord: ''
+
+    id: '',
+    filedate: '',
+    filename: '',
+    name: '',
+    phone: ''
 }
 
 export default function userReducer(state = initialState, action) {
+    console.log('유저 리듀서');
 
+    console.log(action);
+    console.log(action.id);
     switch (action.type) {
-        case types.LOGIN:
-            AsyncStorage.setItem(
-                'userUniqueId',
-                JSON.stringify({
-                    token: '',
-                    uniqueId: action.uniqueId
-                })
-            );
 
+        case AUTO_LOGIN_SUCCESS:
+            console.log(action);
             return {
                 ...state,
-                uniqueId: action.uniqueId
-            }
-        case types.AUTO_LOGIN:
-            return {
-                ...state,
-                uniqueId: action.payload.userId
+                id: action.id,
+                filedate: action.payload.filedate,
+                filename: action.payload.filename,
+                name: action.payload.name,
+                phone: action.payload.phone,
             }
 
-        case types.LOGOUT:
-            AsyncStorage.removeItem('userUniqueId');
-            return initialState;
+
     }
     return state;
 }

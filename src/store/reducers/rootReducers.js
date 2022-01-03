@@ -5,7 +5,7 @@ import userReducer from "./user";
 const rootReducers = combineReducers({
     login: loginReducer,
     // auth: authReducer,
-    // user: userReducer,
+    user: userReducer,
 });
 
 export default rootReducers;

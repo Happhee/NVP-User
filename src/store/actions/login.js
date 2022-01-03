@@ -57,7 +57,8 @@ export const autoLogin = (dataToSubmit) => {
                 console.log('자동로그인성공')
 
                 console.log(res);
-                dispatch(autoLoginSuccess(dataToSubmit.id, data))
+                console.log(dataToSubmit);
+                dispatch(autoLoginSuccess(dataToSubmit, data))
             })
             .catch(err => {
                 dispatch(autoLoginFailure(err))
@@ -71,9 +72,10 @@ export const autoLoginRequest = () => {
     }
 }
 
-export const autoLoginSuccess = (data) => {
+export const autoLoginSuccess = (id, data) => {
     return {
         type: AUTO_LOGIN_SUCCESS,
+        id: id,
         payload: data
     }
 }
