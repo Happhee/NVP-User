@@ -4,22 +4,9 @@ import { request } from '../../lib/api';
 const USERS_URL = "/users";
 const CHECK_URL = "/check"
 
-export function getLogin(dataToSubmit) {
-    return {
-        type: types.LOGIN,
-        dataToSubmit,
-    }
-}
 
 
-export function autoLogin(dataToSubmit) {
-    const data = request("POST", USERS_URL, dataToSubmit);
 
-    return {
-        type: types.AUTO_LOGIN,
-        payload: data,
-    }
-}
 
 export function logout() {
     return {
