@@ -40,7 +40,6 @@ axiosInstance.interceptors.response.use(
     //200대 응답 
     function (res) {
         console.log('응답')
-        console.log(res.data)
         return res.data
     },
     // //200 이외 응답

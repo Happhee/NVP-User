@@ -8,7 +8,7 @@ const initialState = {
 }
 const loginReducer = (state = initialState, action) => {
 
-    console.log(action);
+    console.log(action.type);
 
     switch (action.type) {
         case LOGIN, AUTO_LOGIN:
@@ -18,12 +18,19 @@ const loginReducer = (state = initialState, action) => {
                 loading: true
             }
 
-        case LOGIN_SUCCESS, AUTO_LOGIN_SUCCESS:
+        case LOGIN_SUCCESS:
+            AUTO_LOGIN_SUCCESS:
+            console.log('로그인성공')
+            console.log(action.payload);
+            console.log(action.id);
             AsyncStorage.multiSet([
                 ['accessToken', action.payload.accessToken],
                 ['refreshToken', action.payload.refreshToken],
                 ['id', action.id]
             ]);
+
+
+            console.log('로그인성공')
             return {
                 ...state,
                 loading: false,
