@@ -4,7 +4,7 @@ import authReducer from "./auth";
 import userReducer from "./user";
 const rootReducers = combineReducers({
     login: loginReducer,
-    // auth: authReducer,
+    auth: authReducer,
     user: userReducer,
 });
 
