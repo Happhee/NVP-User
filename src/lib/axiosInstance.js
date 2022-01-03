@@ -17,7 +17,7 @@ AsyncStorage.getItem('refreshToken')
         }
     });
 
-console.log("음" + refreshToken)
+console.log('리프레쉬토큰' + refreshToken)
 //요청 가로채기
 axiosInstance.interceptors.request.use(
     //요청 보내기전 수행
@@ -35,9 +35,7 @@ axiosInstance.interceptors.request.use(
 axiosInstance.interceptors.response.use(
     //200대 응답 
     function (res) {
-        console.log('응답')
-        console.log(res.data)
-        return res.data
+        return res
     },
     // //200 이외 응답
     async function (err) {
@@ -79,5 +77,4 @@ axiosInstance.interceptors.response.use(
     }
 )
 
-console.log(axiosInstance);
 export default axiosInstance;
