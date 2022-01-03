@@ -1,4 +1,5 @@
 import { LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE } from './actionTypes';
+import { AUTO_LOGIN, AUTO_LOGIN_SUCCESS, AUTO_LOGIN_FAILURE } from './actionTypes';
 import axiosInstance from '../../lib/axiosInstance';
 
 const USERS_URL = '/users';
@@ -25,12 +26,12 @@ export const loginRequest = (dataToSubmit) => {
 }
 
 export const loginSuccess = (id, data) => {
-    console.log('로그인성공')
+
 
     return {
         type: LOGIN_SUCCESS,
         payload: data,
-        uniqueId: id
+        id: id
     }
 }
 
@@ -44,5 +45,44 @@ export const loginFailure = err => {
 }
 
 
+export const autoLogin = (dataToSubmit, refreshToken) => {
+    return (dispatch) => {
+        console.log('자동로그인요청')
+        console.log(dataToSubmit);
+        dispatch(autoLoginRequest())
+
+        axiosInstance.get(USERS_URL + "/profile", dataToSubmit, headers : { 'Authorization'})
+            .then((res) => {
+                const data = res.data
+                console.log('자동로그인성공')
+
+                console.log(res);
+                dispatch(autoLoginSuccess(dataToSubmit.id, data))
+            })
+            .catch(err => {
+                dispatch(autoLoginFailure(err))
+            })
+    }
+}
+
+export const autoLoginRequest = () => {
+    return {
+        type: AUTO_LOGIN
+    }
+}
+
+export const autoLoginSuccess = (data) => {
+    return {
+        type: AUTO_LOGIN_SUCCESS,
+        payload: data
+    }
+}
+
+export const autoLoginFailure = (err) => {
+    return {
+        type: AUTO_LOGIN_FAILURE,
+        data: err,
+    }
+}
 
 
