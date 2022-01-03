@@ -29,3 +29,9 @@ export const STOP_TIMER = "STOP_TIMER";
 //user
 export const GET_USER_PROFILE = "GET_USER_PROFILE";
 
+
+//login
+// export const LOGIN = "LOGIN";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAILURE = "LOGIN_FAILURE";
+

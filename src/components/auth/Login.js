@@ -13,13 +13,13 @@ function Login(props) {
     const uniqueId = deviceInfoModule.getUniqueId();
     console.log('로그인화면');
 
-    console.log(props.auth);
-    AsyncStorage.getItem('accessToken')
-        .then((value) => {
-            console.log(value)
+    console.log(props);
+    // AsyncStorage.getItem('accessToken')
+    //     .then((value) => {
+    //         console.log(value)
 
-        }
-        );
+    //     }
+    //     );
     const onPressLogin = async (dataToSubmit) => {
         await props.onPressLogin(dataToSubmit);
     }
