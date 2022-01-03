@@ -5,17 +5,15 @@ import axiosInstance from '../../utils/axiosInstance';
 const USERS_URL = "/users";
 const CHECK_URL = "/check"
 
-// export const login = async (dataToSubmit) => {
-//     const data = await axiosInstance.post(USERS_URL + "/login", dataToSubmit);
-//     return {
-//         type: types.LOGIN,
-//         payload: data,
-//         uniqueId: dataToSubmit.id
-//     }
-// }
-export async function login(dataToSubmit) {
-    const data = await axiosInstance.post(USERS_URL + "/login", dataToSubmit);
-    // const data = request("POST", USERS_URL + "/login", dataToSubmit);
+export function getLogin(dataToSubmit) {
+    return {
+        type: types.LOGIN,
+        dataToSubmit,
+    }
+}
+export function login(dataToSubmit) {
+    // const data = await axiosInstance.post(USERS_URL + "/login", dataToSubmit);
+    const data = request("POST", USERS_URL + "/login", dataToSubmit);
 
     // data: {
     //     accessToken,
