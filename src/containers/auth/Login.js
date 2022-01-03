@@ -6,15 +6,13 @@ import { login } from "../../store/actions/auth";
 
 
 function mapReduxStateToReactProps(state) {
-
     return state;
 }
 
 function mapReduxDispatchToReactProps(dispatch) {
     return {
         onPressLogin: async (dataToSubmit) => {
-            dispatch(login(dataToSubmit))
-                ;
+            dispatch(login(dataToSubmit));
         }
     }
 }

@@ -2,9 +2,9 @@ import AsyncStorage from '@react-native-community/async-storage';
 import axios from 'axios';
 
 const USER_URL = "http://52.152.236.81:8080/api"
+
 const axiosInstance = axios.create({
     baseURL: USER_URL,
-
 });
 let refreshToken = '';
 
