@@ -35,7 +35,9 @@ axiosInstance.interceptors.request.use(
 axiosInstance.interceptors.response.use(
     //200대 응답 
     function (res) {
-        return res
+        console.log('응답')
+        console.log(res.data)
+        return res.data
     },
     // //200 이외 응답
     async function (err) {
@@ -77,4 +79,5 @@ axiosInstance.interceptors.response.use(
     }
 )
 
+console.log(axiosInstance);
 export default axiosInstance;
