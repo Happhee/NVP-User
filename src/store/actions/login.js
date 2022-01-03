@@ -45,13 +45,13 @@ export const loginFailure = err => {
 }
 
 
-export const autoLogin = (dataToSubmit, refreshToken) => {
+export const autoLogin = (dataToSubmit) => {
     return (dispatch) => {
         console.log('자동로그인요청')
         console.log(dataToSubmit);
         dispatch(autoLoginRequest())
 
-        axiosInstance.get(USERS_URL + "/profile", dataToSubmit, headers : { 'Authorization'})
+        axiosInstance.get(USERS_URL + "/profile", dataToSubmit)
             .then((res) => {
                 const data = res.data
                 console.log('자동로그인성공')
