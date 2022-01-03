@@ -8,8 +8,6 @@ const initialState = {
 }
 const loginReducer = (state = initialState, action) => {
 
-    console.log(action.type);
-
     switch (action.type) {
         case LOGIN, AUTO_LOGIN:
             console.log('로그인 또는 자동로그인')
@@ -19,7 +17,6 @@ const loginReducer = (state = initialState, action) => {
             }
 
         case LOGIN_SUCCESS:
-            AUTO_LOGIN_SUCCESS:
             console.log('로그인성공')
             console.log(action.payload);
             console.log(action.id);
