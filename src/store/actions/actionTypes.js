@@ -30,8 +30,8 @@ export const STOP_TIMER = "STOP_TIMER";
 export const GET_USER_PROFILE = "GET_USER_PROFILE";
 
 
-
-export const GET_LOGIN = "GET_LOGIN";
-export const GET_LOGIN_SUCCESS = "GET_LOGIN_SUCCESS";
-export const GET_LOGIN_FAILURE = "GET_LOGIN_FAILURE";
+//login
+// export const LOGIN = "LOGIN";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAILURE = "LOGIN_FAILURE";
 
