@@ -3,8 +3,8 @@ import authReducer from "./auth";
 import userReducer from "./user";
 import loginReducer from "./login";
 const rootReducers = combineReducers({
-    auth: authReducer,
-    user: userReducer,
+    // auth: authReducer,
+    // user: userReducer,
     login: loginReducer
 });
 
