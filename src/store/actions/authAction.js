@@ -1,6 +1,5 @@
 import * as types from './actionTypes';
-import { request } from '../../utils/axios';
-import axiosInstance from '../../utils/axiosInstance';
+import { request } from '../../lib/api';
 
 const USERS_URL = "/users";
 const CHECK_URL = "/check"
@@ -11,21 +10,7 @@ export function getLogin(dataToSubmit) {
         dataToSubmit,
     }
 }
-export function login(dataToSubmit) {
-    // const data = await axiosInstance.post(USERS_URL + "/login", dataToSubmit);
-    const data = request("POST", USERS_URL + "/login", dataToSubmit);
 
-    // data: {
-    //     accessToken,
-    //     refreshToken,
-    //   }
-    return {
-        type: types.LOGIN,
-        payload: data,
-        uniqueId: dataToSubmit.id
-    }
-
-};
 
 export function autoLogin(dataToSubmit) {
     const data = request("POST", USERS_URL, dataToSubmit);

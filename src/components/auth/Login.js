@@ -68,7 +68,7 @@ function Login(props) {
                                     password: passWord
                                 }
                                 // console.log(dataToSubmit);
-                                onPressLogin(dataToSubmit);
+                                props.onPressLogin(dataToSubmit)
                                 setPassword('');
                                 // props.navigation.navigate('Main')
                                 Keyboard.dismiss();

@@ -1,5 +1,5 @@
 import * as types from './actionTypes';
-import { request } from '../../utils/axios';
+
 
 const USERS_URL = "/users";
 
@@ -9,7 +9,7 @@ export function getUserProfile(dataToSubmit) {
 
 
 export function autoLogin(dataToSubmit) {
-    const data = request("POST", USERS_URL, dataToSubmit);
+    // const data = request("POST", USERS_URL, dataToSubmit);
 
     return {
         type: types.AUTO_LOGIN,

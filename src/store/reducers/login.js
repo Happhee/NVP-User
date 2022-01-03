@@ -9,16 +9,11 @@ const loginReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case LOGIN:
-            console.log('로그인시작');
-
             return {
                 ...state,
                 loading: true
             }
         case LOGIN_SUCCESS:
-            console.log('로그인성공 리듀서');
-            console.log(action.uniqueId)
-
             return {
                 ...state,
                 loading: false,
@@ -27,11 +22,12 @@ const loginReducer = (state = initialState, action) => {
             }
         case LOGIN_FAILURE:
             return {
+                ...state,
                 loading: false,
                 data: action.payload
             }
         default:
-            return state
+            return state;
     }
 }
 

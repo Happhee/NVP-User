@@ -1,9 +1,9 @@
 import * as types from '../actions/actionTypes';
 import AsyncStorage from '@react-native-community/async-storage';
 import * as alert from '../../utils/alertConsts'
-import axiosInstance from '../../lib/axiosInstance';
+
 const USERS_URL = "/users";
-import { request } from '../../utils/axios';
+
 
 const initialState = {
     uniqueId: '',
@@ -24,7 +24,8 @@ function authReducer(state = initialState, action) {
 
     switch (action.type) {
         case types.LOGIN:
-            applyLogin(state, action.dataToSubmit);
+
+
             break;
 
         case types.AUTO_LOGIN:
@@ -109,21 +110,23 @@ function authReducer(state = initialState, action) {
 }
 
 
-const applyLogin = async (state: any, dataToSubmit) => {
+// const applyLogin = async (state: any, dataToSubmit) => {
 
-    console.log(state);
-    const res = await request("POST", USERS_URL + "/login", dataToSubmit)
 
-    AsyncStorage.multiSet([
-        ['accessToken', res.data.accessToken],
-        ['uniqueId', dataToSubmit.id]
-    ])
+//     const res = await request("POST", USERS_URL + "/login", dataToSubmit)
 
-    return {
-        ...state,
-        uniqueId: dataToSubmit.id
-    }
+//     AsyncStorage.multiSet([
+//         ['accessToken', res.data.accessToken],
+//         ['uniqueId', dataToSubmit.id]
+//     ])
 
-}
+//     console.log(res)
+//     console.log('적용')
+//     return {
+//         ...state,
+//         uniqueId: dataToSubmit.id
+//     }
+
+// }
 
 export default authReducer;

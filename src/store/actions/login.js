@@ -11,7 +11,6 @@ export const login = (dataToSubmit) => {
             .then((res) => {
                 const data = res.data
                 dispatch(loginSuccess(dataToSubmit.id, data))
-
             })
             .catch(err => {
                 dispatch(loginFailure(err))
