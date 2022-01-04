@@ -9,7 +9,7 @@ import colors from '../../assets/colors/color';
 import { Alert } from 'react-native';
 
 function SetPassword(props) {
-    let [passWord, setPassword] = useState('');
+    let [password, setPassword] = useState('');
     let [confirmPassword, setConfirmPassword] = useState('');
     let [successPassword, setSuccessPassword] = useState(false);
     return (
@@ -44,7 +44,7 @@ function SetPassword(props) {
                             buttonName="설정"
                             onPress={function () {
                                 Keyboard.dismiss();
-                                if (passWord.length === 6) {
+                                if (password.length === 6) {
                                     Alert.alert('간편번호 확인을 진행해주세요')
                                 }
                                 else {
