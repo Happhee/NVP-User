@@ -4,6 +4,8 @@ import { EXPIRE_SMS_MESSAGE, SMS_MESSAGE, SMS_MESSAGE_FAILURE, SMS_MESSAGE_SUCCE
 const SMS_URL = '/sms/check';
 
 export const postMessage = (dataToSubmit) => {
+    console.log('메세지보내기')
+    console.log(dataToSubmit)
     return (dispatch) => {
         console.log('메세지 요청');
         dispatch(smsMessageRequest());
