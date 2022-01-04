@@ -1,15 +1,15 @@
-
 import SetPassword from "../../components/auth/SetPassword";
 import { connect } from "react-redux";
-import { setPassword } from "../../store/actions/authAction";
+import { setPassword } from "../../store/actions/auth";
+
 function mapReduxStateToReactProps(state) {
     return state;
 }
 
 function mapReduxDispatchToReactProps(dispatch) {
     return {
-        setPassword: function (passWord) {
-            dispatch(setPassword(passWord));
+        setPassword: function (password) {
+            dispatch(setPassword(password));
         }
     }
 }

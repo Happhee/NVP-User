@@ -1,6 +1,6 @@
 import ResetPassword from '../../components/auth/ResetPassword';
 import { connect } from "react-redux";
-import { setPassword } from "../../store/actions/authAction";
+import { setPassword } from "../../store/actions/auth";
 function mapReduxStateToReactProps(state) {
     return state;
 }

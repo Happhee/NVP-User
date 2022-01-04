@@ -8,7 +8,6 @@ import { TouchableWithoutFeedback } from 'react-native';
 import { Modal, Portal, Button, Provider } from 'react-native-paper';
 
 import { isPhoneNumber, isName } from '../../utils/regexs';
-import * as alert from '../../utils/alertConsts'
 import Timer from '../Timer';
 const padNumber = (num, length) => {
     return String(num).padStart(length, '0');

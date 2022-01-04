@@ -21,12 +21,13 @@ axiosInstance.interceptors.request.use(
 
     //요청 보내기전 수행
     async config => {
-
-
-        const refreshToken = await AsyncStorage.getItem('refreshToken');
-        config.headers['Authorization'] = `Bearer ${refreshToken}`
-
         console.log(config);
+        const refreshToken = await AsyncStorage.getItem('refreshToken');
+        if (refreshToken) {
+            config.headers['Authorization'] = `Bearer ${refreshToken}`
+
+        }
+
         return config;
     },
     //오류 요청

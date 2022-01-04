@@ -1,8 +1,7 @@
 import TakeTextMessage from "../../components/auth/TakeTextMessage";
 import { connect } from "react-redux";
-
-import { postMessage, getMessage, initMessage, successMessage } from "../../store/actions/authAction";
-import { login } from "../../store/actions/userAction";
+import { verifySmsMessage } from "../../store/actions/auth";
+import { postMessage, expireSmsMessage } from "../../store/actions/sms";
 
 function mapReduxStateToReactProps(state) {
     return state;
@@ -10,17 +9,15 @@ function mapReduxStateToReactProps(state) {
 
 function mapReduxDispatchToReactProps(dispatch) {
     return {
-        postMessage: function (phoneNumber) {
-            dispatch(postMessage(phoneNumber));
+        postMessage: function (dataToSubmit) {
+            dispatch(postMessage(dataToSubmit));
         },
-        getMessage: function (phoneNumber) {
-            dispatch(getMessage(phoneNumber))
+
+        expireSmsMessage: function () {
+            dispatch(expireSmsMessage());
         },
-        initMessage: function () {
-            dispatch(initMessage());
-        },
-        successMessage: function (uniqueId, name, phoneNumber) {
-            dispatch(successMessage(uniqueId, name, phoneNumber));
+        verifySmsMessage: function (id, name, phone) {
+            dispatch(verifySmsMessage(id, name, phone));
         }
     }
 }

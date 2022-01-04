@@ -1,7 +1,7 @@
 
 import CheckCertificate from "../../components/auth/CheckCertificate";
 import { connect } from "react-redux";
-import { signup } from "../../store/actions/authAction";
+import { signup } from "../../store/actions/auth";
 
 
 function mapReduxStateToReactProps(state) {
