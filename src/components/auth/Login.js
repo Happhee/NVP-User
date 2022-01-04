@@ -12,6 +12,7 @@ function Login(props) {
     let [passWord, setPassword] = useState('');
     const uniqueId = deviceInfoModule.getUniqueId();
     console.log('로그인화면');
+    // console.log(prop);
 
     const onPressLogin = async (dataToSubmit) => {
         await props.onPressLogin(dataToSubmit);

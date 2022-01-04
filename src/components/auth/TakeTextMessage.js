@@ -31,8 +31,8 @@ function TakeTextMessage(props) {
     const timerId = useRef(null);
 
 
-    console.log(props.auth);
-    console.log(props.sms);
+    // console.log(props.auth);
+    // console.log(props.sms);
 
     const startTimer = () => {
         clearInterval(timerId.current);
