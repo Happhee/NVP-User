@@ -9,7 +9,7 @@ export const postMessage = (dataToSubmit) => {
     return (dispatch) => {
         console.log('메세지 요청');
         dispatch(smsMessageRequest());
-        axiosInstance.get(SMS_URL, dataToSubmit)
+        axiosInstance.get(SMS_URL, { params: dataToSubmit })
             .then((res) => {
                 dispatch(smsMessageSuccess(dataToSubmit.phone, res));
             })

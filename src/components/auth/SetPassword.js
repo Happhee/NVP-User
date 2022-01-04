@@ -12,6 +12,11 @@ function SetPassword(props) {
     let [password, setPassword] = useState('');
     let [confirmPassword, setConfirmPassword] = useState('');
     let [successPassword, setSuccessPassword] = useState(false);
+    console.log('패스워드 설정')
+    console.log(props.auth);
+    console.log(props.sms);
+
+    console.log(password + '/' + confirmPassword)
     return (
         <TouchableWithoutFeedback onPress={() => {
             Keyboard.dismiss();
@@ -72,10 +77,10 @@ function SetPassword(props) {
                             buttonName="확인"
                             onPress={function () {
                                 Keyboard.dismiss();
-                                if (passWord === confirmPassword) {
+                                if (password === confirmPassword) {
                                     Alert.alert('비밀번호 설정이 완료되었습니다')
                                     setSuccessPassword(true);
-                                    props.setPassword(passWord);
+                                    props.setPassword(password);
                                     // props.navigation.navigate('CheckCertificate')
                                 }
                                 else {

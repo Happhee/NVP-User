@@ -31,8 +31,8 @@ function TakeTextMessage(props) {
     const timerId = useRef(null);
 
 
-    // console.log(props.auth);
-    // console.log(props.sms);
+    console.log(props.auth);
+    console.log(props.sms);
 
     const startTimer = () => {
         clearInterval(timerId.current);
@@ -124,7 +124,9 @@ function TakeTextMessage(props) {
                         <SignUpButton
                             buttonName="확인"
                             onPress={function () {
-                                if (props.sms.message === message) {
+                                console.log(message);
+                                console.log(props.sms.message);
+                                if (props.sms.message === parseInt(message)) {
 
                                     setSuccessMessage(true);
                                     Alert.alert('인증에 성공하였습니다! 다음단계로 이동해주세요')
