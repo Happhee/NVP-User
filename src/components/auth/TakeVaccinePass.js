@@ -34,6 +34,7 @@ function TakeVaccinePass(props) {
                 callGoogleVisionApi("gs://user-nvp.appspot.com/" + refImageName);
                 setFileName(refImageName);
 
+
             }).catch((e) => {
                 console.log(e);
             });
@@ -67,6 +68,7 @@ function TakeVaccinePass(props) {
                 console.log(googleVisionRes);
                 if (googleVisionRes) {
                     setDescription(JSON.parse(googleVisionRes).responses[0].fullTextAnnotation.text.split('\n'));
+                    // setImageUri(uri)
                 }
             }).catch((err) => { console.log(err) })
     }
@@ -97,13 +99,13 @@ function TakeVaccinePass(props) {
                         Alert.alert("백신 증명서가 등록되었습니다")
                         console.log(fileName)
                         props.setVaccinePass(getOcrName(description), imageUri, fileName);
-                        const formData = new FormData();
-                        formData.append('image', imageUri);
-                        console.log('폼데이터');
+                        // const formData = new FormData();
+                        // formData.append('image', imageUri);
+                        // console.log('폼데이터');
 
-                        console.log(formData);
-                        props.uploadCertificate(formData);
-                        // props.navigation.navigate('CheckCertificate')
+                        // console.log(formData);
+                        // props.uploadCertificate(formData);
+                        props.navigation.navigate('CheckCertificate')
                     }} />
             </View>
 

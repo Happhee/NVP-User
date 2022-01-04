@@ -22,7 +22,7 @@ function TakeTextMessage(props) {
     let [message, setMessage] = useState(NO_EXIST_MESSAGE);
 
     const id = deviceInfoModule.getUniqueId();
-    let [successMessage, setSuccessMessage] = useState(false);
+    let [successMessage, setSuccessMessage] = useState(true);
 
     // 타이머를 초단위로 변환한 initialTime과 setInterval을 저장할 interval ref
     const [min, setMin] = useState(padNumber(3, 2));

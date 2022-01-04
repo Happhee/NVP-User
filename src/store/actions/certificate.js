@@ -13,6 +13,7 @@ export const uploadCertificate = (formData) => {
         dispatch(uploadCertificateRequest())
         axiosInstance.post(CERTIFICATE_URL + '/upload', formData, config)
             .then((res) => {
+                console.log(res.data);
                 console.log('파일 업로드 하기 성공')
 
                 dispatch(uploadCertificateSuccess(res.path, res.filename))

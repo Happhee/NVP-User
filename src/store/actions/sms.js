@@ -11,7 +11,8 @@ export const postMessage = (dataToSubmit) => {
         dispatch(smsMessageRequest());
         axiosInstance.get(SMS_URL, { params: dataToSubmit })
             .then((res) => {
-                dispatch(smsMessageSuccess(dataToSubmit.phone, res));
+                console.log(res);
+                dispatch(smsMessageSuccess(dataToSubmit.phone, res.data));
             })
             .catch((err) => {
                 dispatch(smsMessageFailure(err));
