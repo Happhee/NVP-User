@@ -1,13 +1,9 @@
 // auth
-export const LOGIN = "LOGIN";
-export const AUTO_LOGIN = "AUTO_LOGIN";
 export const LOGOUT = "LOGOUT";
 export const SIGN_UP = "SIGN_UP";
+export const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS";
+export const SIGN_UP_FAILURE = "SIGN_UP_FAILURE";
 
-export const POST_MESSAGE = "POST_MESSAGE";
-export const GET_MESSAGE = "GET_MESSAGE";
-export const EXPIRE_MESSAGE = "EXPIRE_MESSAGE";
-export const SUCCESS_MESSAGE = "SUCCESS_MESSAGE";
 
 
 export const SET_PASSWORD = "SET_PASSWORD";
@@ -29,3 +25,30 @@ export const STOP_TIMER = "STOP_TIMER";
 //user
 export const GET_USER_PROFILE = "GET_USER_PROFILE";
 
+
+//login
+export const LOGIN = "LOGIN";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAILURE = "LOGIN_FAILURE";
+
+//autoLogin
+export const AUTO_LOGIN = "AUTO_LOGIN";
+export const AUTO_LOGIN_SUCCESS = "AUTO_LOGIN_SUCCESS";
+export const AUTO_LOGIN_FAILURE = "AUTO_LOGIN_FAILURE";
+
+//sms
+export const SMS_MESSAGE = "SMS_MESSAGE";
+export const SMS_MESSAGE_SUCCESS = "SMS_MESSAGE_SUCCESS"
+export const SMS_MESSAGE_FAILURE = "SMS_MESSAGE_FAILURE"
+
+export const EXPIRE_SMS_MESSAGE = "EXPIRE_SMS_MESSAGE";
+export const VERIFICATION_SMS_MESSAGE = "VERIFICATION_SMS_MESSAGE";
+
+export const MESSAGE_TIME_OUT = "MESSAGE_TIME_OUT";
+export const NO_EXIST_MESSAGE = "NO_EXIST_MESSAGE"
+
+
+//certificate
+export const CERTIFICATE_UPLOAD = "CERTIFICATE_UPLOAD";
+export const CERTIFICATE_UPLOAD_SUCCESS = "CERTIFICATE_UPLOAD_SUCCESS";
+export const CERTIFICATE_UPLOAD_FAILURE = "CERTIFICATE_UPLOAD_FAILURE";

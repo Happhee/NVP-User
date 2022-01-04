@@ -6,24 +6,29 @@ const axiosInstance = axios.create({
     baseURL: USER_URL,
 
 });
-let refreshToken = '';
+console.log('리프레시1');
 
-AsyncStorage.getItem('refreshToken')
-    .then((value) => {
-        console.log(value)
-        if (value != null) {
-            refreshToken = value
+// AsyncStorage.getItem('refreshToken')
+//     .then((refreshToken) => {
+//         axiosInstance.defaults.headers = `Bearer ${refreshToken}`
 
-        }
-    });
+// });
 
-console.log("음" + refreshToken)
+
+
 //요청 가로채기
 axiosInstance.interceptors.request.use(
+
     //요청 보내기전 수행
-    function (config) {
-        config.headers['Authorization'] = `Bearer ${refreshToken}`
-        return config
+    async config => {
+        console.log(config);
+        const refreshToken = await AsyncStorage.getItem('refreshToken');
+        if (refreshToken) {
+            config.headers['Authorization'] = `Bearer ${refreshToken}`
+
+        }
+
+        return config;
     },
     //오류 요청
     function (err) {
@@ -35,12 +40,14 @@ axiosInstance.interceptors.request.use(
 axiosInstance.interceptors.response.use(
     //200대 응답 
     function (res) {
-        return res
+        console.log('응답')
+        return res.data
     },
     // //200 이외 응답
     async function (err) {
+        console.log('에러ㅓ')
         console.log(err.config);
-        console.log(err.req);
+        console.log(err);
         //     const {
         //         config,
         //         res: { status },
@@ -77,4 +84,5 @@ axiosInstance.interceptors.response.use(
     }
 )
 
+console.log(axiosInstance);
 export default axiosInstance;

@@ -1,6 +1,6 @@
 import Splash from '../../components/auth/Splash';
 import { connect } from 'react-redux';
-import { autoLogin } from '../../store/actions/userAction';
+import { autoLogin } from '../../store/actions/login';
 
 
 function mapReduxStateToReactProps(state) {

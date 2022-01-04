@@ -10,17 +10,17 @@ function Splash(props) {
     useEffect(() => {
         setTimeout(() => {
             AsyncStorage.clear()
-            AsyncStorage.getItem('refreshToken')
-                .then((value) => {
-                    console.log(value)
-                    if (value != null) {
-                        props.goMain(value)
+            AsyncStorage.getItem('id')
+                .then((id) => {
+                    console.log(id)
+                    if (id != null) {
+                        props.goMain(id)
 
                         props.navigation.replace('Main');
 
                     } else {
                         props.navigation.replace('Auth');
-                        console.log(value);
+                        console.log(id);
 
                     }
                 }

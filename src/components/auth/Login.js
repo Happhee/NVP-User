@@ -11,15 +11,18 @@ import AsyncStorage from '@react-native-community/async-storage';
 function Login(props) {
     let [passWord, setPassword] = useState('');
     const uniqueId = deviceInfoModule.getUniqueId();
-    console.log(props.auth);
+    console.log('로그인화면');
+    // console.log(prop);
 
+    const onPressLogin = async (dataToSubmit) => {
+        await props.onPressLogin(dataToSubmit);
+    }
     return (
         <TouchableWithoutFeedback onPress={() => {
             Keyboard.dismiss();
             console.log('dismissed keyboard'); //console 확인용
         }}>
             <View style={authStyles.container}>
-
                 <View style={authStyles.header}>
                     <Text style={authStyles.headerFont}>NVP</Text>
                 </View>
@@ -58,8 +61,8 @@ function Login(props) {
                                     id: uniqueId,
                                     password: passWord
                                 }
-                                console.log(dataToSubmit);
-                                props.onPressLogin(dataToSubmit);
+                                // console.log(dataToSubmit);
+                                props.onPressLogin(dataToSubmit)
                                 setPassword('');
                                 // props.navigation.navigate('Main')
                                 Keyboard.dismiss();
