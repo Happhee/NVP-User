@@ -1,6 +1,6 @@
 import TakeVaccinePass from '../../components/auth/TakeVaccinePass';
 import { connect } from "react-redux";
-import { setVaccinePass } from '../../store/actions/authAction';
+import { setVaccinePass } from '../../store/actions/auth';
 function mapReduxStateToReactProps(state) {
     return state;
 }
