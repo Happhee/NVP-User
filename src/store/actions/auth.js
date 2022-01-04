@@ -1,9 +1,6 @@
 import { REGISTER_ID_CARD, REGISTER_VACCINE_PASS, SET_PASSWORD, SIGN_UP, VERIFICATION_SMS_MESSAGE } from "./actionTypes";
 
 
-const USERS_URL = "/users";
-
-
 //인증 성공
 export function verifySmsMessage(id, name, phone) {
     return {
@@ -14,11 +11,11 @@ export function verifySmsMessage(id, name, phone) {
     }
 }
 
-export function setPassword(passWord) {
+export function setPassword(password) {
 
     return {
         type: SET_PASSWORD,
-        passWord: passWord
+        password: password
     }
 }
 

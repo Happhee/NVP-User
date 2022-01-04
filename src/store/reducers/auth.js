@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-community/async-storage';
-import { LOGOUT, VERIFICATION_SMS_MESSAGE } from '../actions/actionTypes';
+import { LOGOUT, REGISTER_VACCINE_PASS, REGISTER_ID_CARD, SIGN_UP, SET_PASSWORD, VERIFICATION_SMS_MESSAGE } from '../actions/actionTypes';
 
 const USERS_URL = "/users";
 
@@ -26,8 +26,6 @@ function authReducer(state = initialState, action) {
             AsyncStorage.removeItem('userUniqueId');
             return initialState;
 
-
-
         case VERIFICATION_SMS_MESSAGE:
             return {
                 ...state,
@@ -36,13 +34,13 @@ function authReducer(state = initialState, action) {
                 phone: action.phone
             }
 
-        case types.SET_PASSWORD:
+        case SET_PASSWORD:
             return {
                 ...state,
-                password: action.passWord
+                password: action.password
             }
 
-        case types.REGISTER_VACCINE_PASS:
+        case REGISTER_VACCINE_PASS:
             return {
                 ...state,
                 vaccinePassName: action.vaccinePassName,
@@ -50,14 +48,14 @@ function authReducer(state = initialState, action) {
                 fileName: action.fileName
             }
 
-        case types.REGISTER_ID_CARD:
+        case REGISTER_ID_CARD:
             return {
                 ...state,
                 idCardName: action.idCardName,
                 idCardFilePath: action.idCardFilePath
             }
 
-        case types.SIGN_UP:
+        case SIGN_UP:
             AsyncStorage.multiSet([
                 ['accessToken', action.payload.token],
                 ['uniqueId', action.data.id]
