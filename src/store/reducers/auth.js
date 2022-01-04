@@ -1,16 +1,14 @@
-import * as types from '../actions/actionTypes';
 import AsyncStorage from '@react-native-community/async-storage';
-import * as alert from '../../utils/alertConsts'
+import { LOGOUT, VERIFICATION_SMS_MESSAGE } from '../actions/actionTypes';
 
 const USERS_URL = "/users";
 
 
 const initialState = {
-    uniqueId: '',
-    passWord: '',
+    id: '',
+    password: '',
     name: '',
-    phoneNumber: '',
-    message: '',
+    phone: '',
     idCardName: '',
     idCardFilePath: '',
     vaccinePassName: '',
@@ -23,50 +21,25 @@ function authReducer(state = initialState, action) {
 
 
     switch (action.type) {
-        case types.LOGIN:
 
-
-            break;
-
-
-
-        case types.LOGOUT:
+        case LOGOUT:
             AsyncStorage.removeItem('userUniqueId');
             return initialState;
 
 
-        case types.POST_MESSAGE:
+
+        case VERIFICATION_SMS_MESSAGE:
             return {
                 ...state,
-                phoneNumber: action.phoneNumber
-            }
-
-        case types.GET_MESSAGE:
-            return {
-                ...state,
-                message: "123456"
-            }
-
-        case types.EXPIRE_MESSAGE:
-            console.log("시간 만료");
-            return {
-                ...state,
-                message: alert.MESSAGE_TIME_EXPIRATION
-            }
-
-
-        case types.SUCCESS_MESSAGE:
-            return {
-                ...state,
-                uniqueId: action.uniqueId,
+                id: action.id,
                 name: action.name,
-                phoneNumber: action.phoneNumber
+                phone: action.phone
             }
 
         case types.SET_PASSWORD:
             return {
                 ...state,
-                passWord: action.passWord
+                password: action.passWord
             }
 
         case types.REGISTER_VACCINE_PASS:
@@ -91,10 +64,10 @@ function authReducer(state = initialState, action) {
             ])
             return {
                 ...state,
-                uniqueId: action.data.id,
-                passWord: action.data.password,
+                id: action.data.id,
+                password: action.data.password,
                 name: action.data.name,
-                phoneNumber: action.data.phone,
+                phone: action.data.phone,
                 vaccinePassFilePath: action.data.fileName,
                 date: action.data.filedate
             }
