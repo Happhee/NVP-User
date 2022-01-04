@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-community/async-storage';
-import { LOGOUT, REGISTER_VACCINE_PASS, REGISTER_ID_CARD, SIGN_UP, SET_PASSWORD, VERIFICATION_SMS_MESSAGE } from '../actions/actionTypes';
+import { LOGOUT, REGISTER_VACCINE_PASS, REGISTER_ID_CARD, SIGN_UP, SET_PASSWORD, VERIFICATION_SMS_MESSAGE, SIGN_UP_SUCCESS, SIGN_UP_FAILURE } from '../actions/actionTypes';
 
 const USERS_URL = "/users";
 
@@ -14,7 +14,8 @@ const initialState = {
     vaccinePassName: '',
     vaccinePassFilePath: '',
     fileName: '',
-    date: ''
+    date: '',
+    loading: false,
 }
 
 function authReducer(state = initialState, action) {
@@ -56,9 +57,16 @@ function authReducer(state = initialState, action) {
             }
 
         case SIGN_UP:
+            return {
+                ...state,
+                loading: true
+            }
+
+        case SIGN_UP_SUCCESS:
+
             AsyncStorage.multiSet([
-                ['accessToken', action.payload.token],
-                ['uniqueId', action.data.id]
+                ['accessToken', action.payload],
+                ['id', action.data.id]
             ])
             return {
                 ...state,
@@ -67,7 +75,14 @@ function authReducer(state = initialState, action) {
                 name: action.data.name,
                 phone: action.data.phone,
                 vaccinePassFilePath: action.data.fileName,
-                date: action.data.filedate
+                date: action.data.filedate,
+                loading: false,
+            }
+
+        case SIGN_UP_FAILURE:
+            return {
+                ...state,
+                loading: false
             }
 
 

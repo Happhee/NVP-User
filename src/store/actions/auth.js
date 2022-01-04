@@ -1,6 +1,7 @@
-import { REGISTER_ID_CARD, REGISTER_VACCINE_PASS, SET_PASSWORD, SIGN_UP, VERIFICATION_SMS_MESSAGE } from "./actionTypes";
+import { REGISTER_ID_CARD, REGISTER_VACCINE_PASS, SET_PASSWORD, SIGN_UP, SIGN_UP_FAILURE, SIGN_UP_SUCCESS, VERIFICATION_SMS_MESSAGE } from "./actionTypes";
+import axiosInstance from '../../lib/axiosInstance';
 
-
+const USERS_URL = '/users';
 //인증 성공
 export function verifySmsMessage(id, name, phone) {
     return {
@@ -37,12 +38,40 @@ export function setIdCard(idCardName, idCardFilePath) {
 }
 
 
-export function signup(dataToSubmit) {
-    // const data = request("POST", USERS_URL + '/signup', dataToSubmit);
+export const signup = (dataToSubmit) => {
+    return (dispatch) => {
+        console.log('회원가입 요청');
+        dispatch(signupRequest())
+        axiosInstance.post(USERS_URL + '/signup', dataToSubmit)
+            .then((res) => {
+                const token = res.data;
+                dispatch(signupSuccess(dataToSubmit, token));
+            })
+            .catch((err) => {
+                dispatch(signupFailure(err.message))
+            })
+    }
 
+}
+
+
+export const signupRequest = (dataToSubmit) => {
     return {
-        type: SIGN_UP,
-        payload: data,
+        type: SIGN_UP
+    }
+}
+
+export const signupSuccess = (dataToSubmit, token) => {
+    return {
+        type: SIGN_UP_SUCCESS,
+        payload: token,
         data: dataToSubmit
+    }
+}
+
+export const signupFailure = (err) => {
+    return {
+        type: SIGN_UP_FAILURE,
+        payload: err
     }
 }

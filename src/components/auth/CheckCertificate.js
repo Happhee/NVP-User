@@ -59,10 +59,10 @@ function CheckCertificate(props) {
                             const nowDate = new Date();
 
                             const dataToSubmit = {
-                                id: props.auth.uniqueId,
-                                password: props.auth.passWord,
+                                id: props.auth.id,
+                                password: props.auth.password,
                                 name: props.auth.name,
-                                phone: props.auth.phoneNumber,
+                                phone: props.auth.phone,
                                 filename: props.auth.vaccinePassName,
                                 filedate: getFormatDate(new Date())
                             }
