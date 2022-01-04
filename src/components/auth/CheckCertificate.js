@@ -66,9 +66,22 @@ function CheckCertificate(props) {
                                 filename: props.auth.vaccinePassName,
                                 filedate: getFormatDate(new Date())
                             }
-                            props.signup(dataToSubmit);
+                            const formData = new FormData();
+                            console.log(formData);
+                            const photo = {
+                                uri: props.auth.vaccinePassFilePath,
+                                type: 'multipart/form-data',
+                                name: `${props.auth.fileName}.jpg`
+                            }
+                            formData.append('image', photo);
+                            console.log('폼데이터');
+
+                            console.log(formData);
+                            props.uploadCertificate(formData);
+                            // props.signup(dataToSubmit);
                             Alert.alert("회원가입이 완료되었습니다 ㅎㅅㅎ ")
-                            props.navigation.navigate('Login')
+
+                            // props.navigation.navigate('Login')
 
                         }
                     }} />
