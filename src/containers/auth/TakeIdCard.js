@@ -1,7 +1,7 @@
 
 import TakeIdCard from "../../components/auth/TakeIdCard";
 import { connect } from "react-redux";
-import { setIdCard } from "../../store/actions/auth";
+import { setIdCard } from "../../store/actions/authAction";
 
 function mapReduxStateToReactProps(state) {
     return state;

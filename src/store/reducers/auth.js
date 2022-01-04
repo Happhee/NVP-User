@@ -1,47 +1,82 @@
+import * as types from '../actions/actionTypes';
 import AsyncStorage from '@react-native-community/async-storage';
-import { LOGOUT, REGISTER_VACCINE_PASS, REGISTER_ID_CARD, SIGN_UP, SET_PASSWORD, VERIFICATION_SMS_MESSAGE, SIGN_UP_SUCCESS, SIGN_UP_FAILURE } from '../actions/actionTypes';
-
-const USERS_URL = "/users";
-
+import * as alert from '../../utils/alertConsts'
 
 const initialState = {
-    id: '',
-    password: '',
+    uniqueId: '',
+    passWord: '',
     name: '',
-    phone: '',
+    phoneNumber: '',
+    message: '',
     idCardName: '',
     idCardFilePath: '',
     vaccinePassName: '',
     vaccinePassFilePath: '',
     fileName: '',
-    date: '',
-    loading: false,
+    date: ''
 }
 
-function authReducer(state = initialState, action) {
-
+export default function authReducer(state = initialState, action) {
 
     switch (action.type) {
+        case types.LOGIN:
+            console.log(action);
+            AsyncStorage.multiSet([
+                ['accessToken', 'action.data.accessToken'],
+                ['refreshToken', 'action.data.refreshToken'],
+                ['uniqueId', action.uniqueId]
+            ])
 
-        case LOGOUT:
+            return {
+                ...state,
+                uniqueId: action.uniqueId
+            }
+        case types.AUTO_LOGIN:
+            return {
+                ...state,
+                uniqueId: action.payload.userId
+            }
+
+        case types.LOGOUT:
             AsyncStorage.removeItem('userUniqueId');
             return initialState;
 
-        case VERIFICATION_SMS_MESSAGE:
+
+        case types.POST_MESSAGE:
             return {
                 ...state,
-                id: action.id,
+                phoneNumber: action.phoneNumber
+            }
+
+        case types.GET_MESSAGE:
+            return {
+                ...state,
+                message: "123456"
+            }
+
+        case types.EXPIRE_MESSAGE:
+            console.log("시간 만료");
+            return {
+                ...state,
+                message: alert.MESSAGE_TIME_EXPIRATION
+            }
+
+
+        case types.SUCCESS_MESSAGE:
+            return {
+                ...state,
+                uniqueId: action.uniqueId,
                 name: action.name,
-                phone: action.phone
+                phoneNumber: action.phoneNumber
             }
 
-        case SET_PASSWORD:
+        case types.SET_PASSWORD:
             return {
                 ...state,
-                password: action.password
+                passWord: action.passWord
             }
 
-        case REGISTER_VACCINE_PASS:
+        case types.REGISTER_VACCINE_PASS:
             return {
                 ...state,
                 vaccinePassName: action.vaccinePassName,
@@ -49,40 +84,26 @@ function authReducer(state = initialState, action) {
                 fileName: action.fileName
             }
 
-        case REGISTER_ID_CARD:
+        case types.REGISTER_ID_CARD:
             return {
                 ...state,
                 idCardName: action.idCardName,
                 idCardFilePath: action.idCardFilePath
             }
 
-        case SIGN_UP:
-            return {
-                ...state,
-                loading: true
-            }
-
-        case SIGN_UP_SUCCESS:
-
+        case types.SIGN_UP:
             AsyncStorage.multiSet([
-                ['accessToken', action.payload],
-                ['id', action.data.id]
+                ['accessToken', action.payload.token],
+                ['uniqueId', action.data.id]
             ])
             return {
                 ...state,
-                id: action.data.id,
-                password: action.data.password,
+                uniqueId: action.data.id,
+                passWord: action.data.password,
                 name: action.data.name,
-                phone: action.data.phone,
+                phoneNumber: action.data.phone,
                 vaccinePassFilePath: action.data.fileName,
-                date: action.data.filedate,
-                loading: false,
-            }
-
-        case SIGN_UP_FAILURE:
-            return {
-                ...state,
-                loading: false
+                date: action.data.filedate
             }
 
 
@@ -90,5 +111,3 @@ function authReducer(state = initialState, action) {
     }
     return state;
 }
-
-export default authReducer;

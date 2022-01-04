@@ -1,7 +1,6 @@
 import ResetTextMessage from "../../components/auth/ResetTextMessage";
 import { connect } from "react-redux";
-import { verifySmsMessage } from "../../store/actions/auth";
-import { postMessage, expireSmsMessage } from "../../store/actions/sms";
+import { successMessage, postMessage, getMessage, initMessage } from '../../store/actions/authAction';
 
 function mapReduxStateToReactProps(state) {
     return state;
@@ -9,15 +8,17 @@ function mapReduxStateToReactProps(state) {
 
 function mapReduxDispatchToReactProps(dispatch) {
     return {
-        postMessage: function (dataToSubmit) {
-            dispatch(postMessage(dataToSubmit));
+        postMessage: function (phoneNumber) {
+            dispatch(postMessage(phoneNumber));
         },
-
-        expireSmsMessage: function () {
-            dispatch(expireSmsMessage());
+        getMessage: function (phoneNumber) {
+            dispatch(getMessage(phoneNumber))
         },
-        verifySmsMessage: function (id, name, phone) {
-            dispatch(verifySmsMessage(id, name, phone));
+        initMessage: function () {
+            dispatch(initMessage());
+        },
+        successMessage: function (uniqueId, name, phoneNumber) {
+            dispatch(successMessage(uniqueId, name, phoneNumber));
         }
     }
 }

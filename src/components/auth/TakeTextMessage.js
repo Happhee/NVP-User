@@ -8,8 +8,8 @@ import { TouchableWithoutFeedback } from 'react-native';
 import { Modal, Portal, Button, Provider } from 'react-native-paper';
 
 import { isPhoneNumber, isName } from '../../utils/regexs';
+import * as alert from '../../utils/alertConsts'
 import Timer from '../Timer';
-import { MESSAGE_TIME_OUT, NO_EXIST_MESSAGE } from '../../store/actions/actionTypes';
 const padNumber = (num, length) => {
     return String(num).padStart(length, '0');
 };
@@ -18,10 +18,10 @@ const padNumber = (num, length) => {
 function TakeTextMessage(props) {
     let [passWord, setPassword] = useState('');
     let [name, setName] = useState('');
-    let [phone, setPhone] = useState('');
-    let [message, setMessage] = useState(NO_EXIST_MESSAGE);
+    let [phoneNumber, setPhoneNumber] = useState('');
+    let [message, setMessage] = useState(alert.NO_EXIST_MESSAGE);
 
-    const id = deviceInfoModule.getUniqueId();
+    const uniqueId = deviceInfoModule.getUniqueId();
     let [successMessage, setSuccessMessage] = useState(false);
 
     // 타이머를 초단위로 변환한 initialTime과 setInterval을 저장할 interval ref
@@ -31,8 +31,7 @@ function TakeTextMessage(props) {
     const timerId = useRef(null);
 
 
-    // console.log(props.auth);
-    console.log(props.sms);
+    console.log(props.auth);
 
     const startTimer = () => {
         clearInterval(timerId.current);
@@ -55,7 +54,7 @@ function TakeTextMessage(props) {
     useEffect(() => {
         if (time.current <= 0) {
             clearInterval(timerId.current);
-            props.expireSmsMessage();
+            props.initMessage();
         }
     }, [sec]);
 
@@ -90,19 +89,20 @@ function TakeTextMessage(props) {
                         <Text style={signUp.contentFont}>전화번호</Text>
                         <TextInput style={signUp.contentInput}
                             keyboardType="number-pad"
-                            onChangeText={(inputPhone) => {
-                                setPhone(inputPhone);
+                            onChangeText={(inputPhoneNumber) => {
+                                setPhoneNumber(inputPhoneNumber);
                             }} />
                         <SignUpButton
                             buttonName="인증"
                             onPress={function () {
                                 Keyboard.dismiss();
-                                if (!isPhoneNumber(phone)) {
+                                if (!isPhoneNumber(phoneNumber)) {
                                     Alert.alert('잘못된 형식의 전화번호입니다');
                                     stopTimer();
                                 } else {
                                     Alert.alert('인증 유효시간은 3분입니다');
-                                    props.postMessage({ phone: phone });
+                                    props.postMessage(phoneNumber);
+                                    props.getMessage(phoneNumber);
                                     startTimer();
                                 }
                             }} />
@@ -124,8 +124,7 @@ function TakeTextMessage(props) {
                         <SignUpButton
                             buttonName="확인"
                             onPress={function () {
-
-                                if (parseInt(props.sms.message) === parseInt(message)) {
+                                if (props.auth.message === message) {
 
                                     setSuccessMessage(true);
                                     Alert.alert('인증에 성공하였습니다! 다음단계로 이동해주세요')
@@ -133,9 +132,8 @@ function TakeTextMessage(props) {
                                     stopTimer();
                                     Keyboard.dismiss();
                                 }
-                                else if (props.sms.message === MESSAGE_TIME_OUT) {
+                                else if (props.auth.message === alert.MESSAGE_TIME_EXPIRATION) {
                                     Alert.alert('인증시간이 지났습니다! 재인증을 해주세요');
-                                    Keyboard.dismiss();
                                 }
                                 else {
                                     Alert.alert('잘못된 인증번호입니다! 다시 입력해주세요')
@@ -152,7 +150,7 @@ function TakeTextMessage(props) {
                         icon="arrow-right"
                         onPress={function () {
                             if (isName(name) && successMessage) {
-                                props.verifySmsMessage(id, name, phone);
+                                props.successMessage(uniqueId, name, phoneNumber);
                                 props.navigation.navigate('SetPassword')
                             }
                             else if (!isName(name)) {

@@ -97,13 +97,8 @@ function TakeVaccinePass(props) {
                         Alert.alert("백신 증명서가 등록되었습니다")
                         console.log(fileName)
                         props.setVaccinePass(getOcrName(description), imageUri, fileName);
-                        const formData = new FormData();
-                        formData.append('image', imageUri);
-                        console.log('폼데이터');
 
-                        console.log(formData);
-                        props.uploadCertificate(formData);
-                        // props.navigation.navigate('CheckCertificate')
+                        props.navigation.navigate('CheckCertificate')
                     }} />
             </View>
 

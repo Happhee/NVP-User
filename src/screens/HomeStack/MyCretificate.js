@@ -1,11 +1,7 @@
 import * as React from 'react';
 import { StatusBar, View, Button, TouchableOpacity, Text, StyleSheet } from 'react-native';
-import { connect } from 'react-redux';
 
-function MyCretificateScreen(props) {
-    console.log('메인 NFC');
-
-    console.log(props.user);
+function MyCretificateScreen({ navigation }) {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <TouchableOpacity style={styles.button}>
@@ -45,7 +41,5 @@ const styles = StyleSheet.create({
     }
 });
 
-function mapReduxStateToReactProps(state) {
-    return state
-}
-export default connect(mapReduxStateToReactProps)(MyCretificateScreen);
+
+export default MyCretificateScreen;
