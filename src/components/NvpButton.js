@@ -7,6 +7,7 @@ const NvpButton = (props) => (
         style={buttonStyles.button}
         mode="contained"
         color="#00B990"
+
         onPress={props.onPress}>
         {props.buttonName}
         <Icon name={props.icon} size={60} />
