@@ -38,6 +38,22 @@ const settingStyles = StyleSheet.create({
         marginLeft: 20,
 
     },
+    settingView: {
+
+        flex: 1,
+        backgroundColor: 'white',
+        alignItems: 'center',
+        justifyContent: 'center',
+
+    },
+    buttonView: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginLeft: 10,
+        marginRight: 10,
+        paddingTop: 20,
+        paddingBottom: 20,
+    }
 
 
 });

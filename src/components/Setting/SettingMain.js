@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, Keyboard, Alert } from 'react-native';
 import RegisterButton from '../RegisterButton';
 import settingStyles from '../../assets/styles/setting';
-
+import AsyncStorage from '@react-native-community/async-storage';
 function SettingMain(props) {
+    console.log(props.user)
+
     return (
 
         <View style={settingStyles.container}>
