@@ -9,13 +9,12 @@ function Splash(props) {
 
     useEffect(() => {
         setTimeout(() => {
-            AsyncStorage.clear()
+            AsyncStorage.clear();
             AsyncStorage.getItem('id')
                 .then((id) => {
                     console.log(id)
                     if (id != null) {
                         props.goMain(id)
-
                         props.navigation.replace('Main');
 
                     } else {

@@ -1,5 +1,6 @@
 import { LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE, AUTO_LOGIN, AUTO_LOGIN_SUCCESS, AUTO_LOGIN_FAILURE } from '../actions/actionTypes';
 import AsyncStorage from '@react-native-community/async-storage';
+import { Alert } from 'react-native';
 
 const initialState = {
     loading: false,
@@ -19,6 +20,8 @@ const loginReducer = (state = initialState, action) => {
         case LOGIN_SUCCESS:
             console.log('로그인성공')
             console.log(action.payload);
+
+            console.log(action.payload.accessToken);
             console.log(action.id);
             AsyncStorage.multiSet([
                 ['accessToken', action.payload.accessToken],
@@ -26,15 +29,15 @@ const loginReducer = (state = initialState, action) => {
                 ['id', action.id]
             ]);
 
-
-            console.log('로그인성공')
             return {
                 ...state,
                 loading: false,
                 id: action.id,
                 data: action.payload,
             }
-        case LOGIN_FAILURE, AUTO_LOGIN_FAILURE:
+        case LOGIN_FAILURE:
+            AUTO_LOGIN_FAILURE:
+            Alert.alert('로그인에 실패하였습니다');
             return {
                 ...state,
                 loading: false,
