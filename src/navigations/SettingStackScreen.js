@@ -10,8 +10,17 @@ const SettingStack = createNativeStackNavigator();
 
 const SettingStackScreen = () => {
     return (
-        <Stack.Navigator>
-            <SettingStack.Screen name="SettingMain" component={SettingMain} />
+        <Stack.Navigator
+            screenOptions={{
+                headerStyle: {
+                    backgroundColor: '#DDECCA',
+                }
+            }}
+        >
+            <SettingStack.Screen name="SettingMain" component={SettingMain}
+                options={{
+                    title: '설정',
+                }} />
             <SettingStack.Screen name="ConfirmVaccinePass" component={ConfrimVaccinePassScreen} />
             <SettingStack.Screen name="Logout" component={LogoutScreen} />
             <SettingStack.Screen name="WithdrawalUser" component={WithdrawalUserScreen} />
