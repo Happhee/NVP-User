@@ -1,14 +1,14 @@
 
 import AsyncStorage from '@react-native-community/async-storage';
-import { AUTO_LOGIN_SUCCESS } from '../actions/actionTypes';
+import { AUTO_LOGIN_SUCCESS, DELETE_USER, DELETE_USER_FAILURE, DELETE_USER_SUCCESS, LOGOUT } from '../actions/actionTypes';
 
 const initialState = {
-
     id: '',
     filedate: '',
     filename: '',
     name: '',
-    phone: ''
+    phone: '',
+    loading: false,
 }
 
 export default function userReducer(state = initialState, action) {
@@ -29,7 +29,27 @@ export default function userReducer(state = initialState, action) {
                 phone: action.payload.phone,
             }
 
+        case LOGOUT:
+            DELETE_USER_SUCCESS:
+            AsyncStorage.clear();
+            return initialState;
+
+        case DELETE_USER:
+            return {
+                ...state,
+                loading: true,
+            }
+
+        case DELETE_USER_FAILURE:
+            return {
+                ...state,
+                loading: false
+            }
+
+
+
+        default:
+            return { ...state }
 
     }
-    return state;
 }

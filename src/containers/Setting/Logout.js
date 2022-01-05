@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import Logout from "../../components/Setting/Logout";
+import { logout } from "../../store/actions/user";
 
 function mapReduxStateToReactProps(state) {
     return state;
@@ -7,7 +8,9 @@ function mapReduxStateToReactProps(state) {
 
 function mapReduxDispatchToReactProps(dispatch) {
     return {
-
+        logout: function () {
+            dispatch(logout())
+        }
     }
 }
 

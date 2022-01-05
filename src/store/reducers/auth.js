@@ -23,10 +23,6 @@ function authReducer(state = initialState, action) {
 
     switch (action.type) {
 
-        case LOGOUT:
-            AsyncStorage.removeItem('userUniqueId');
-            return initialState;
-
         case VERIFICATION_SMS_MESSAGE:
             return {
                 ...state,
