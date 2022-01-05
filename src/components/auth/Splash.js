@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import { View, Text, Image, ImageBackground, StyleSheet } from 'react-native';
 
 import { connect } from 'react-redux';
-import { autoLogin } from '../../store/actions/userAction';
+import { autoLogin } from '../../store/actions/user';
 import colors from '../../assets/colors/color'
 function Splash(props) {
 
