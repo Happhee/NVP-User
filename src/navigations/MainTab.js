@@ -12,12 +12,9 @@ const Tab = createMaterialBottomTabNavigator();
 const MainTabScreen = () => {
     return (
         <Tab.Navigator initialRouteName="HomeStack"
-            barStyle={tabBarStyles.bottomTab}
-
-        >
+            barStyle={tabBarStyles.bottomTab}>
             <Tab.Screen name="HomeStack" component={HomeStackScreen}
                 options={{
-
                     tabBarLabel: '나의 증명서',
                     tabBarIcon: ({ focused }) => (
                         <Icon name={focused ? "file-tray-full" : 'file-tray-full-outline'}
