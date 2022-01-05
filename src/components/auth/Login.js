@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import deviceInfoModule from 'react-native-device-info';
-import { View, Text, TextInput, Keyboard } from 'react-native';
+import { View, Text, TextInput, Keyboard, Alert } from 'react-native';
 import { Button } from 'react-native-paper'
 import UserButton from '../UserButton';
 import colors from '../../assets/colors/color';
@@ -12,8 +12,14 @@ function Login(props) {
     let [passWord, setPassword] = useState('');
     const uniqueId = deviceInfoModule.getUniqueId();
     console.log('로그인화면');
-    // console.log(prop);
+    console.log(props.login);
+    console.log(props.auth);
 
+    useEffect(() => {
+        if (props.login.data.accessToken) {
+            props.navigation.navigate('Main')
+        }
+    })
     const onPressLogin = async (dataToSubmit) => {
         await props.onPressLogin(dataToSubmit);
     }
@@ -64,7 +70,7 @@ function Login(props) {
                                 // console.log(dataToSubmit);
                                 props.onPressLogin(dataToSubmit)
                                 setPassword('');
-                                // props.navigation.navigate('Main')
+
                                 Keyboard.dismiss();
                             }} />
 

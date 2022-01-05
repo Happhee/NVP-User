@@ -11,7 +11,7 @@ export const login = (dataToSubmit) => {
         axiosInstance.post(USERS_URL + "/login", dataToSubmit)
             .then((res) => {
                 const data = res.data
-                dispatch(loginSuccess(dataToSubmit.id, data))
+                dispatch(loginSuccess(dataToSubmit.id, data.data))
             })
             .catch(err => {
                 dispatch(loginFailure(err))
