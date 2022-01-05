@@ -15,14 +15,20 @@ const SettingStackScreen = () => {
                 headerStyle: {
                     backgroundColor: '#DDECCA',
                 },
+                headerTitleStyle: {
+                    fontFamily: 'DoHyeon-Regular',
+                    fontSize: 28,
+                },
                 headerBackTitleStyle: {
                     fontSize: 17,
                     fontFamily: 'DoHyeon-Regular',
                 },
-                headerTintColor: '#41624A'
+                headerTintColor: '#41624A',
+
             }}
         >
             <SettingStack.Screen name="SettingMain" component={SettingMain}
+
                 options={{
                     title: '설정',
                 }} />
