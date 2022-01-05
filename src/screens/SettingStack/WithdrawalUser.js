@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { View, Button } from 'react-native';
 import WithdrawalUser from '../../containers/Setting/WithdrawalUser';
-function WithdrawalUserScreen({ navigation }) {
+function WithdrawalUserScreen(props) {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <WithdrawalUser navigation={navigation} />
+            <WithdrawalUser appNavigation={props.appNavigation} />
         </View>
     );
 }
