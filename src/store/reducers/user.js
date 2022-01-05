@@ -1,6 +1,6 @@
 
 import AsyncStorage from '@react-native-community/async-storage';
-import { AUTO_LOGIN_SUCCESS } from '../actions/actionTypes';
+import { AUTO_LOGIN_SUCCESS, LOGOUT } from '../actions/actionTypes';
 
 const initialState = {
 
@@ -29,7 +29,13 @@ export default function userReducer(state = initialState, action) {
                 phone: action.payload.phone,
             }
 
+        case LOGOUT:
+            AsyncStorage.clear();
+            return initialState;
+
+
+        default:
+            return { ...state }
 
     }
-    return state;
 }
