@@ -3,6 +3,7 @@ const colors = {
     nvpUnder: '#82CBC4',
     signUpInput: '#E6F1D9',
     settingUnderBar: '#7DB249',
+    tabColor: '#DDECCA'
 
 }
 
