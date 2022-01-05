@@ -55,9 +55,6 @@ export const autoLogin = (dataToSubmit) => {
             .then((res) => {
                 const data = res.data
                 console.log('자동로그인성공')
-
-                console.log(res);
-                console.log(dataToSubmit);
                 dispatch(autoLoginSuccess(dataToSubmit, data))
             })
             .catch(err => {

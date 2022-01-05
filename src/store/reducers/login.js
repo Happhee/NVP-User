@@ -1,4 +1,4 @@
-import { LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE, AUTO_LOGIN, AUTO_LOGIN_SUCCESS, AUTO_LOGIN_FAILURE } from '../actions/actionTypes';
+import { LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE, AUTO_LOGIN, AUTO_LOGIN_SUCCESS, AUTO_LOGIN_FAILURE, LOGOUT, DELETE_USER_SUCCESS, DELETE_USER } from '../actions/actionTypes';
 import AsyncStorage from '@react-native-community/async-storage';
 import { Alert } from 'react-native';
 
@@ -45,7 +45,10 @@ const loginReducer = (state = initialState, action) => {
             }
 
 
-
+        case LOGOUT:
+        case DELETE_USER_SUCCESS:
+        case DELETE_USER:
+            return initialState;
 
 
 
