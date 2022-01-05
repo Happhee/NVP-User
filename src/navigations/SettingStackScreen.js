@@ -14,16 +14,30 @@ const SettingStackScreen = () => {
             screenOptions={{
                 headerStyle: {
                     backgroundColor: '#DDECCA',
-                }
+                },
+                headerBackTitleStyle: {
+                    fontSize: 17,
+                    fontFamily: 'DoHyeon-Regular',
+                },
+                headerTintColor: '#41624A'
             }}
         >
             <SettingStack.Screen name="SettingMain" component={SettingMain}
                 options={{
                     title: '설정',
                 }} />
-            <SettingStack.Screen name="ConfirmVaccinePass" component={ConfrimVaccinePassScreen} />
-            <SettingStack.Screen name="Logout" component={LogoutScreen} />
-            <SettingStack.Screen name="WithdrawalUser" component={WithdrawalUserScreen} />
+            <SettingStack.Screen name="ConfirmVaccinePass" component={ConfrimVaccinePassScreen}
+                options={{
+                    title: '백신패스 확인',
+                }} />
+            <SettingStack.Screen name="Logout" component={LogoutScreen}
+                options={{
+                    title: '로그아웃',
+                }} />
+            <SettingStack.Screen name="WithdrawalUser" component={WithdrawalUserScreen}
+                options={{
+                    title: '회원탈퇴',
+                }} />
         </Stack.Navigator>
     )
 }
