@@ -4,6 +4,7 @@ import SettingMain from '../screens/SettingStack/SettingMain';
 import ConfrimVaccinePassScreen from '../screens/SettingStack/ConfirmVaccinePass';
 import LogoutScreen from '../screens/SettingStack/Logout';
 import WithdrawalUserScreen from '../screens/SettingStack/WithdrawalUser';
+import SetPasswordUserScreen from '../screens/SettingStack/SetPasswordUser';
 
 const Stack = createNativeStackNavigator();
 const SettingStack = createNativeStackNavigator();
@@ -35,17 +36,22 @@ const SettingStackScreen = (props) => {
                 options={{
                     title: '설정',
                 }} />
-            <SettingStack.Screen name="ConfirmVaccinePass" children={() => <ConfrimVaccinePassScreen appNavigation={props.appNavigation} />}
+            <SettingStack.Screen name="ConfirmVaccinePass" component={ConfrimVaccinePassScreen}
                 options={{
                     title: '백신패스 확인',
                 }} />
-            <SettingStack.Screen name="Logout" children={() => <LogoutScreen appNavigation={props.appNavigation} />}
+            <SettingStack.Screen name="Logout" component={LogoutScreen}
                 options={{
                     title: '로그아웃',
                 }} />
-            <SettingStack.Screen name="WithdrawalUser" children={() => <WithdrawalUserScreen appNavigation={props.appNavigation} />}
+            <SettingStack.Screen name="WithdrawalUser" component={WithdrawalUserScreen}
                 options={{
                     title: '회원탈퇴',
+                }} />
+
+            <SettingStack.Screen name="SetPasswordUser" component={SetPasswordUserScreen}
+                options={{
+                    title: '비밀번호 변경',
                 }} />
         </Stack.Navigator>
     )
