@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { StatusBar, View, Button, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-function MyCretificate({ props, navigation }) {
+function MyCretificate(props, navigation) {
     console.log('메인 NFC');
-
-    console.log(navigation);
+    console.log(props)
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <TouchableOpacity style={styles.button}>
