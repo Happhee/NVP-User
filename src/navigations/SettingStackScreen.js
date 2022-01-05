@@ -8,7 +8,10 @@ import WithdrawalUserScreen from '../screens/SettingStack/WithdrawalUser';
 const Stack = createNativeStackNavigator();
 const SettingStack = createNativeStackNavigator();
 
-const SettingStackScreen = () => {
+const SettingStackScreen = (props) => {
+    console.log('환경설정');
+
+    console.log(props);
     return (
         <Stack.Navigator
             screenOptions={{
@@ -32,15 +35,15 @@ const SettingStackScreen = () => {
                 options={{
                     title: '설정',
                 }} />
-            <SettingStack.Screen name="ConfirmVaccinePass" component={ConfrimVaccinePassScreen}
+            <SettingStack.Screen name="ConfirmVaccinePass" children={() => <ConfrimVaccinePassScreen appNavigation={props.appNavigation} />}
                 options={{
                     title: '백신패스 확인',
                 }} />
-            <SettingStack.Screen name="Logout" component={LogoutScreen}
+            <SettingStack.Screen name="Logout" children={() => <LogoutScreen appNavigation={props.appNavigation} />}
                 options={{
                     title: '로그아웃',
                 }} />
-            <SettingStack.Screen name="WithdrawalUser" component={WithdrawalUserScreen}
+            <SettingStack.Screen name="WithdrawalUser" children={() => <WithdrawalUserScreen appNavigation={props.appNavigation} />}
                 options={{
                     title: '회원탈퇴',
                 }} />

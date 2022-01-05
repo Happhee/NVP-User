@@ -9,7 +9,7 @@ const Tab = createMaterialBottomTabNavigator();
 
 
 
-const MainTabScreen = () => {
+const MainTabScreen = (props) => {
     return (
         <Tab.Navigator initialRouteName="HomeStack"
             barStyle={tabBarStyles.bottomTab}>
@@ -21,7 +21,7 @@ const MainTabScreen = () => {
                             size={20} color={focused ? '#41624A' : '#9E9E9E'} />
                     )
                 }} />
-            <Tab.Screen name="SettingStack" component={SettingStackScreen}
+            <Tab.Screen name="SettingStack" children={() => <SettingStackScreen appNavigation={props.appNavigation} />}
                 options={{
                     tabBarLabel: '설정',
                     tabBarIcon: ({ focused }) => (

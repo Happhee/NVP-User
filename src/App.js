@@ -23,7 +23,7 @@ const App = () => {
 
 
         <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Splash">
-          <Stack.Screen name="Main" component={MainTabScreen} />
+          <Stack.Screen name="Main" children={({ navigation }) => <MainTabScreen appNavigation={navigation} />} />
           <Stack.Screen name="Splash" component={SplashScreen} />
           <Stack.Screen name="Auth" component={AuthStackScreen}
             options={{ headerShown: false }}
