@@ -12,7 +12,9 @@ function Splash(props) {
             // AsyncStorage.clear();
             AsyncStorage.getItem('id')
                 .then((id) => {
+                    console.log('아이디 존재여부')
                     console.log(id)
+
                     if (id != null) {
                         props.goMain(id)
                         props.navigation.replace('Main');

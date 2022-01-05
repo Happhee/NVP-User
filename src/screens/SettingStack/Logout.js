@@ -5,7 +5,7 @@ function LogoutScreen(props) {
 
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Logout appNavigation={props.appNavigation} />
+            <Logout />
         </View>
     );
 }
