@@ -21,7 +21,7 @@ const MainTabScreen = (props) => {
                             size={20} color={focused ? '#41624A' : '#9E9E9E'} />
                     )
                 }} />
-            <Tab.Screen name="SettingStack" children={() => <SettingStackScreen appNavigation={props.appNavigation} />}
+            <Tab.Screen name="SettingStack" component={SettingStackScreen}
                 options={{
                     tabBarLabel: '설정',
                     tabBarIcon: ({ focused }) => (

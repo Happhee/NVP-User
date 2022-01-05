@@ -21,7 +21,7 @@ function SettingMain(props) {
 
 
             <View style={settingStyles.content}
-                onTouchStart={() => props.navigation.navigate('ConfirmVaccinePass')} >
+                onTouchStart={() => props.navigation.navigate('SetPasswordUser')} >
 
                 <Text style={settingStyles.contentFont}>비밀번호 설정</Text>
 

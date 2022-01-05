@@ -1,4 +1,4 @@
-import { DELETE_USER, DELETE_USER_FAILURE, DELETE_USER_SUCCESS, LOGOUT } from "./actionTypes";
+import { DELETE_USER, DELETE_USER_FAILURE, DELETE_USER_SUCCESS, LOGOUT, MODIFY_PASSWORD, MODIFY_PASSWORD_FAILURE, MODIFY_PASSWORD_SUCCESS } from "./actionTypes";
 import axiosInstance from "../../lib/axiosInstance";
 
 const USERS_URL = '/users';
@@ -8,7 +8,38 @@ export function logout() {
         type: LOGOUT
     }
 }
+export const modifyPassword = (dataToSubmit) => {
+    return (dispatch) => {
+        console.log('비밀번호 변경');
+        dispatch(modifyPasswordRequest())
+        axiosInstance.patch(USERS_URL + '/profile', dataToSubmit)
+            .then((res) => {
+                console.log(res);
+                dispatch(modifyPasswordSuccess(dataToSubmit.password))
+            })
+            .catch((err) => {
+                dispatch(modifyPasswordFailure())
+            })
+    }
+}
+export const modifyPasswordRequest = () => {
+    return {
+        type: MODIFY_PASSWORD
+    }
+}
 
+export const modifyPasswordSuccess = (password) => {
+    return {
+        type: MODIFY_PASSWORD_SUCCESS,
+        password: password,
+    }
+}
+
+export const modifyPasswordFailure = (err) => {
+    return {
+        type: MODIFY_PASSWORD_FAILURE
+    }
+}
 export const deleteUser = (dataToSubmit) => {
     return (dispatch) => {
         console.log('회원삭제');

@@ -1,6 +1,6 @@
 
 import AsyncStorage from '@react-native-community/async-storage';
-import { AUTO_LOGIN_SUCCESS, DELETE_USER, DELETE_USER_FAILURE, DELETE_USER_SUCCESS, LOGOUT } from '../actions/actionTypes';
+import { SET_PASSWORD, AUTO_LOGIN_SUCCESS, DELETE_USER, DELETE_USER_FAILURE, DELETE_USER_SUCCESS, LOGOUT, MODIFY_PASSWORD, MODIFY_PASSWORD_SUCCESS, MODIFY_PASSWORD_FAILURE } from '../actions/actionTypes';
 
 const initialState = {
     id: '',
@@ -8,14 +8,12 @@ const initialState = {
     filename: '',
     name: '',
     phone: '',
+    password: '',
     loading: false,
 }
 
 export default function userReducer(state = initialState, action) {
     console.log('유저 리듀서');
-
-    console.log(action);
-    console.log(action.id);
     switch (action.type) {
 
         case AUTO_LOGIN_SUCCESS:
@@ -29,8 +27,37 @@ export default function userReducer(state = initialState, action) {
                 phone: action.payload.phone,
             }
 
+        case SET_PASSWORD:
+            return {
+                ...state,
+                password: action.password
+            }
+
+        case MODIFY_PASSWORD:
+            return {
+                ...state,
+                loading: true,
+            }
+
+        case MODIFY_PASSWORD_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                password: action.password
+            }
+
+        case MODIFY_PASSWORD_FAILURE:
+            return {
+                ...state,
+                loading: false,
+            }
+
         case LOGOUT:
-            DELETE_USER_SUCCESS:
+        case DELETE_USER_SUCCESS:
+            console.log('로그아웃')
+
+            console.log(action);
+
             AsyncStorage.clear();
             return initialState;
 

@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, Keyboard, Alert } from 'react-native';
 
@@ -5,7 +6,7 @@ import settingStyles from '../../assets/styles/setting';
 import UserButton from '../UserButton';
 
 function Logout(props) {
-
+    const navigation = useNavigation();
     return (
         <View style={settingStyles.container}>
             <View style={settingStyles.settingView}>
@@ -14,7 +15,7 @@ function Logout(props) {
                     <UserButton buttonName="로그아웃 하기"
                         onPress={function () {
                             props.logout();
-                            props.appNavigation.navigate('Auth');
+                            navigation.replace('Auth');
                         }}
                     />
                 </View>

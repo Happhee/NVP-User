@@ -39,7 +39,6 @@ const settingStyles = StyleSheet.create({
 
     },
     settingView: {
-
         flex: 1,
         backgroundColor: 'white',
         alignItems: 'center',
@@ -53,8 +52,27 @@ const settingStyles = StyleSheet.create({
         marginRight: 10,
         paddingTop: 20,
         paddingBottom: 20,
-    }
+    },
+    headerTitle: {
+        marginBottom: 20,
+        marginTop: 20,
+        backgroundColor: 'white',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    passwordView: {
+        flex: 1,
+        backgroundColor: 'white',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
 
+    }, headerView: {
+        flex: 0.7,
+        backgroundColor: 'white',
+        alignItems: 'center',
+        justifyContent: 'center',
+
+    },
 
 });
 
