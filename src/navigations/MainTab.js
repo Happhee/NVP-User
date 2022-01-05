@@ -12,30 +12,12 @@ const Tab = createMaterialBottomTabNavigator();
 const MainTabScreen = () => {
     return (
         <Tab.Navigator initialRouteName="HomeStack"
-
             barStyle={tabBarStyles.bottomTab}
-            screenOptions={({ route }) => ({
-
-                tabBarIcon: ({ focused }) => {
-                    if (route.name === 'HomeStack') {
-                        return (
-                            <Icon name={focused ? "file-tray-full" : 'file-tray-full-outline'}
-                                size={30} color={focused ? "'#41624A'" : '#9E9E9E'} />
-                        )
-                    }
-                    else if (route.name === 'SettingStack') {
-                        return (
-                            <Icon name={focused ? "ios-settings-sharp" : 'ios-settings-outline'}
-                                size={30} color={focused ? "'#41624A'" : '#9E9E9E'} />
-                        )
-                    }
-                }
-            })}
-
 
         >
             <Tab.Screen name="HomeStack" component={HomeStackScreen}
                 options={{
+
                     tabBarLabel: '나의 증명서',
                     tabBarIcon: ({ focused }) => (
                         <Icon name={focused ? "file-tray-full" : 'file-tray-full-outline'}
