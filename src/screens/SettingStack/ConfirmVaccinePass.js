@@ -5,9 +5,6 @@ function ConfrimVaccinePassScreen({ navigation }) {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <ConfirmVaccinePass navigation={navigation} />
-            <Button onPress={() => navigation.navigate('Logout')} title="이동" />
-
-
         </View>
     );
 }

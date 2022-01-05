@@ -5,8 +5,6 @@ function SettingMainScreen({ navigation }) {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <SettingMain navigation={navigation} />
-            <Button onPress={() => navigation.navigate('ConfirmVaccinePass')} title="이동" />
-
         </View>
     );
 }

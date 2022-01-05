@@ -5,8 +5,6 @@ function LogoutScreen({ navigation }) {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Logout navigation={navigation} />
-            <Button onPress={() => navigation.navigate('WithdrawalUser')} title="이동" />
-
         </View>
     );
 }
