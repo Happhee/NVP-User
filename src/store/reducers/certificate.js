@@ -1,4 +1,4 @@
-import { CERTIFICATE_UPLOAD, CERTIFICATE_UPLOAD_FAILURE, CERTIFICATE_UPLOAD_SUCCESS } from "../actions/actionTypes";
+import { CERTIFICATE_UPLOAD, CERTIFICATE_UPLOAD_FAILURE, CERTIFICATE_UPLOAD_SUCCESS, DOWNLOAD_CERTIFICATE, DOWNLOAD_CERTIFICATE_FAILURE, DOWNLOAD_CERTIFICATE_SUCCESS } from "../actions/actionTypes";
 
 
 const initialState = {
@@ -10,6 +10,8 @@ const initialState = {
 function certificateReducer(state = initialState, action) {
     switch (action.type) {
         case CERTIFICATE_UPLOAD:
+        case DOWNLOAD_CERTIFICATE:
+
             return {
                 ...state,
                 loading: true
@@ -22,7 +24,13 @@ function certificateReducer(state = initialState, action) {
                 loading: false,
             }
 
+        case DOWNLOAD_CERTIFICATE_SUCCESS:
+            return {
+                ...state
+            }
+
         case CERTIFICATE_UPLOAD_FAILURE:
+        case DOWNLOAD_CERTIFICATE_FAILURE:
             return {
                 ...state,
                 loading: false

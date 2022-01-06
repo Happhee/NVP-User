@@ -4,6 +4,7 @@ import axios from 'axios';
 const USER_URL = "http://52.152.236.81:8080/api"
 const axiosInstance = axios.create({
     baseURL: USER_URL,
+    headers: { 'Access-Control-Allow-Origin': '*' }
 
 });
 console.log('리프레시1');
@@ -39,7 +40,7 @@ axiosInstance.interceptors.request.use(
 //응답 가로채기
 axiosInstance.interceptors.response.use(
     //200대 응답 
-    function (res) {
+    async function (res) {
         console.log('응답')
         console.log(res);
         return res
