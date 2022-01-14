@@ -20,8 +20,3 @@ Nfc + Vaccine Pass
   
    ## 개인
 ![](https://images.velog.io/images/seohee0112/post/4984800a-9356-42f4-8ee5-6fad1c6ba077/image.png)
-
- ## 사업자
-
-![](https://images.velog.io/images/seohee0112/post/a3fe23bb-3f30-4ba0-9c7a-5565aa8c071f/image.png)
-
