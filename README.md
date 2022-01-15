@@ -30,6 +30,8 @@ Nfc + Vaccine Pass (개인용)
 
 
 # 🖥 OCR 기술 구성도
+이미지를 nvp 자체 ocr을 거쳐 유효한 데이터로 만든후 자체 진위여부 알고리즘을 통해 인증 절차를 강화시킨다.
+
 ![image](https://user-images.githubusercontent.com/79238676/149599615-8743bd27-f029-4fe4-bc52-d50c4c90abd2.png)
 
 # 🖥 회원가입시, 적용한 OCR 기술 
