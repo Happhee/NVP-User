@@ -1,46 +1,38 @@
-import * as React from 'react';
-import {StatusBar, View, Button,TouchableOpacity, Text, StyleSheet } from 'react-native';
+import React from 'react';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import NfcManager, {NfcTech} from 'react-native-nfc-manager';
 
-function MyCretificateScreen({ navigation }) 
-{
-    return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-           <TouchableOpacity style={styles.button}>
-           <Text>NVP</Text>
-            </TouchableOpacity>
-        </View>
-    );
+NfcManager.start();
+
+function App() {
+  async function readNdef() {
+    try {
+      await NfcManager.requestTechnology(NfcTech.Ndef);
+      const tag = await NfcManager.getTag();
+      console.warn('Tag found', tag);
+    } catch (ex) {
+      console.warn('Oops!', ex);
+    } finally {
+      // stop the nfc scanning
+      NfcManager.cancelTechnologyRequest();
+    }
+  }
+
+  return (
+    <View style={styles.wrapper}>
+      <TouchableOpacity onPress={readNdef}>
+        <Text>nfc 시리얼번호 읽기</Text>
+      </TouchableOpacity>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    button: {
-        backgroundColor: '#00B990',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: 200,
-        height: 200,
-        marginBottom: 30,
-        borderRadius: 100,
-        ...Platform.select({
-            ios: {
-                shadowColor: 'rgba(0,0,0,0.2)',
-                shadowOpacity: 1,
-                shadowOffset: {height: 2, width: 2},
-                shadowRadius: 2,
-            },
-            android: {
-                elevation: 0,
-                marginHorizontal: 30,
-            },
-        })
-    },
-
-    text: {
-        fontSize: 30,
-        textAlign: 'center',
-        color: 'white'
-    }
+  wrapper: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 
-  
-export default MyCretificateScreen;
+export default App;
