@@ -15,7 +15,8 @@ function WithdrawalUser(props) {
                 <View style={settingStyles.buttonView}>
                     <UserButton buttonName="회원탈퇴 하기"
                         onPress={function () {
-                            props.deleteUser();
+                            console.log(props.user.id);
+                            props.deleteUser({ id: props.user.id });
                             navigation.replace('Auth');
                         }}
                     />
