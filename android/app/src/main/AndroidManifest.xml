@@ -2,7 +2,13 @@
   package="com.nvp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-feature android:name="android.hardware.nfc" android:required="false" />
+
+
     <uses-permission android:name="android.permission.CAMERA" />
+
     <application
       android:name=".MainApplication"
       android:label="@string/app_name"
