@@ -78,10 +78,10 @@ function CheckCertificate(props) {
 
                             console.log(formData);
                             props.uploadCertificate(formData);
-                            // props.signup(dataToSubmit);
+                            props.signup(dataToSubmit);
                             Alert.alert("회원가입이 완료되었습니다 ㅎㅅㅎ ")
 
-                            // props.navigation.navigate('Login')
+                            props.navigation.navigate('Login')
 
                         }
                     }} />

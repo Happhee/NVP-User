@@ -54,7 +54,8 @@ export const autoLogin = (dataToSubmit) => {
         axiosInstance.get(USERS_URL + "/profile", dataToSubmit)
             .then((res) => {
                 const data = res.data
-                console.log('자동로그인성공')
+
+                console.log(data)
                 dispatch(autoLoginSuccess(dataToSubmit, data))
             })
             .catch(err => {
