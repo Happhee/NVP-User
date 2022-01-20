@@ -3,14 +3,14 @@ import React from 'react'
 import {
   View, Text, TouchableOpacity
 } from 'react-native'
-import NfcManager, {NfcEvents} from 'react-native-nfc-manager';
+import NfcManager, { NfcEvents } from 'react-native-nfc-manager';
 
 class AppV2 extends React.Component {
   componentDidMount() {
     NfcManager.start();
     NfcManager.setEventListener(NfcEvents.DiscoverTag, tag => {
       console.warn('tag', tag);
-      NfcManager.unregisterTagEvent().catch(() => 0);
+      NfcManager.unregisterTagEvent().catch((err) => console.log(err));
     });
   }
 
@@ -21,17 +21,17 @@ class AppV2 extends React.Component {
 
   render() {
     return (
-      <View style={{padding: 20}}>
+      <View style={{ padding: 20 }}>
         <Text>NFC 비활/활성</Text>
-        <TouchableOpacity 
-          style={{padding: 10, width: 200, margin: 20, borderWidth: 1, borderColor: 'black'}}
+        <TouchableOpacity
+          style={{ padding: 10, width: 200, margin: 20, borderWidth: 1, borderColor: 'black' }}
           onPress={this._test}
         >
           <Text>nfc reader 활성화버튼</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity 
-          style={{padding: 10, width: 200, margin: 20, borderWidth: 1, borderColor: 'black'}}
+        <TouchableOpacity
+          style={{ padding: 10, width: 200, margin: 20, borderWidth: 1, borderColor: 'black' }}
           onPress={this._cancel}
         >
           <Text>nfc reader 비활성화버튼</Text>
@@ -41,6 +41,7 @@ class AppV2 extends React.Component {
   }
 
   _cancel = () => {
+
     NfcManager.unregisterTagEvent().catch(() => 0);
   }
 
