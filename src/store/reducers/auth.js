@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-community/async-storage';
-import { LOGOUT, REGISTER_VACCINE_PASS, REGISTER_ID_CARD, SIGN_UP, SET_PASSWORD, VERIFICATION_SMS_MESSAGE, SIGN_UP_SUCCESS, SIGN_UP_FAILURE } from '../actions/actionTypes';
+import { LOGOUT, REGISTER_VACCINE_PASS, REGISTER_ID_CARD, SIGN_UP, SET_PASSWORD, VERIFICATION_SMS_MESSAGE, SIGN_UP_SUCCESS, SIGN_UP_FAILURE, DELETE_USER_SUCCESS } from '../actions/actionTypes';
 
 const USERS_URL = "/users";
 
@@ -80,6 +80,10 @@ function authReducer(state = initialState, action) {
                 ...state,
                 loading: false
             }
+
+        case DELETE_USER_SUCCESS: {
+            return initialState;
+        }
 
 
 

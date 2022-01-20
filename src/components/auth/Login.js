@@ -18,6 +18,7 @@ function Login(props) {
     useEffect(() => {
         if (props.login.data.accessToken) {
             props.navigation.navigate('Main')
+            // console.log(props.login.data)
         }
     })
     const onPressLogin = async (dataToSubmit) => {

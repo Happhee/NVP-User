@@ -18,6 +18,8 @@ target 'NVP' do
 
   pod 'react-native-nfc-manager', :path => '../node_modules/react-native-nfc-manager'
 
+  pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
+
   target 'NVPTests' do
     inherit! :complete
     # Pods for testing

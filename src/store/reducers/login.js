@@ -18,6 +18,7 @@ const loginReducer = (state = initialState, action) => {
             }
 
         case LOGIN_SUCCESS:
+
             console.log('로그인성공')
             console.log(action.payload);
 
