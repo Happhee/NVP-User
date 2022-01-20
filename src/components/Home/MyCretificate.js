@@ -1,45 +1,79 @@
-import * as React from 'react';
-import { StatusBar, View, Button, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-function MyCretificate(props, navigation) {
-    console.log('메인 NFC');
-    console.log(props)
-    return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <TouchableOpacity style={styles.button}>
-                <Text>NVP</Text>
-            </TouchableOpacity>
-        </View>
-    );
+import React from 'react'
+import {
+    View, Text, TouchableOpacity
+} from 'react-native'
+import NfcManager, { NfcEvents } from 'react-native-nfc-manager';
+
+class MyCertificate extends React.Component {
+    constructor(props) {
+        super(props);
+        console.log(props.user)
+
+    }
+    componentDidMount() {
+        NfcManager.start();
+        NfcManager.setEventListener(NfcEvents.DiscoverTag, tag => {
+            console.warn('tag', tag);
+            NfcManager.unregisterTagEvent().catch((err) => console.log(err));
+        });
+    }
+
+    componentWillUnmount() {
+        NfcManager.setEventListener(NfcEvents.DiscoverTag, null);
+        NfcManager.unregisterTagEvent().catch(() => 0);
+    }
+
+    render() {
+        return (
+            <View style={{ padding: 20 }}>
+                <Text>NFC 비활/활성</Text>
+                <TouchableOpacity
+                    style={{ padding: 10, width: 200, margin: 20, borderWidth: 1, borderColor: 'black' }}
+                    onPress={this._test}
+                >
+                    <Text>nfc reader 활성화버튼</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={{ padding: 10, width: 200, margin: 20, borderWidth: 1, borderColor: 'black' }}
+                    onPress={this._cancel}
+                >
+                    <Text>nfc reader 비활성화버튼</Text>
+                </TouchableOpacity>
+            </View>
+        )
+    }
+
+    _cancel = () => {
+
+        NfcManager.unregisterTagEvent().catch(() => 0);
+    }
+
+    _test = async () => {
+        try {
+            await NfcManager.registerTagEvent();
+            this.props.postVisitData()
+        } catch (ex) {
+            console.warn('ex', ex);
+            NfcManager.unregisterTagEvent().catch(() => 0);
+        }
+    }
 }
 
-const styles = StyleSheet.create({
-    button: {
-        backgroundColor: '#00B990',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: 200,
-        height: 200,
-        marginBottom: 30,
-        borderRadius: 100,
-        ...Platform.select({
-            ios: {
-                shadowColor: 'rgba(0,0,0,0.2)',
-                shadowOpacity: 1,
-                shadowOffset: { height: 2, width: 2 },
-                shadowRadius: 2,
-            },
-            android: {
-                elevation: 0,
-                marginHorizontal: 30,
-            },
-        })
-    },
+export default MyCertificate
+// =======
+// import * as React from 'react';
+// import { View, Text, Button } from 'react-native';
+// import MyCertificate from '../../containers/Home/MyCertificate';
 
-    text: {
-        fontSize: 30,
-        textAlign: 'center',
-        color: 'white'
-    }
-});
-export default MyCretificate;
+// function MyCretificateScreen({ navigation }) {
+//     return (
+//         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+//             <MyCertificate navigation={navigation} />
+//         </View>
+//     );
+// }
+
+// export default MyCretificateScreen;
+// >>>>>>> master
