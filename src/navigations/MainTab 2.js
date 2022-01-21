@@ -8,8 +8,8 @@ const Tab = createMaterialBottomTabNavigator();
 const MainTabScreen = () => {
     return (
         <Tab.Navigator initialRouteName="HomeStack">
-            <Tab.Screen name="HomeStack" component={HomeStackScreen} />
-            <Tab.Screen name="SettingStack" component={SettingStackScreen} />
+            <Tab.Screen name="나의 증명서" component={HomeStackScreen} />
+            <Tab.Screen name="설정" component={SettingStackScreen} />
         </Tab.Navigator>
     )
 }

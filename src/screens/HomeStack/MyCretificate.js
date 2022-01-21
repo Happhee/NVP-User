@@ -1,56 +1,65 @@
-import React from 'react'
-import {
-  View, Text, TouchableOpacity
-} from 'react-native'
-import NfcManager, {NfcEvents} from 'react-native-nfc-manager';
+import React from 'react';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import NfcManager, {NfcTech} from 'react-native-nfc-manager';
 
-class AppV2 extends React.Component {
-  componentDidMount() {
-    NfcManager.start();
-    NfcManager.setEventListener(NfcEvents.DiscoverTag, tag => {
-      console.warn('tag', tag);
-      NfcManager.unregisterTagEvent().catch(() => 0);
-    });
-  }
+NfcManager.start();
 
-  componentWillUnmount() {
-    NfcManager.setEventListener(NfcEvents.DiscoverTag, null);
-    NfcManager.unregisterTagEvent().catch(() => 0);
-  }
-
-  render() {
-    return (
-      <View style={{padding: 20}}>
-        <Text>NFC 비활/활성</Text>
-        <TouchableOpacity 
-          style={{padding: 10, width: 200, margin: 20, borderWidth: 1, borderColor: 'black'}}
-          onPress={this._test}
-        >
-          <Text>nfc reader 활성화버튼</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity 
-          style={{padding: 10, width: 200, margin: 20, borderWidth: 1, borderColor: 'black'}}
-          onPress={this._cancel}
-        >
-          <Text>nfc reader 비활성화버튼</Text>
-        </TouchableOpacity>
-      </View>
-    )
-  }
-
-  _cancel = () => {
-    NfcManager.unregisterTagEvent().catch(() => 0);
-  }
-
-  _test = async () => {
+function App() {
+  async function readNdef() {
     try {
-      await NfcManager.registerTagEvent();
+      await NfcManager.requestTechnology(NfcTech.Ndef);
+      const tag = await NfcManager.getTag();
+      console.warn('Tag found', tag);
     } catch (ex) {
-      console.warn('ex', ex);
-      NfcManager.unregisterTagEvent().catch(() => 0);
+      console.warn('Oops!', ex);
+    } finally {
+      NfcManager.cancelTechnologyRequest();
     }
   }
+
+  return (
+    <View style={styles.wrapper}>
+      <TouchableOpacity onPress={readNdef} style={styles.button}>
+      <Text>NVP</Text>
+      </TouchableOpacity>
+    </View>
+  );
 }
 
-export default AppV2
+const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  button: {
+    backgroundColor: '#00B990',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 200,
+    height: 200,
+    marginBottom: 30,
+    borderRadius: 100,
+    ...Platform.select({
+        ios: {
+            shadowColor: 'rgba(0,0,0,0.2)',
+            shadowOpacity: 1,
+            shadowOffset: { height: 2, width: 2 },
+            shadowRadius: 2,
+        },
+        android: {
+            elevation: 0,
+            marginHorizontal: 30,
+        },
+    })
+},
+
+text: {
+    fontSize: 30,
+    textAlign: 'center',
+    color: 'white'
+}
+});
+
+export default App;
