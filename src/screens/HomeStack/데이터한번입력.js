@@ -16,14 +16,14 @@ function buildTextPayload(valueToWrite) {
     return [...headerBytes, ...textBytes];
 }
 
-class App extends Component {
+class WriteNfc extends Component {
     constructor(props) {
         super(props);
         this.state = {
             supported: false,
             enabled: false,
             isTestRunning: false,
-            text: 'kim da mi jonna pretty',
+            text: 'dddddddddddd',
             parsedText: null,
             tag: null,
         }
@@ -144,4 +144,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default WriteNfc;
