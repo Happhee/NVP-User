@@ -5,11 +5,15 @@ import NfcManager, {NfcTech, ByteParser, Ndef} from 'react-native-nfc-manager';
 
 class Cre extends Component{
     
-    state = {
-        modalVisible: false
-    };
+    
     constructor(props){
         super(props);
+        this.state = {
+            modalVisible: false,
+            tag:[{
+                payload:''
+            }]
+        };
         this.readNdef();
         
     }
@@ -21,9 +25,11 @@ class Cre extends Component{
     }
     readNdef=async()=>{
         await NfcManager.requestTechnology(NfcTech.Ndef);
-        const tag = await NfcManager.getTag();
+        let newtag=this.state.tag;
+        newtag = await NfcManager.getTag();
+        this.setState({tag:newtag.ndefMessage});
         try {
-            console.warn('태그 정보', tag);
+            console.warn('태그 정보', newtag.ndefMessage);
             
           } catch (ex) 
           {
@@ -34,7 +40,7 @@ class Cre extends Component{
           }
     }
     render(){
-
+        const {tag}=this.state;
         const { modalVisible } = this.state;
         return (
             <View style={styles.centeredView}>
@@ -50,7 +56,8 @@ class Cre extends Component{
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
               <Text style={styles.modalText}>인증되었습니다!</Text>
-              <Text onClick={this.log}>
+              <Text>
+                  {JSON.stringify(tag)}
 =              </Text>
               <Pressable
                 onPress={() => this.setModalVisible(!modalVisible)}>
