@@ -1,8 +1,6 @@
 import React,{Component} from 'react';
 import {Alert, Modal, View, Text, TouchableOpacity, StyleSheet,Pressable,Dimensions } from 'react-native';
 import NfcManager, {NfcTech, ByteParser, Ndef} from 'react-native-nfc-manager';
-
-
 class Cre extends Component{
     
     
@@ -29,7 +27,7 @@ class Cre extends Component{
         newtag = await NfcManager.getTag();
         this.setState({tag:newtag.ndefMessage});
         try {
-            console.warn('태그 정보', newtag.ndefMessage);
+            //console.warn('태그 정보', newtag.ndefMessage);
             
           } catch (ex) 
           {
