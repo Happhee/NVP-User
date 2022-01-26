@@ -1,47 +1,81 @@
-import React,{Component} from 'react';
-import {Alert, Modal, View, Text, TouchableOpacity, StyleSheet,Pressable,Dimensions } from 'react-native';
-import NfcManager, {NfcTech, ByteParser, Ndef} from 'react-native-nfc-manager';
-class Cre extends Component{
-    
-    
+import React from 'react';
+import { View, Text, Modal, TouchableOpacity, Platform, SafeAreaView, StyleSheet, TextInput, Alert
+,Pressable,Dimensions} from 'react-native';
+import NfcManager, { NfcTech } from 'react-native-nfc-manager';
+
+class Cre extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            modalVisible: false,
-            tag:[{
-                payload:''
-            }]
-        };
-        this.readNdef();
-        
+            modalVisible:false,
+            log: "",
+            text: ""
+        }
+        this.readData();
     }
     setModalVisible = (visible) => {
         this.setState({ modalVisible: visible });
       }
-    componentDidMount(){
+    componentDidMount() {
         NfcManager.start();
     }
-    readNdef=async()=>{
-        await NfcManager.requestTechnology(NfcTech.Ndef);
-        let newtag=this.state.tag;
-        newtag = await NfcManager.getTag();
-        this.setState({tag:newtag.ndefMessage});
-        try {
-            //console.warn('태그 정보', newtag.ndefMessage);
-            
-          } catch (ex) 
-          {
-            console.warn('Oops!', ex);
-          } finally
-           {
-            NfcManager.cancelTechnologyRequest();
-          }
+
+    componentWillUnmount() {
+        this._cleanUp();
     }
+
+    _cleanUp = () => {
+        NfcManager.cancelTechnologyRequest().catch(() => 0);
+    }
+
+    readData = async () => {
+        try {
+            let tech = Platform.OS === 'ios' ? NfcTech.MifareIOS : NfcTech.NfcA;
+            let resp = await NfcManager.requestTechnology(tech, {
+                alertMessage: 'Ready to do some custom Mifare cmd!'
+            });
+            let cmd = Platform.OS === 'ios' ? NfcManager.sendMifareCommandIOS : NfcManager.transceive;
+            resp = await cmd([0x3A, 4, 4]);
+            let payloadLength = parseInt(resp.toString().split(",")[1]);
+            let payloadPages = Math.ceil(payloadLength / 4);
+            let startPage = 5;
+            let endPage = startPage + payloadPages - 1;
+            resp = await cmd([0x3A, startPage, endPage]);
+            bytes = resp.toString().split(",");
+            let text = "";
+            for(let i=0; i<bytes.length; i++){
+                if (i < 5){
+                    continue;
+                }
+                if (parseInt(bytes[i]) === 254){
+                    break;
+                }
+                text = text + String.fromCharCode(parseInt(bytes[i]));
+            }
+            this.setState({
+                log: text
+            })
+
+            this._cleanUp();
+        } catch (ex) {
+            this.setState({
+                log: ex.toString()
+            })
+            this._cleanUp();
+        }
+    }
+
+    onChangeText = (text) => {
+        this.setState({
+            text
+        })
+    }
+
     render(){
-        const {tag}=this.state;
         const { modalVisible } = this.state;
         return (
             <View style={styles.centeredView}>
+            <Text>{this.state.log}님, 인증되었습니다.</Text>
               <Modal
           animationType="slide"
           transparent={true}
@@ -54,9 +88,7 @@ class Cre extends Component{
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
               <Text style={styles.modalText}>인증되었습니다!</Text>
-              <Text>
-                  {JSON.stringify(tag)}
-=              </Text>
+              <Text>{this.state.log}</Text>
               <Pressable
                 onPress={() => this.setModalVisible(!modalVisible)}>
                 <Text>닫기</Text>
@@ -67,7 +99,7 @@ class Cre extends Component{
         <Pressable
           style={[styles.button, styles.buttonOpen]}
           onPress={() => this.setModalVisible(true)}>
-          <Text style={styles.textStyle}>NVP</Text>
+          <Text style={styles.textStyle}  onPress={this.readData}>NVP</Text>
         </Pressable>
         </View>
           )
@@ -151,5 +183,6 @@ text: {
     color: 'white'
 }
 });
+
 
 export default Cre;
