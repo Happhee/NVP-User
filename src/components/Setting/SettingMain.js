@@ -10,12 +10,12 @@ function SettingMain(props) {
 
         <View style={settingStyles.container}>
             <View style={settingStyles.header}>
-                <RegisterButton buttonName="백신패스 등록" />
+                <RegisterButton buttonName="Vaccine pass registration" />
             </View>
 
             <View style={settingStyles.content}
                 onTouchStart={() => props.navigation.navigate('ConfirmVaccinePass')} >
-                <Text style={settingStyles.contentFont} >백신패스 확인</Text>
+                <Text style={settingStyles.contentFont} >Check the vaccine pass</Text>
             </View>
 
 
@@ -23,19 +23,19 @@ function SettingMain(props) {
             <View style={settingStyles.content}
                 onTouchStart={() => props.navigation.navigate('SetPasswordUser')} >
 
-                <Text style={settingStyles.contentFont}>비밀번호 설정</Text>
+                <Text style={settingStyles.contentFont}>Setting the Password</Text>
 
             </View>
             <View style={settingStyles.content}
                 onTouchStart={() => props.navigation.navigate('Logout')} >
 
-                <Text style={settingStyles.contentFont}>로그아웃</Text>
+                <Text style={settingStyles.contentFont}>LOG OUT</Text>
 
             </View>
             <View style={settingStyles.content}
                 onTouchStart={() => props.navigation.navigate('WithdrawalUser')} >
 
-                <Text style={settingStyles.contentFont}>회원탈퇴</Text>
+                <Text style={settingStyles.contentFont}>Membership Withdrawal</Text>
 
             </View>
 

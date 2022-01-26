@@ -10,11 +10,11 @@ function ConfrimVaccinePass(props) {
 
         <View style={authStyles.container}>
             <View style={authStyles.header}>
-                <Text style={authStyles.headerFont}>백신패스 확인</Text>
+                <Text style={authStyles.headerFont}>Check the vaccine pass</Text>
                 <Button onPress={() => {
                     props.downLoadCertificate({ filename: 'redux.png' });
 
-                }} title="가져오기" />
+                }} title="Import" />
             </View>
 
         </View>

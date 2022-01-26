@@ -10,9 +10,9 @@ function Logout(props) {
     return (
         <View style={settingStyles.container}>
             <View style={settingStyles.settingView}>
-                <Text style={settingStyles.contentFont}>정말로 로그아웃을 하시겠습니까?</Text>
+                <Text style={settingStyles.contentFont}>Do you want really to log out?</Text>
                 <View style={settingStyles.buttonView}>
-                    <UserButton buttonName="로그아웃 하기"
+                    <UserButton buttonName="LOGOUT"
                         onPress={function () {
                             props.logout();
                             navigation.replace('Auth');

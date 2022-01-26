@@ -80,11 +80,11 @@ function TakeVaccinePass(props) {
         <View style={signUp.container}>
 
             <View style={signUp.header}>
-                <Text style={signUp.titleFont}>백신 증명서 등록</Text>
+                <Text style={signUp.titleFont}>Vaccine certificate registration</Text>
             </View>
 
             <View style={signUp.cameraRoll} >
-                <RegisterButton buttonName="쿠브 인증서 가져오기"
+                <RegisterButton buttonName="Get Certificate"
                     onPress={openPicker} />
             </View>
             <View style={signUp.cameraView}>
@@ -96,7 +96,7 @@ function TakeVaccinePass(props) {
                 <NvpButton
                     icon="save"
                     onPress={function () {
-                        Alert.alert("백신 증명서가 등록되었습니다")
+                        Alert.alert("Your vaccine certificate has been registered")
                         console.log(fileName)
                         props.setVaccinePass(getOcrName(description), imageUri, fileName);
                         // const formData = new FormData();

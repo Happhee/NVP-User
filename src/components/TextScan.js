@@ -8,7 +8,7 @@ const TextScan = (props) => {
             {googleVisionDetention.webDetection.webEntities.map((data, index) => {
                 return (
                     <View key={index}>
-                        <Text>이름 : {data.name}</Text>
+                        <Text>Name : {data.name}</Text>
                     </View>
                 )
             })}

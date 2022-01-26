@@ -67,7 +67,7 @@ export default function userReducer(state = initialState, action) {
             return initialState;
 
         case POST_VISIT_DATA_SUCCESS:
-            Alert.alert('방문기록이 저장되었습니다')
+            Alert.alert('Your visit record has been saved')
             return {
                 ...state,
                 loading: false

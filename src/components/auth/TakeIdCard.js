@@ -15,10 +15,10 @@ function TakeIdCard(props) {
         <View style={signUp.container}>
 
             <View style={signUp.header}>
-                <Text style={signUp.titleFont}>신분증 등록</Text>
+                <Text style={signUp.titleFont}>ID card registration</Text>
             </View>
             <View style={signUp.registerInfo}>
-                <Text style={signUp.registerFont}>네모 상자가 나타나게 신분증을 찍어주세요</Text>
+                <Text style={signUp.registerFont}>Please take an ID so that a square box appears</Text>
             </View>
 
             <View style={signUp.cameraView} >

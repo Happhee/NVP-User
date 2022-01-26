@@ -23,15 +23,15 @@ function ReSetPassword(props) {
                     <Text style={signUp.headerFont}>NVP</Text>
                 </View>
                 <View style={signUp.title}>
-                    <Text style={signUp.titleFont}>간편번호 재설정</Text>
+                    <Text style={signUp.titleFont}>Simple Password reset</Text>
                 </View>
 
                 <View style={signUp.content} >
                     <View style={signUp.contentView}>
-                        <Text style={signUp.contentFont}>새로운   간편번호</Text>
+                        <Text style={signUp.contentFont}>New   Simple     Password</Text>
                         <View style={signUp.meesageInnerContent}>
                             <TextInput style={signUp.messageInput}
-                                placeholder="숫자 6자리 입력"
+                                placeholder="6 digits"
                                 placeholderTextColor={colors.nvpUnder}
                                 keyboardType="number-pad"
                                 maxLength={6}
@@ -41,26 +41,26 @@ function ReSetPassword(props) {
                                 }} />
                         </View>
                         <SignUpButton
-                            buttonName="설정"
+                            buttonName="Set"
                             onPress={function () {
                                 Keyboard.dismiss();
                                 if (passWord.length === 6) {
-                                    Alert.alert('간편번호 확인을 진행해주세요')
+                                    Alert.alert('Please check the simple number')
                                 }
                                 else {
-                                    Alert.alert('간편번호는 6자리로 입력해주세요')
+                                    Alert.alert('Please enter the simple number in 6 digits')
                                 }
                             }} />
 
                     </View>
 
                     <View style={signUp.contentView}>
-                        <Text style={signUp.contentFont}>간편번호 확인</Text>
+                        <Text style={signUp.contentFont}>Check the simple number</Text>
                         <View style={signUp.meesageInnerContent}>
                             <TextInput style={signUp.messageInput}
                                 placeholderTextColor={colors.nvpUnder}
 
-                                placeholder="간편번호 재확인"
+                                placeholder="6 digits"
                                 keyboardType="number-pad"
                                 maxLength={6}
                                 secureTextEntry
@@ -69,17 +69,17 @@ function ReSetPassword(props) {
                                 }} />
                         </View>
                         <SignUpButton
-                            buttonName="확인"
+                            buttonName="Check"
                             onPress={function () {
                                 Keyboard.dismiss();
                                 if (passWord === confirmPassword) {
-                                    Alert.alert('비밀번호 설정이 완료되었습니다')
+                                    Alert.alert('I\'m done setting the password')
                                     setSuccessPassword(true);
                                     props.setPassword(passWord);
                                     // props.navigation.navigate('CheckCertificate')
                                 }
                                 else {
-                                    Alert.alert('간편번호가 다릅니다!!')
+                                    Alert.alert('The convenience number is different!')
                                 }
                             }} />
 
@@ -94,7 +94,7 @@ function ReSetPassword(props) {
                             if (successPassword) {
                                 props.navigation.navigate('Login')
                             } else {
-                                Alert.alert('간편번호 설정 및 확인을 진행해주세요')
+                                Alert.alert('Please set and check the simple number.')
                             }
                         }} />
                 </View>

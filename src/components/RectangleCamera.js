@@ -470,7 +470,7 @@ class RectangleCamera extends PureComponent {
                                 paddingBottom: hp(3),
                             }}>
                             <Text style={rectangleStyles.idCardResult}>
-                                신분증 촬영 결과
+                                Result
                             </Text>
                         </View>
                         <View
@@ -492,10 +492,10 @@ class RectangleCamera extends PureComponent {
                         <View style={rectangleStyles.ocrResultContainer}>
                             <View style={ocrStyles.ocrResultTitleView}>
                                 <Text style={ocrStyles.ocrResultTitle}>OCR</Text>
-                                <Text style={ocrStyles.ocrResultTitle}>분석결과</Text>
+                                <Text style={ocrStyles.ocrResultTitle}>Analysis result</Text>
                             </View>
                             <View style={ocrStyles.ocrContentView}>
-                                <Text style={ocrStyles.ocrTitle}>성명</Text>
+                                <Text style={ocrStyles.ocrTitle}>Name</Text>
                                 <Text style={ocrStyles.ocrText}>{this.state.idCardName}</Text>
                             </View>
 
@@ -517,7 +517,7 @@ class RectangleCamera extends PureComponent {
                                                 this.feedback(1);
                                             }
                                         }}>
-                                        <Text style={rectangleStyles.btn_l_text}>다시찍기</Text>
+                                        <Text style={rectangleStyles.btn_l_text}>Take it again</Text>
                                     </TouchableOpacity>
                                 </View>
 
@@ -529,7 +529,7 @@ class RectangleCamera extends PureComponent {
                                                 this.feedback(2);
                                             }
                                         }}>
-                                        <Text style={rectangleStyles.btn_r_text}>사용하기</Text>
+                                        <Text style={rectangleStyles.btn_r_text}>Use it</Text>
                                     </TouchableOpacity>
                                 </View>
 

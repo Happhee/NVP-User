@@ -34,8 +34,8 @@ function Login(props) {
                     <Text style={authStyles.headerFont}>NVP</Text>
                 </View>
                 <View style={authStyles.title}>
-                    <Text style={authStyles.titleFont}>등록한 간편 비밀번호를</Text>
-                    <Text style={authStyles.titleFont}>입력해주세요</Text>
+                    <Text style={authStyles.titleFont}>Please enter</Text>
+                    <Text style={authStyles.titleFont}>the Simple Password</Text>
                 </View>
 
                 <View style={authStyles.content} >
@@ -62,7 +62,7 @@ function Login(props) {
 
                     <View style={authStyles.contentButton}>
                         <UserButton
-                            buttonName="로그인"
+                            buttonName="LOGIN"
                             onPress={function () {
                                 const dataToSubmit = {
                                     id: uniqueId,
@@ -76,7 +76,7 @@ function Login(props) {
                             }} />
 
                         <UserButton
-                            buttonName="회원가입"
+                            buttonName="SIGN UP"
                             onPress={function () {
                                 props.navigation.navigate('TakeTextMessage')
                             }} />
@@ -87,7 +87,7 @@ function Login(props) {
 
                 <View style={authStyles.footer}>
                     <UserButton
-                        buttonName="간편번호를 잊어버리셨나요?"
+                        buttonName="Did you forget your simple password?"
                         onPress={function () {
                             props.navigation.navigate('ResetTextMessage');
                         }} />

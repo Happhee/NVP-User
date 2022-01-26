@@ -30,17 +30,17 @@ function SetPasswordUser(props) {
                         <Text style={signUp.headerFont}>NVP</Text>
                     </View>
                     <View style={settingStyles.headerTitle}>
-                        <Text style={signUp.titleFont}>비밀번호 변경</Text>
+                        <Text style={signUp.titleFont}>Changing the password</Text>
                     </View>
                 </View>
 
 
                 <View style={settingStyles.passwordView} >
                     <View style={signUp.contentView}>
-                        <Text style={signUp.contentFont}>간편번호 설정</Text>
+                        <Text style={signUp.contentFont}>New   Simple     Password</Text>
                         <View style={signUp.meesageInnerContent}>
                             <TextInput style={signUp.messageInput}
-                                placeholder="숫자 6자리 입력"
+                                placeholder="6 digits"
                                 placeholderTextColor={colors.nvpUnder}
                                 keyboardType="number-pad"
                                 maxLength={6}
@@ -50,25 +50,27 @@ function SetPasswordUser(props) {
                                 }} />
                         </View>
                         <SignUpButton
-                            buttonName="설정"
+                            buttonName="Set"
                             onPress={function () {
                                 Keyboard.dismiss();
                                 if (password.length === 6) {
-                                    Alert.alert('간편번호 확인을 진행해주세요')
+                                    Alert.alert('Please check the simple number')
+                                    Alert.alert('Please check the simple number')
                                 }
                                 else {
-                                    Alert.alert('간편번호는 6자리로 입력해주세요')
+                                    Alert.alert('Please enter the simple number in 6 digits')
+
                                 }
                             }} />
                     </View>
 
                     <View style={signUp.contentView}>
-                        <Text style={signUp.contentFont}>간편번호 확인</Text>
+                        <Text style={signUp.contentFont}>Check the simple number</Text>
                         <View style={signUp.meesageInnerContent}>
                             <TextInput style={signUp.messageInput}
                                 placeholderTextColor={colors.nvpUnder}
 
-                                placeholder="간편번호 재확인"
+                                placeholder="6 digits"
                                 keyboardType="number-pad"
                                 maxLength={6}
                                 secureTextEntry
@@ -77,17 +79,19 @@ function SetPasswordUser(props) {
                                 }} />
                         </View>
                         <SignUpButton
-                            buttonName="확인"
+                            buttonName="Check"
                             onPress={function () {
                                 Keyboard.dismiss();
                                 if (password === confirmPassword) {
-                                    Alert.alert('비밀번호가 변경되었습니다')
+                                    Alert.alert('I\'m done setting the password')
+
                                     setSuccessPassword(true);
                                     props.modifyPassword({ id: props.user.id, password: password });
                                     // navigation.navigate('SettingMain');
                                 }
                                 else {
-                                    Alert.alert('간편번호가 다릅니다!!')
+                                    Alert.alert('The convenience number is different!')
+
                                 }
                             }} />
 

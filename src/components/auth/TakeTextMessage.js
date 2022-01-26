@@ -71,13 +71,13 @@ function TakeTextMessage(props) {
                     <Text style={signUp.headerFont}>NVP</Text>
                 </View>
                 <View style={signUp.title}>
-                    <Text style={signUp.titleFont}>회원가입</Text>
+                    <Text style={signUp.titleFont}>SIGN UP</Text>
                 </View>
 
                 <View style={signUp.content} >
                     <View style={signUp.contentView}>
 
-                        <Text style={signUp.contentFont}>이름</Text>
+                        <Text style={signUp.contentFont}>Name</Text>
 
                         <TextInput style={signUp.contentInput}
                             onChangeText={(inputName) => {
@@ -87,21 +87,21 @@ function TakeTextMessage(props) {
                     </View>
 
                     <View style={signUp.contentView}>
-                        <Text style={signUp.contentFont}>전화번호</Text>
+                        <Text style={signUp.contentFont}>Phone Number</Text>
                         <TextInput style={signUp.contentInput}
                             keyboardType="number-pad"
                             onChangeText={(inputPhone) => {
                                 setPhone(inputPhone);
                             }} />
                         <SignUpButton
-                            buttonName="인증"
+                            buttonName="Certified"
                             onPress={function () {
                                 Keyboard.dismiss();
                                 if (!isPhoneNumber(phone)) {
-                                    Alert.alert('잘못된 형식의 전화번호입니다');
+                                    Alert.alert('Invalid phone number');
                                     stopTimer();
                                 } else {
-                                    Alert.alert('인증 유효시간은 3분입니다');
+                                    Alert.alert('The valid time is 3 minutes');
                                     props.postMessage({ phone: phone });
                                     startTimer();
                                 }
@@ -109,7 +109,7 @@ function TakeTextMessage(props) {
 
                     </View>
                     <View style={signUp.meesageContent}>
-                        <Text style={signUp.contentFont}>인증번호</Text>
+                        <Text style={signUp.contentFont}>Authentication Number</Text>
                         <View style={signUp.meesageInnerContent}>
                             <TextInput style={signUp.messageInput}
                                 keyboardType="number-pad"
@@ -122,23 +122,23 @@ function TakeTextMessage(props) {
 
                         </View>
                         <SignUpButton
-                            buttonName="확인"
+                            buttonName="Check"
                             onPress={function () {
 
                                 if (parseInt(props.sms.message) === parseInt(message)) {
 
                                     setSuccessMessage(true);
-                                    Alert.alert('인증에 성공하였습니다! 다음단계로 이동해주세요')
+                                    Alert.alert('I succeeded in proving it! Please move on to the next step')
                                     // props.navigation.navigate('SetPassword')
                                     stopTimer();
                                     Keyboard.dismiss();
                                 }
                                 else if (props.sms.message === MESSAGE_TIME_OUT) {
-                                    Alert.alert('인증시간이 지났습니다! 재인증을 해주세요');
+                                    Alert.alert('Time for proof has passed! Please re-certify it.');
                                     Keyboard.dismiss();
                                 }
                                 else {
-                                    Alert.alert('잘못된 인증번호입니다! 다시 입력해주세요')
+                                    Alert.alert('Invalid authentication number! Please type it again.')
                                 }
                             }} />
 
@@ -156,10 +156,10 @@ function TakeTextMessage(props) {
                                 props.navigation.navigate('SetPassword')
                             }
                             else if (!isName(name)) {
-                                Alert.alert('이름을 올바르게 입력해주세요!')
+                                Alert.alert('Please enter the correct name!')
 
                             } else {
-                                Alert.alert('인증을 진행해주세요!');
+                                Alert.alert('Please prove it!');
                             }
                         }} />
                 </View>

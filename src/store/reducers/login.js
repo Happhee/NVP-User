@@ -38,7 +38,7 @@ const loginReducer = (state = initialState, action) => {
             }
         case LOGIN_FAILURE:
             AUTO_LOGIN_FAILURE:
-            Alert.alert('로그인에 실패하였습니다');
+            Alert.alert('I failed to log in');
             return {
                 ...state,
                 loading: false,
