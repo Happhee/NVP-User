@@ -22,6 +22,12 @@ const buttonStyles = StyleSheet.create({
         justifyContent: 'center',
         color: 'white'
 
+    }, buttonText: {
+        fontFamily: 'DoHyeon-Regular',
+        fontSize: 20,
+        justifyContent: 'center',
+        color: 'white'
+
     },
     nextButton: {
         borderRadius: 10,

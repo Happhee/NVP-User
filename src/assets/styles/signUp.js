@@ -56,7 +56,7 @@ const authStyles = StyleSheet.create({
         fontSize: 23,
         fontFamily: 'DoHyeon-Regular',
         color: colors.nvpRoot,
-        width: '50%',
+        width: '45%',
         borderRadius: 10,
         padding: 5,
         marginRight: 10,
@@ -82,7 +82,7 @@ const authStyles = StyleSheet.create({
     },
     meesageInnerContent: {
         flexDirection: 'column',
-        width: '50%',
+        width: '45%',
         marginRight: 10,
         alignItems: 'flex-start',
 

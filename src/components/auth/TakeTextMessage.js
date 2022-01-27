@@ -94,7 +94,7 @@ function TakeTextMessage(props) {
                                 setPhone(inputPhone);
                             }} />
                         <SignUpButton
-                            buttonName="Certified"
+                            buttonName="Certify"
                             onPress={function () {
                                 Keyboard.dismiss();
                                 if (!isPhoneNumber(phone)) {
@@ -109,7 +109,7 @@ function TakeTextMessage(props) {
 
                     </View>
                     <View style={signUp.meesageContent}>
-                        <Text style={signUp.contentFont}>Authentication Number</Text>
+                        <Text style={signUp.contentFont}>Certified Number</Text>
                         <View style={signUp.meesageInnerContent}>
                             <TextInput style={signUp.messageInput}
                                 keyboardType="number-pad"

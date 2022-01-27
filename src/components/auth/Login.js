@@ -87,7 +87,7 @@ function Login(props) {
 
                 <View style={authStyles.footer}>
                     <UserButton
-                        buttonName="Did you forget your simple password?"
+                        buttonName="forget your simple password?"
                         onPress={function () {
                             props.navigation.navigate('ResetTextMessage');
                         }} />
