@@ -1,5 +1,5 @@
 {
-  "name": "NVP",
+  "name": "nvp",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -11,27 +11,42 @@
   },
   "dependencies": {
     "@mui/material": "^5.2.5",
+    "@react-native-community/async-storage": "^1.12.1",
+    "@react-native-community/cameraroll": "^4.1.2",
     "@react-native-firebase/app": "^14.1.0",
+    "@react-native-firebase/firestore": "^14.1.0",
+    "@react-native-firebase/storage": "^14.1.0",
     "@react-navigation/material-bottom-tabs": "^6.0.9",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
     "@react-navigation/stack": "^6.0.11",
     "axios": "^0.24.0",
+<<<<<<< HEAD
     "expo-av": "^10.2.0",
+=======
+    "prop-types": "^15.8.0",
+>>>>>>> master
     "react": "17.0.2",
     "react-native": "0.66.4",
+    "react-native-auto-height-image": "^3.2.4",
     "react-native-device-info": "^8.4.8",
     "react-native-gesture-handler": "^2.1.0",
-    "react-native-nfc-manager": "^3.9.0",
+    "react-native-nfc-manager": "^3.12.0",
+    "react-native-image-picker": "^4.6.1",
     "react-native-paper": "^4.11.1",
     "react-native-reanimated": "^2.2.4",
+    "react-native-rectangle-scanner": "^1.0.10",
+    "react-native-responsive-screen": "^1.4.2",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.10.1",
     "react-native-simple-modal": "^9.0.1",
     "react-native-splash-screen": "^3.3.0",
+    "react-native-svg": "^12.1.1",
     "react-native-vector-icons": "^9.0.0",
     "react-redux": "^7.2.6",
-    "redux": "^4.1.2"
+    "redux": "^4.1.2",
+    "redux-actions": "^2.6.5",
+    "redux-thunk": "^2.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.16.5",
@@ -41,9 +56,22 @@
     "eslint": "^8.5.0",
     "jest": "^27.4.5",
     "metro-react-native-babel-preset": "^0.66.2",
+    "nth-check": ">=2.0.1",
     "react-test-renderer": "17.0.2"
   },
   "jest": {
     "preset": "react-native"
-  }
+  },
+  "description": "# 🖥  프로젝트명  Nfc + Vaccine Pass",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seohee0112/NVP-.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seohee0112/NVP-/issues"
+  },
+  "homepage": "https://github.com/seohee0112/NVP-#readme"
 }
