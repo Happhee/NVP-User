@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react';
 import { View, Text, Modal, TouchableOpacity, Platform, SafeAreaView, StyleSheet, TextInput, Alert
 ,Pressable,Dimensions} from 'react-native';
@@ -105,17 +104,6 @@ class Cre extends React.Component {
         </View>
           )
     }
-=======
-import * as React from 'react';
-import { View, Text, Button } from 'react-native';
-import MyCertificate from '../../containers/Home/MyCertificate';
-function MyCertificateScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <MyCertificate />
-    </View>
-  );
->>>>>>> master
 }
 const styles = StyleSheet.create({
 
@@ -197,8 +185,4 @@ text: {
 });
 
 
-<<<<<<< HEAD
 export default Cre;
-=======
-export default MyCertificateScreen;
->>>>>>> master
