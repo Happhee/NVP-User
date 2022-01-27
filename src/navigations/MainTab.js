@@ -15,7 +15,7 @@ const MainTabScreen = (props) => {
             barStyle={tabBarStyles.bottomTab}>
             <Tab.Screen name="HomeStack" component={HomeStackScreen}
                 options={{
-                    tabBarLabel: '나의 증명서',
+                    tabBarLabel: 'My Certificate',
                     tabBarIcon: ({ focused }) => (
                         <Icon name={focused ? "file-tray-full" : 'file-tray-full-outline'}
                             size={20} color={focused ? '#41624A' : '#9E9E9E'} />
@@ -23,7 +23,7 @@ const MainTabScreen = (props) => {
                 }} />
             <Tab.Screen name="SettingStack" component={SettingStackScreen}
                 options={{
-                    tabBarLabel: '설정',
+                    tabBarLabel: 'Setting',
                     tabBarIcon: ({ focused }) => (
                         <Icon name={focused ? "ios-settings-sharp" : 'ios-settings-outline'}
                             size={20} color={focused ? '#41624A' : '#9E9E9E'} />

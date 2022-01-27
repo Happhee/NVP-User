@@ -34,24 +34,24 @@ const SettingStackScreen = (props) => {
             <SettingStack.Screen name="SettingMain" component={SettingMain}
 
                 options={{
-                    title: '설정',
+                    title: 'Setting',
                 }} />
             <SettingStack.Screen name="ConfirmVaccinePass" component={ConfrimVaccinePassScreen}
                 options={{
-                    title: '백신패스 확인',
+                    title: 'Check the vaccine pass',
                 }} />
             <SettingStack.Screen name="Logout" component={LogoutScreen}
                 options={{
-                    title: '로그아웃',
+                    title: 'LOG OUT',
                 }} />
             <SettingStack.Screen name="WithdrawalUser" component={WithdrawalUserScreen}
                 options={{
-                    title: '회원탈퇴',
+                    title: 'Membership Withdrawal',
                 }} />
 
             <SettingStack.Screen name="SetPasswordUser" component={SetPasswordUserScreen}
                 options={{
-                    title: '비밀번호 변경',
+                    title: 'Setting the Password',
                 }} />
         </Stack.Navigator>
     )
