@@ -382,7 +382,7 @@ class RectangleCamera extends PureComponent {
                                 fontFamily: 'DoHyeon-Regular',
                                 color: '#333333', fontSize: 30, marginTop: 10
                             }}>
-                                로딩중입니다
+                                Loading
                             </Text>
                         </View>
                     </View>

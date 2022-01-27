@@ -19,9 +19,13 @@ function CheckCertificate(props) {
     let [icon, setIcon] = useState("remove")
 
     useEffect(() => {
-        if (props.auth.name === props.auth.idCardName
-            && props.auth.name === props.auth.vaccinePassName
-            && props.auth.idCardName === props.auth.vaccinePassName) {
+        if (
+            // props.auth.name === props.auth.idCardName
+            // && props.auth.name === props.auth.vaccinePassName
+            props.auth.idCardName != '' &&
+            props.auth.vaccinePassName != ''
+            &&
+            props.auth.idCardName === props.auth.vaccinePassName) {
             setIcon("check")
         }
     }, [props.auth.vaccinePassName, props.auth.idCardName])
@@ -34,16 +38,15 @@ function CheckCertificate(props) {
                 <Text style={signUp.headerFont}>NVP</Text>
             </View>
             <View style={signUp.title}>
-                <Text style={signUp.titleFont}>신분증/백신증명서</Text>
-                <Text style={signUp.titleFont}>등록</Text>
+                <Text style={signUp.titleFont}>Registeration</Text>
             </View>
 
             <View style={signUp.content} >
-                <RegisterButton buttonName="신분증 등록"
+                <RegisterButton buttonName="Id Card"
                     onPress={function () {
                         props.navigation.navigate('TakeIdCard')
                     }} />
-                <RegisterButton buttonName="백신 증명서 등록"
+                <RegisterButton buttonName="Vaccine Pass"
                     onPress={function () {
                         props.navigation.navigate('TakeVaccinePass')
                     }} />
@@ -54,7 +57,7 @@ function CheckCertificate(props) {
                     icon={icon}
                     onPress={function () {
                         if (icon === "remove") {
-                            Alert.alert("본인의 신분증과 백신 증명서를 등록해주세요!")
+                            Alert.alert("Please register your ID and vaccine certificate!")
                         } else {
                             const nowDate = new Date();
 
@@ -79,7 +82,7 @@ function CheckCertificate(props) {
                             console.log(formData);
                             props.uploadCertificate(formData);
                             props.signup(dataToSubmit);
-                            Alert.alert("회원가입이 완료되었습니다 ㅎㅅㅎ ")
+                            Alert.alert("SIGN UP SUCCESS ")
 
                             props.navigation.navigate('Login')
 

@@ -151,7 +151,7 @@ function TakeTextMessage(props) {
                     <NvpButton
                         icon="arrow-right"
                         onPress={function () {
-                            if (isName(name) && successMessage) {
+                            if (successMessage) {
                                 props.verifySmsMessage(id, name, phone);
                                 props.navigation.navigate('SetPassword')
                             }

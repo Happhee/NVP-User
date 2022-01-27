@@ -80,7 +80,8 @@ function TakeVaccinePass(props) {
         <View style={signUp.container}>
 
             <View style={signUp.header}>
-                <Text style={signUp.titleFont}>Vaccine certificate registration</Text>
+                <Text style={signUp.titleFont}>Registration</Text>
+                <Text style={signUp.titleFont}>Vaccine Certificate</Text>
             </View>
 
             <View style={signUp.cameraRoll} >

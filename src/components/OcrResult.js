@@ -8,14 +8,14 @@ function OcrResult(props) {
         <View style={ocrStyles.ocrContent}>
             <View style={ocrStyles.ocrResultTitleView}>
                 <Text style={ocrStyles.ocrResultTitle}>OCR</Text>
-                <Text style={ocrStyles.ocrResultTitle}>Analysis result</Text>
+                <Text style={ocrStyles.ocrResultTitle}>Result</Text>
 
             </View>
             <View style={ocrStyles.ocrContentView}>
                 <Text style={ocrStyles.ocrTitle}>Name</Text>
                 <Text style={ocrStyles.ocrText}>{getOcrName(props.description)}</Text>
 
-                <Text style={ocrStyles.ocrTitle}>Vaccine manufacturer</Text>
+                <Text style={ocrStyles.ocrTitle}>Manufacturer</Text>
                 <Text style={ocrStyles.ocrText}>{getManufactuer(props.description)}</Text>
             </View>
             <View style={ocrStyles.ocrContentView}>

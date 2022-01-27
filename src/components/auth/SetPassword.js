@@ -33,7 +33,7 @@ function SetPassword(props) {
 
                 <View style={signUp.content} >
                     <View style={signUp.contentView}>
-                        <Text style={signUp.contentFont}>Simple number setting</Text>
+                        <Text style={signUp.contentFont}>Simple number</Text>
                         <View style={signUp.meesageInnerContent}>
                             <TextInput style={signUp.messageInput}
                                 placeholder="6 digits"
@@ -60,12 +60,12 @@ function SetPassword(props) {
                     </View>
 
                     <View style={signUp.contentView}>
-                        <Text style={signUp.contentFont}>Check the simple number</Text>
+                        <Text style={signUp.contentFont}>Check Simple number</Text>
                         <View style={signUp.meesageInnerContent}>
                             <TextInput style={signUp.messageInput}
                                 placeholderTextColor={colors.nvpUnder}
 
-                                placeholder="Check the simple number"
+                                placeholder="Check"
                                 keyboardType="number-pad"
                                 maxLength={6}
                                 secureTextEntry
@@ -74,7 +74,7 @@ function SetPassword(props) {
                                 }} />
                         </View>
                         <SignUpButton
-                            buttonName="확인"
+                            buttonName="Check"
                             onPress={function () {
                                 Keyboard.dismiss();
                                 if (password === confirmPassword) {
