@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "162040589371",
+    "project_id": "user-nvp",
+    "storage_bucket": "user-nvp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:162040589371:android:71817251f7261057bb801e",
+        "android_client_info": {
+          "package_name": "com.nvp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "162040589371-ae66h61sivc2oqn272lf0dbrn3gp8rs3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBi2l9ja_PYYd3Ng1LLT65HcVcnTf55YJ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "162040589371-ae66h61sivc2oqn272lf0dbrn3gp8rs3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "162040589371-l0jr50b407r4vnr8hal4j8hefru1sda4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.NVP"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
