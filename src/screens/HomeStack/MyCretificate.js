@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Modal, TouchableOpacity, Platform, SafeAreaView, StyleSheet, TextInput, Alert
 ,Pressable,Dimensions} from 'react-native';
 import NfcManager, { NfcTech } from 'react-native-nfc-manager';
+import Sound from 'react-native-sound';
 
 class Cre extends React.Component {
     constructor(props){
@@ -41,6 +42,7 @@ class Cre extends React.Component {
             let startPage = 5;
             let endPage = startPage + payloadPages - 1;
             resp = await cmd([0x3A, startPage, endPage]);
+            let bytes;
             bytes = resp.toString().split(",");
             let text = "";
             for(let i=0; i<bytes.length; i++){
@@ -53,7 +55,7 @@ class Cre extends React.Component {
                 text = text + String.fromCharCode(parseInt(bytes[i]));
             }
             this.setState({
-                log: text
+                log: text//여기있는 log가 서버에 담겨져야 됩니다
             })
 
             this._cleanUp();
@@ -71,27 +73,42 @@ class Cre extends React.Component {
         })
     }
 
+    sound = new Sound('sounds.mp3');
+    playSound = () => {
+        this.sound.play()
+   }
+
+   
     render(){
         const { modalVisible } = this.state;
         return (
             <View style={styles.centeredView}>
-            <Text>{this.state.log}님, 인증되었습니다.</Text>
+            <Text style={styles.textStyle4} fontFamily="DoHyen_Regular">For Enrty</Text>
+            <Text style={styles.textStyle1} fontFamily="DoHyen_Regular">Tag  NFC</Text>
+            <Text>   </Text>
+            <Text>   </Text>
+            <Text>   </Text>
+            <Text>   </Text>
+            <Text>   </Text>
+            <Text>   </Text>
+            <Text>   </Text>
               <Modal
           animationType="slide"
           transparent={true}
           visible={modalVisible}
           onRequestClose={() => {
-            Alert.alert("팝업창이 닫혔습니다");
+            Alert.alert("close");
             this.setModalVisible(!modalVisible);
           }}
         >
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <Text style={styles.modalText}>인증되었습니다!</Text>
-              <Text>{this.state.log}</Text>
+              {/*<Text style={styles.textStyle2}>welcome {this.state.log}</Text>*/}
+              <Text style={styles.textStyle2} 
+              fontFamily="DoHyen_Regular">The vaccination is complete</Text>
               <Pressable
                 onPress={() => this.setModalVisible(!modalVisible)}>
-                <Text>닫기</Text>
+                <Text style={styles.textStyle3} fontFamily="DoHyen_Regular">tap to close</Text>
               </Pressable>
             </View>
           </View>
@@ -99,8 +116,13 @@ class Cre extends React.Component {
         <Pressable
           style={[styles.button, styles.buttonOpen]}
           onPress={() => this.setModalVisible(true)}>
-          <Text style={styles.textStyle}  onPress={this.readData}>NVP</Text>
+          <Text style={styles.textStyle}  onPress={this.readData} fontFamily="DoHyen_Regular">NVP</Text>
         </Pressable>
+        <TouchableOpacity onPress={this.playSound}>
+                    <View>
+                        <Text>in {this.state.log}</Text>
+                    </View>
+                </TouchableOpacity>
         </View>
           )
     }
@@ -112,6 +134,12 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         marginTop: 22
+      },
+      titleBar: {
+        height: 40,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#777',
       },
       modalView: {
         margin: 20,
@@ -143,7 +171,34 @@ const styles = StyleSheet.create({
         color: "white",
         fontWeight: "bold",
         textAlign: "center",
-        fontSize: Dimensions.get('window').width > 500? 36 : 30
+        fontFamily: 'DoHyeon_Regular',
+        fontSize: Dimensions.get('window').width > 500? 40 : 60
+      },
+      textStyle1: {
+        fontFamily:'DoHyeon_Regular',
+        color: "#808080",
+        fontWeight: "bold",
+        textAlign: "center",
+        fontSize: Dimensions.get('window').width > 500? 36 : 50
+      },
+      textStyle2: {
+        fontFamily: 'DoHyeon_Regular',
+        color: "#82CBC4",
+        fontWeight: "bold",
+        textAlign: "center",
+        fontSize: Dimensions.get('window').width > 500? 36 : 40
+      },
+      textStyle3: {
+        fontFamily: 'DoHyeon_Regular',
+        color: "#808080",
+        textAlign: "center",
+        fontSize: Dimensions.get('window').width > 500? 36 : 20
+      },
+      textStyle4: {
+        fontFamily: 'DoHyeon_Regular',
+        color: "#808080",
+        textAlign: "center",
+        fontSize: Dimensions.get('window').width > 500? 36 : 24
       },
       modalText: {
         marginBottom: 15,
@@ -182,6 +237,7 @@ text: {
     textAlign: 'center',
     color: 'white'
 }
+
 });
 
 
