@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, Keyboard, Alert, Button } from 'react-native';
 
-import authStyles from '../../assets/styles/authStyles';
+import authStyles from '../../assets/styles/AuthStyles';
 
 function ConfrimVaccinePass(props) {
 
