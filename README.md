@@ -41,11 +41,13 @@ Nfc + Vaccine Pass (개인용)
 3. 신분증 등록 버튼을 누르면, 카메라 화면이 뜨면서 내부적으로 마련한 사각형의 규격이 생성
 4. 이에 맞춰 신분증 촬영 진행 (사진 업로드는 불가)
 
-![image](https://user-images.githubusercontent.com/79238676/149599217-c9c413e5-a042-455c-bff4-0e70f7b68ae3.png)
+![011](https://user-images.githubusercontent.com/79238676/157217912-fcce73e0-fbe1-4a40-9de0-195de3ed0344.png)
+
 
 5. 신분증 분석 결과를 사용자에게 확인시켜주면서, 다시찍거나 사용하기 버튼으로 다음 단계 진행
 6. 신분증 사용하기를 누르고, 백신 증명서 등록 진행
 7. 쿠브 인증서를 가져와, 내부적으로 마련한 데이터 셋을 거쳐 진위여부판단후, 이에대한 결과 제시
 8. 저장 버튼을 누르면, 이전에 등록했던 신분증 데이터와 초기 사용자의 정보를 모두 종합하여 사용자의 정보가 일치하면 회원가입에 성공
 
-![image](https://user-images.githubusercontent.com/79238676/149599232-9da4996b-2463-4d07-b13c-651cd8cda5f5.png)
+![012](https://user-images.githubusercontent.com/79238676/157217930-016366ff-c90d-4787-8574-7e74298ccf90.png)
+
